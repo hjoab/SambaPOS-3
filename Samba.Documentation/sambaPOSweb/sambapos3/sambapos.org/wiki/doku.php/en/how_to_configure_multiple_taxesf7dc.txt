@@ -1,0 +1,101 @@
+====== How to Configure Multiple Taxes ======
+
+Hello. On this documentation I'll show you how to configure taxes. On this sample we'll have two taxes. One one them is %10 for beverages and %20 for food.
+
+First of all we need to create accounts for both tax rates so we can watch how much we owe to tax office. Navigate to Accounts > Accounts and create new account.
+
+{{:en:tax:how_to_configure_multiple_taxes-001.jpg?700|}}
+
+I've selected "Sales Accounts" as Account Type. If you need you can create separate account types for tax accounts.
+
+I'll create another one for %20 tax.
+
+{{:en:tax:how_to_configure_multiple_taxes-002.jpg?700|}}
+
+Now I have to tell SambaPOS how these accounts works. There are lots of different tax rules on different countries so that configuration may differ but this sample should work on most cases.
+
+I'll create a new Account Transaction Type for %10 Tax.
+
+{{:en:tax:how_to_configure_multiple_taxes-003.jpg?700|}}
+
+That transaction debits Tax %10 Account (we owe) and credits Receivables account because we'll receive tax amount from customer.
+
+We'll create another Transaction Type for %20 Tax. The only difference with the other one is we'll chose Tax %20 account as "Default Source Account".
+
+Here are the Tax Transaction Templates:
+
+{{:en:tax:how_to_configure_multiple_taxes-004.jpg?700|}}
+
+On this step we'll configure Tax Templates. Navigate to Products > Tax Templates and add a new Tax Template. We'll choose %10 Tax Transaction as Transaction Type and enter 10 to Rate. Rounding might be an important setting for some cases. In some countries Tax amount rounded while calculating tax for a single product. If you need such behavior enter 2 there. For most cases leaving it 0 should work fine.
+
+{{:en:tax:how_to_configure_multiple_taxes-005.jpg?700|}}
+
+Now we'll map this tax to products. We've mapped it to Beverages. You can also map this rate to a specific product by choosing a product.
+
+{{:en:tax:how_to_configure_multiple_taxes-006.jpg?700|}}
+
+We'll create another Tax Template to configure %20 Tax.
+
+{{:en:tax:how_to_configure_multiple_taxes-007.jpg?700|}}
+
+If you are familiar with SambaPOS mapping features you may think entering a default map should do the job. Since SambaPOS supports multiple taxes for a single Product we should exliciptly configure mappings. If we add default mapping and leave product group as * Beverages Tax becomes %10 + %20 because we previously configured %10 Tax for Beverages. To avoid this map each product group that have %20 Tax as shown here.
+
+{{:en:tax:how_to_configure_multiple_taxes-008.jpg?700|}}
+
+Finally we have to configure if prices are Tax Included or Tax Excluded. To enable Tax Included prices Navigate to Tickets > Ticket Types > edit "Ticket" and enable Tax Included setting.
+
+{{:en:tax:how_to_configure_multiple_taxes-009.jpg?700|}}
+
+Default Printer Templates does not contain Tax Values. Let's see how we can configure Ticket Template.
+
+Navigate to Settings > Printer Templates and edit "Ticket Template".
+
+To enable printing taxes we have to create a section for taxes. As shown on the tag list we need to add {TAXES} tag for marking the point we want to list taxes and [TAXES] tag for format.
+
+I'll list Taxes just after listing {DISCOUNTS}.
+
+{{:en:tax:how_to_configure_multiple_taxes-015.jpg?700|}}
+
+I'll create a Dynamic Section for Taxes and configure how a single tax rate should listed. I'll insert **[TAXES]** section at the end of the template.
+
+{{:en:tax:how_to_configure_multiple_taxes-011.jpg?700|}}
+
+Required configuration ends here. Now I'll create a ticket.
+
+{{:en:tax:how_to_configure_multiple_taxes-012.jpg?700|}}
+
+Tax total displayed over Balance. I've used demo printer to generating the output.
+
+{{:en:tax:how_to_configure_multiple_taxes-013.jpg?500|}}
+
+You can improve this configuration for your needs. For example you'll notice there is no tag for "Tax Excluded Sum". Experienced SambaPOS users knows that can be added easily by using Printer Template Expressions. I'll add this line before printing Ticket Total.
+
+<code>
+<J10>Sub Total:|[=F(TN('{TICKET TOTAL}')-TN('{TAX TOTAL}'))]
+</code>
+
+That generates Sub Total Line.
+
+
+{{:en:tax:how_to_configure_multiple_taxes-014.jpg?500|}}
+
+Finally this is what you'll see when you display Account Screen
+
+{{:en:tax:how_to_configure_multiple_taxes-015.jpg?700|}}
+
+You can download sample template file from this link: https://gist.github.com/emreeren/5896654
+
+You can also find sdf download link for this sample at the end of the document.
+
+Let us know if it works fine for you or not. Thanks.
+
+Notes:
+
+<WRAP center round tip 75%>
+You'll need at least V3.011 Beta version for this sample.
+</WRAP>
+
+
+<WRAP center round download 75%>
+Sample Database file {{:en:database:sambapos3_tax.sdf|Download it.}}
+</WRAP>

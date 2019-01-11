@@ -1,0 +1,33 @@
+~~NOTOC~~
+====== Promotion Coupons Documentation ======
+<wrap center round tip>
+This documentation is prepared with [[http://sambapos.com/en/content/v3027-beta|V3.0.27]] version. If you are using older versions please upgrade.
+</wrap>
+
+This is a two part documentation about new Promotion features of SambaPOS. First part is about implementing Coupon Creating, Printing and Tracking features with SambaPOS. Second part is configuring Buy 6 Get 1 Free promotion.
+
+<WRAP center round info 60%>
+Before start reading documentation you can watch the demonstration video with English subtitles.
+
+[[http://www.youtube.com/watch?v=W1mrWFcxVeQ]]
+</WRAP>
+
+===== Free Product Coupons=====
+
+[[Preparing SambaPOS to Sell Coffee Coupons]] \\ 
+After finishing this section we’ll be able to sell coffee coupons.
+
+[[Redeeming Coupons]] \\ 
+On this section we’ll add features to redeem coupons.
+
+[[Printing Coupons]] \\ 
+We’ll be able to print QR Tags or Barcodes on our coupons.
+
+===== Buy 6 Get 1 Free Promotion =====
+
+[[Tracking Coffee Purchases of Loyal Customers]]\\ 
+As customers buys coffee we’ll update their promotion data
+
+[[Giving Free Coffee]]\\  
+When customers buys a specific amount of Coffee we’ll give free coupons
+

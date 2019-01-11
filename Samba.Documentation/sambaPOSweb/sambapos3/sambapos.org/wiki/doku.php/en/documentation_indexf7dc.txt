@@ -1,0 +1,18 @@
+====== Documentation Index ======
+
+  * Tickets
+    * Calculations
+      * [[Auto Rounding]]
+  * Printing
+    * Printing Tags
+      * [[Barcode Printing Tags]]
+      * [[Random Number Generator Tag]]
+  * Entities
+    * Entity Types
+      * [[Primary Field Editing Formats]]
+    * Entity Screens
+      * [[Task Widget]]
+  * Automation
+    * Actions
+      * [[Modify Variable Action]]
+  

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/installing_sql_express_2012_for_sambapos_v3?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:53:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:installing_sql_express_2012_for_sambapos_v3</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,installing_sql_express_2012_for_sambapos_v3"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="installing_sql_express_2012_for_sambapos_v3decf.html?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="installing_sql_express_2012_for_sambapos_v347cd?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="installing_sql_express_2012_for_sambapos_v3f7dc.txt?do=export_raw"/>
+<link rel="canonical" href="installing_sql_express_2012_for_sambapos_v3.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/installing_sql_express_2012_for_sambapos_v3"},"id":"en:installing_sql_express_2012_for_sambapos_v3","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+<!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#installing_sql_express_2012_for_sambapos_v3">Installing SQL Express 2012 for SambaPOS V3</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#download_sql_express_2012">1.Download SQL Express 2012</a></div></li>
+<li class="level2"><div class="li"><a href="#installing_sql_express_2012">2.Installing SQL Express 2012</a></div></li>
+<li class="level2"><div class="li"><a href="#enabling_network_services">3. Enabling Network Services</a></div></li>
+<li class="level2"><div class="li"><a href="#using_sql_express_2012">4. Using SQL Express 2012.</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#running_sambapos_v2_v3_databases">Running SambaPOS v2 &amp; v3 Databases</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="installing_sql_express_2012_for_sambapos_v3">Installing SQL Express 2012 for SambaPOS V3</h1>
+<div class="level1">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Installing SQL Express 2012 for SambaPOS V3&quot;,&quot;hid&quot;:&quot;installing_sql_express_2012_for_sambapos_v3&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-59&quot;} -->
+<h2 class="sectionedit2" id="download_sql_express_2012">1.Download SQL Express 2012</h2>
+<div class="level2">
+
+<p>
+<a href="http://www.microsoft.com/en-au/download/details.aspx?id=29062" class="urlextern" title="http://www.microsoft.com/en-au/download/details.aspx?id=29062" rel="nofollow">http://www.microsoft.com/en-au/download/details.aspx?id=29062</a>
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_001fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_001.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_00139c7.jpg_%3b?w=600&amp;tok=53121a" class="media" alt="" width="600" /></a>
+</p>
+
+<p>
+Click the Red <strong>Download</strong> button.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_002fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_002.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_002e7d8.jpg_%3b?w=600&amp;tok=7755f0" class="media" alt="" width="600" /></a>
+</p>
+
+<p>
+Select the version you need and click Next.
+</p>
+
+<p>
+<strong>SQLEXPRWT_x86_ENU.exe</strong> - 32 Bit version with SQL Management Studio\\r
+<strong>SQLEXPRWT_x64_ENU.exe</strong> - 64 Bit version with SQL Management Studio
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_003fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_003.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_00382d9.jpg_%3b?w=300&amp;tok=9969d7" class="media" alt="" width="300" /></a>
+</p>
+
+<p>
+Click Save File.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;1.Download SQL Express 2012&quot;,&quot;hid&quot;:&quot;download_sql_express_2012&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;60-574&quot;} -->
+<h2 class="sectionedit3" id="installing_sql_express_2012">2.Installing SQL Express 2012</h2>
+<div class="level2">
+
+<p>
+Run the file you downloaded above
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_004fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_004.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_004fe06.jpg_%3b?w=400&amp;tok=f18ccb" class="media" alt="" width="400" /></a>
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_006fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_006.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_0061aee.jpg_%3b?w=400&amp;tok=0b3b90" class="media" alt="" width="400" /></a>
+</p>
+
+<p>
+Select <strong>New SQL Server Stand-alone</strong> Installation
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_008fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_008.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_008eb20.jpg_%3b?w=700&amp;tok=f589fc" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Click <strong>I Accept</strong> and click <strong>Next</strong>
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_009fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_009.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_00937b9.jpg_%3b?w=700&amp;tok=8e77ba" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+SQL Express will request to install updates, click <strong>Next</strong>
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_010fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_010.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_010a2e4.jpg_%3b?w=700&amp;tok=ab10f7" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Click <strong>Next</strong> at Feature Selection
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_011fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_011.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_0115ea1.jpg_%3b?w=700&amp;tok=dd85f7" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Create a new <strong>Named Instance</strong> called <strong>SAMBAPOS3</strong>, and click <strong>Next</strong>
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_012fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_012.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_01227b3.jpg_%3b?w=700&amp;tok=57d1a9" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Make sure both services are set to <strong>Automatic</strong> Startup Type. Click <strong>Next</strong>.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_013fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_013.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_013012d.jpg_%3b?w=700&amp;tok=265e87" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Select <strong>Mixed Mode</strong>, and enter a password for the database (remember this password for later), I suggest <strong>sambapos</strong>. Click <strong>Next</strong>.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_014fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_014.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_0142054.jpg_%3b?w=700&amp;tok=fbad9a" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Click <strong>Next</strong>.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_015fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_015.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_015c877.jpg_%3b?w=700&amp;tok=0ee37d" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+SQL Express will now install – this may take several minutes.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_016fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_016.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_0160ad7.jpg_%3b?w=700&amp;tok=c53cd1" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Once installation is complete, click Close.
+</p>
+
+<p>
+Close the SQL Server Installation Window.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;2.Installing SQL Express 2012&quot;,&quot;hid&quot;:&quot;installing_sql_express_2012&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;575-1919&quot;} -->
+<h2 class="sectionedit4" id="enabling_network_services">3. Enabling Network Services</h2>
+<div class="level2">
+
+<p>
+Run <strong>SQL Server Configuration Manager</strong> located under <strong>Microsoft SQL Server 2012</strong> in your start menu.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_018fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_018.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_01871ff.jpg_%3b?w=700&amp;tok=bfffcb" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Expand <strong>SQL Server Network Configuration</strong>, and select <strong>Protocols for SAMBAPOS3</strong> Enable both <strong>Named Pipes &amp; TCP/IP</strong> Protocols.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_019fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_019.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_0195c8d.jpg_%3b?w=400&amp;tok=5a9c28" class="media" alt="" width="400" /></a>
+</p>
+
+<p>
+A warning message will appear when you enable the protocols, click OK.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_020fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_020.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_0201692.jpg_%3b?w=700&amp;tok=9958c1" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Go to SQL Server Services, select <strong>SQL Server (SAMBAPOS3)</strong> and click the <strong>Restart</strong> icon.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;3. Enabling Network Services&quot;,&quot;hid&quot;:&quot;enabling_network_services&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;1920-2534&quot;} -->
+<h2 class="sectionedit5" id="using_sql_express_2012">4. Using SQL Express 2012.</h2>
+<div class="level2">
+
+<p>
+Use the following line in SambaPOS Local Settings to use SQL Express 2012
+</p>
+
+<p>
+<strong>Data source=localhost\SAMBAPOS3; User Id=sa; Password=sambapos</strong>
+</p>
+
+<p>
+For all other computers on your network change localhost to your computers name that is running SQL Express 2012. For example
+</p>
+
+<p>
+<strong>Data source=John-PC\SAMBAPOS3; User Id=sa; Password=sambapos</strong>
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_021fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_021.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_02187ae.jpg_%3b?w=700&amp;tok=49ff6f" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Network connection issues are usually caused by Firewall programs running. Due to SQL Express using Dynamic Ports, it makes it hard to configure access through firewalls. The easiest solution is to turn off all firewalls.
+</p>
+
+<p>
+If you feel the need to have the firewall running, then look at this article
+<a href="http://technet.microsoft.com/en-us/library/cc646023.aspx" class="urlextern" title="http://technet.microsoft.com/en-us/library/cc646023.aspx" rel="nofollow">http://technet.microsoft.com/en-us/library/cc646023.aspx</a>
+</p>
+
+<p>
+Turning off your Windows Firewall does to affect the security of your computers, as long as you have a decent Internet Router with Firewall to stop external attacks, and you use secure passwords for your Wifi Access Points to stop internal attacks.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;4. Using SQL Express 2012.&quot;,&quot;hid&quot;:&quot;using_sql_express_2012&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;2535-3574&quot;} -->
+<h1 class="sectionedit6" id="running_sambapos_v2_v3_databases">Running SambaPOS v2 &amp; v3 Databases</h1>
+<div class="level1">
+
+<p>
+If installing SQL Express 2012 for SambaPOS v2, then I suggest using SAMBAPOS for the Named Instance. This keeps both V2 &amp; V3 databases running completely independent of each other.
+</p>
+
+<p>
+<strong>Installation of SQL Express 2008</strong>
+</p>
+
+<p>
+Installation of SQL Express 2008 is exactly the same as 2012, with the exception of Product Updates.
+</p>
+
+<p>
+The installation files are available here
+<a href="http://www.microsoft.com/en-au/download/details.aspx?id=22973" class="urlextern" title="http://www.microsoft.com/en-au/download/details.aspx?id=22973" rel="nofollow">http://www.microsoft.com/en-au/download/details.aspx?id=22973</a>
+</p>
+
+<p>
+Upgrading from SQL Express 2008
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sql/installing_sql_express_2012_-_022fd72.html?id=en%3Ainstalling_sql_express_2012_for_sambapos_v3" class="media" title="en:sql:installing_sql_express_2012_-_022.jpg"><img src="../../lib/exe/fetch.php/en/sql/installing_sql_express_2012_-_022d14e.jpg_%3b?w=700&amp;tok=96e365" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+When you run the SQL Express 2012 setup file that you downloaded, select Upgrade and follow the Wizard.
+</p>
+
+<p>
+<strong>Created By : John Sheather</strong>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Running SambaPOS v2 &amp; v3 Databases&quot;,&quot;hid&quot;:&quot;running_sambapos_v2_v3_databases&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;3575-&quot;} --></div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/installing_sql_express_2012_for_sambapos_v3?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:53:11 GMT -->
+</html>

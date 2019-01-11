@@ -1,0 +1,90 @@
+====== Grouping on Ticket Printer Template ======
+
+SambaPOS V3 have some nice grouping features that we can use for grouping orders on tickets. We need use **Group** keyword to define and configure groups.
+
+[Orders Group|PRODUCT GROUP]
+
+Adding that dynamic section to a printer template means we want to Group Orders by Product Group Code. Product Group Code is the value we entered as Group Code while creating product records.
+
+{{:en:gpt:grouping_on_ticket_printer_template-001.jpg?700|}}
+
+On that section I can add a header for groups. Adding <C00>-{GROUP KEY}- means it will print Group Code on the header of each section. {GROUP KEY} is the tag we can use printing the value that we used for grouping. For example if we use PRODUCT TAG for grouping {GROUP KEY} tag prints Product Tag value.
+
+So when used together Group section becomes.
+
+<code>
+[ORDERS GROUP|PRODUCT GROUP]
+<C00>-{GROUP KEY}-
+</code>
+
+This is what this configuration generates.
+
+{{:en:gpt:grouping_on_ticket_printer_template-002.jpg?500|}}
+
+Notice how it groups items and display group codes centrally as we defined on ORDER GROUP section.
+
+**Formatting Specific Groups**
+
+I can format specific group keys. For example we can use different formatting for İçecekler (drinks) group.
+
+{{:en:gpt:grouping_on_ticket_printer_template-003.jpg?700|}}
+
+I'll create another section for İçecekler group key value
+
+<code>
+[ORDERS GROUP:İçecekler]
+<C00>-{GROUP KEY}-
+<C00>%50 discount for Coke on Fridays!
+</code>
+
+If SambaPOS finds a specific format for a group key it uses this format. If can't it uses general formatting.
+
+This configuration generates:
+
+{{:en:gpt:grouping_on_ticket_printer_template-004.jpg?500|}}
+
+Notice the promotion tag we added for İçecekler (drinks) group.
+
+**Group Footers**
+
+We can also configure footers for groups.
+
+<code>
+[ORDERS FOOTER]
+<R>Toplam: {GROUP SUM}
+</code>
+
+{GROUP SUM} is a special tag to print totals. I can use it on headers too.
+
+{{:en:gpt:grouping_on_ticket_printer_template-005.jpg?700|}}
+
+This configuration should display group totals:
+
+{{:en:gpt:grouping_on_ticket_printer_template-006.jpg?500|}}
+
+We can configure footer for specific groups keys too. Something like **[ORDERS FOOTER:İçecekler]**
+
+Full Gist of this Template https://gist.github.com/emreeren/5821927
+
+By playing with these values we can change how groups formats. For example I can use no header and only use footers to create a different look.
+
+{{:en:gpt:grouping_on_ticket_printer_template-007.jpg?700|}}
+
+I've removed formatting from ORDERS GROUP section and used only FOOTER format. I have also specific footer format for İçecekler value.
+
+{{:en:gpt:grouping_on_ticket_printer_template-008.jpg?500|}}
+
+Full gist located here https://gist.github.com/emreeren/5821894
+
+**Other Possible Grouping Values**
+
+You can group orders by:
+
+  * PRODUCT GROUP
+  * PRODUCT TAG
+  * ORDER TAG:x
+  * ORDER STATE:x
+
+x means you'll write which value you want to use. For example if you want to group by Gift state GROUP section becomes: **[ORDERS GROUP|ORDER STATE:GStatus]**
+
+GStatus is an internal value to store gift state of an order. You can configure these values by changing Gift related rules and actions.

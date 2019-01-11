@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/preparing_sambapos_to_sell_coffee_coupons?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:51:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:preparing_sambapos_to_sell_coffee_coupons</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,preparing_sambapos_to_sell_coffee_coupons"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="preparing_sambapos_to_sell_coffee_couponsdecf?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="preparing_sambapos_to_sell_coffee_coupons47cd.html?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="preparing_sambapos_to_sell_coffee_couponsf7dc.txt?do=export_raw"/>
+<link rel="canonical" href="preparing_sambapos_to_sell_coffee_coupons.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/preparing_sambapos_to_sell_coffee_coupons"},"id":"en:preparing_sambapos_to_sell_coffee_coupons","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+<!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#preparing_sambapos_to_sell_coffee_coupons">Preparing SambaPOS to Sell Coffee Coupons</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#creating_coupon_entity">Creating Coupon Entity</a></div></li>
+<li class="level2"><div class="li"><a href="#adding_actions_to_update_field_values">Adding Actions to Update Field Values</a></div></li>
+<li class="level2"><div class="li"><a href="#creating_coffee_coupon_product">Creating Coffee Coupon Product</a></div></li>
+<li class="level2"><div class="li"><a href="#updating_coffee_coupon_order_state">Updating Coffee Coupon Order State</a></div></li>
+<li class="level2"><div class="li"><a href="#updating_coffee_coupon_menu_item">Updating Coffee Coupon Menu Item</a></div></li>
+<li class="level2"><div class="li"><a href="#adding_create_coupon_action">Adding Create Coupon Action</a></div></li>
+<li class="level2"><div class="li"><a href="#adding_coffee_coupon_order_handling_rules">Adding Coffee Coupon Order Handling Rules</a></div></li>
+<li class="level2"><div class="li"><a href="#handling_payment_to_update_order_states">Handling Payment to update Order states</a></div></li>
+<li class="level2"><div class="li"><a href="#creating_coupons">Creating Coupons</a></div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="preparing_sambapos_to_sell_coffee_coupons">Preparing SambaPOS to Sell Coffee Coupons</h1>
+<div class="level1">
+
+<p>
+Promotion Coupon is an entity that we use to enter free items to tickets. This is a well formatted random number. We can print this number as a barcode or QR Tag. When this number is scanned on a SambaPOS terminal it will add related product into the ticket as a gift product. When redeemed we’ll update coupon status so it can’t be used multiple times. 
+</p>
+
+<p>
+After finishing this chapter you can create coupons and sell them through a ticket. For example you can sell 100 coffee coupons with a discounted price. That can be a company that wishes to give coffee coupons to  their personnel. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Preparing SambaPOS to Sell Coffee Coupons&quot;,&quot;hid&quot;:&quot;preparing_sambapos_to_sell_coffee_coupons&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-650&quot;} -->
+<h2 class="sectionedit2" id="creating_coupon_entity">Creating Coupon Entity</h2>
+<div class="level2">
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons2cb0e.html?id=en%3Apreparing_sambapos_to_sell_coffee_coupons" class="media" title="en:promotions:coupons2.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons2fede.jpg_%3b?w=700&amp;tok=0344f3" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We’ll create new Entity Type for Coupons. When a new coupon created we’ll store it as a new entity. Primary field of coupon entity is Coupon Number. This number will be a 9 digit number. Eight digits are random generated numbers and ninth digit is check digit to validate number. It starts with CP prefix so we can understand entered random number is a Coupon Number. As a result Coupon Numbers becomes 11 digit numbers. For easy editing we’ll split this number with minus characters. On Primary Field Format C is a place holder for a single character. Define length and editing format as CCCCC-CCC-CCC. Read <a href="primary_field_editing_formats.html" class="wikilink1" title="en:primary_field_editing_formats">Primary Field Editing Formats</a> document for more info.
+</p>
+
+<p>
+We’ll create some custom fields for coupons. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons3cb0e.html?id=en%3Apreparing_sambapos_to_sell_coffee_coupons" class="media" title="en:promotions:coupons3.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons36b61.jpg_%3b?w=700&amp;tok=1b43fc" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We have three custom fields. 
+</p>
+<ol>
+<li class="level1"><div class="li"><strong>Menu Item Name:</strong> This field used to assign Coupon to a Menu Item. So when redeemed the menu item typed there will be added as a gift. Instead of assigning coupons to a single menu item we created a field for more flexibility in case of we want to create coupons for other menu items.</div>
+</li>
+<li class="level1"><div class="li"><strong>Redeemed:</strong> We’ll track status of coupon under this field. It have three values. New created Coupons will have “No” value. When we use coupon in a ticket it will be “In Ticket” and when ticket submitted value becomes “Yes”. When value is “Yes” it means this coupon used and can’t used again. </div>
+</li>
+<li class="level1"><div class="li"><strong>Expiration Date:</strong> We can set an expiration date for coupons so it can’t be used after expiration date.</div>
+</li>
+</ol>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Creating Coupon Entity&quot;,&quot;hid&quot;:&quot;creating_coupon_entity&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;651-2236&quot;} -->
+<h2 class="sectionedit3" id="adding_actions_to_update_field_values">Adding Actions to Update Field Values</h2>
+<div class="level2">
+
+<p>
+We’ll need actions to update Coupon custom fields. For example we have to change Redeemed value to “Yes” when coupon is used in a ticket. Let’s create a new action to update Coupon Menu Item Name.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons4cb0e.html?id=en%3Apreparing_sambapos_to_sell_coffee_coupons" class="media" title="en:promotions:coupons4.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons4ce67.jpg_%3b?w=700&amp;tok=1252b6" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Action Name will be <code>Update Coupon Menu Item Name</code> and Action Type will be <code>Update Entity Data</code>. We’ll set Entity Type Name as <code>Coupons</code> so this action updates Coupons. Field Name will be <code>Menu Item Name</code> since we store menu item names under this field. We’ll send Coupon Number and Menu Item Name values from calling rule for this reason we’ll configure these parameters as variables.
+</p>
+
+<p>
+We need another action to update Coupon Redeem Status. Let&#039;s clone a new action from previous one. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons5cb0e.html?id=en%3Apreparing_sambapos_to_sell_coffee_coupons" class="media" title="en:promotions:coupons5.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons505ae.jpg_%3b?w=700&amp;tok=cf1d86" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Change action name to <code>Update Coupon Status</code> and Field Name as <code>Redeemed</code>. We’ll use this action when we create new coupons and when we need to disable them. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Adding Actions to Update Field Values&quot;,&quot;hid&quot;:&quot;adding_actions_to_update_field_values&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;2237-3237&quot;} -->
+<h2 class="sectionedit4" id="creating_coffee_coupon_product">Creating Coffee Coupon Product</h2>
+<div class="level2">
+
+<p>
+Until this step we created Coupon Entity Type, needed custom fields and two actions to update these custom fields. Now we’ll need a product called “Coffee Coupon” to sell Coffee Coupons. 
+</p>
+<ol>
+<li class="level1"><div class="li">Create a new menu category called “Coupons”.</div>
+</li>
+<li class="level1"><div class="li">Create “Coffee Coupon” product. Group Code is “Coupons” and Tag it as Coffee to relate it with Coffee Product. Enter desired price for the coupon and add it to Coupons Category.</div>
+</li>
+</ol>
+
+<p>
+You should have something like this.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons6cb0e.html?id=en%3Apreparing_sambapos_to_sell_coffee_coupons" class="media" title="en:promotions:coupons6.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons6b5b5.jpg_%3b?w=700&amp;tok=4c22c4" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+You can add more coupon products under this category. Coffee price is $1.45 on my sample data so I’ve priced Coffee Coupon as $1.45 to match it to Coffee price. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Creating Coffee Coupon Product&quot;,&quot;hid&quot;:&quot;creating_coffee_coupon_product&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;3238-3959&quot;} -->
+<h2 class="sectionedit5" id="updating_coffee_coupon_order_state">Updating Coffee Coupon Order State</h2>
+<div class="level2">
+
+<p>
+So when we sell <code>Coffee Coupon</code> we’ll create a new Coupon entity. For this reason we need to handle <code>Order Added</code> event to understand if Coffee Coupon is added to ticket. However we need to solve an issue here. We can’t create coupon entity as soon as <code>Coffee Coupon</code> product added to ticket because user can cancel it after printing Coupon to generate free coupons. We need to create coupons when ticket gets paid. We can use <code>Order Status</code> feature to determine if Coffee Coupon Product is paid or not. When we first add Coupon Product we’ll change order state to <code>Coupon Ordered</code> and when Ticket Paid we’ll change it to <code>Coupon Paid</code>. SambaPOS generates additional events when an order status is changed so we can understand Coupon is paid. Let’s create needed actions to update order states.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons7cb0e.html?id=en%3Apreparing_sambapos_to_sell_coffee_coupons" class="media" title="en:promotions:coupons7.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons724b5.jpg_%3b?w=700&amp;tok=9ecc9d" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+When we add a <code>Coffee Coupon</code> product to a ticket default order state will be <code>Coupon Ordered</code>. When ticket paid it becomes <code>Coupon Paid</code>. We’ll handle the moment order status changes to <code>Coupon Paid</code> from <code>Coupon Ordered</code> to create coupons. Group order and State order values are useful to sort state values while displaying multiple orders.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Updating Coffee Coupon Order State&quot;,&quot;hid&quot;:&quot;updating_coffee_coupon_order_state&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;3960-5219&quot;} -->
+<h2 class="sectionedit6" id="updating_coffee_coupon_menu_item">Updating Coffee Coupon Menu Item</h2>
+<div class="level2">
+
+<p>
+You&#039;ll remember Coupon entity has a field called <code>Menu Item Name</code>. We use this field to map coupons to Menu Items. So while creating a coupon we need to update <code>Menu Item Name</code> value. Instead of directly mapping Coffee Coupons to Coupon entities we’ll create additional Order State to store Menu Item Name. It will give more flexibility when you need to create coupons for different products. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons8cb0e.html?id=en%3Apreparing_sambapos_to_sell_coffee_coupons" class="media" title="en:promotions:coupons8.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons88452.jpg_%3b?w=700&amp;tok=38450e" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Now we have another order state called <code>Coupon Product</code>. We don’t need to know previous state value so we’ll leave Current State parameter empty. Group and State Order values are 5 since we want to display this value at the end. 
+</p>
+
+<p>
+As a result Coupon Order Lines stores two additional data.
+</p>
+<ol>
+<li class="level1"><div class="li"> <strong>Coupon Order State:</strong> It will be <code>Coupon Ordered</code> when coupon product first added and <code>Coupon Paid</code> when ticket paid.</div>
+</li>
+<li class="level1"><div class="li"> <strong>Menu Item Name of the coupon:</strong> We’ll use this value update menu item name of the coupon entity while creating coupons. </div>
+</li>
+</ol>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Updating Coffee Coupon Menu Item&quot;,&quot;hid&quot;:&quot;updating_coffee_coupon_menu_item&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;5220-6258&quot;} -->
+<h2 class="sectionedit7" id="adding_create_coupon_action">Adding Create Coupon Action</h2>
+<div class="level2">
+
+<p>
+Another action we need is <code>Create Coupon</code> action. When we call it creates a new Coupon Entity named with a Random Number.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons9cb0e.html?id=en%3Apreparing_sambapos_to_sell_coffee_coupons" class="media" title="en:promotions:coupons9.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons9722b.jpg_%3b?w=700&amp;tok=a35c3d" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Entity Type Name is <code>Coupons</code> since we need to create a coupon entity. Entity name should be <code>CP{RANDOMC:8}</code>. {RANDOMC:8} tag is a <a href="random_number_generator_tag.html" class="wikilink1" title="en:random_number_generator_tag">Random Number Generator Tag</a> that generates a 8 digit random number with check digit. So it becomes 9 digits. We also want to prefix Coupon Numbers with CP letters to be able to understand this random number is a coupon number. Finally Custom Data field contains <code>Redeemed=No</code> value to define default Redeemed field value.
+</p>
+
+<p>
+We’re ready to create rules that creates Coupons when <code>Coffee Coupon Product</code> sold.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Adding Create Coupon Action&quot;,&quot;hid&quot;:&quot;adding_create_coupon_action&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:7,&quot;range&quot;:&quot;6259-7043&quot;} -->
+<h2 class="sectionedit8" id="adding_coffee_coupon_order_handling_rules">Adding Coffee Coupon Order Handling Rules</h2>
+<div class="level2">
+
+<p>
+When we first add Coffee Coupon order in a ticket its order state should be Coupon Ordered. We’ll create a rule to configure this.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons10cb0e.html?id=en%3Apreparing_sambapos_to_sell_coffee_coupons" class="media" title="en:promotions:coupons10.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons10b143.jpg_%3b?w=700&amp;tok=8bb729" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We’ll handle <code>Order Added to Ticket</code> event and execute this rule if Menu Item Group Code Equals to <code>Coupons</code> value. If you didn’t do so change <code>Coffee Coupon</code> product’s Group Code to <code>Coupons</code> so this rule will handle it. New coupons under this product group will just work without changes.
+</p>
+
+<p>
+When it detects a Coupon it executes two actions.
+</p>
+<ol>
+<li class="level1"><div class="li"> Calls <code>Update Coupon Product Order State</code> action to update order state as <code>Coupon Ordered</code>.</div>
+</li>
+<li class="level1"><div class="li"> Calls <code>Update Coupon Product Menu Item Name</code> action to send Coupon Product Tag value to Order State as the Coupon Menu Item Name.</div>
+</li>
+</ol>
+<!-- EDIT{&quot;target&quot;:&quot;plugin_wrap_start&quot;,&quot;secid&quot;:9,&quot;range&quot;:&quot;0-&quot;} --><div class="wrap_center wrap_round wrap_tip plugin_wrap" style="width: 60%;">
+<p>
+Don’t forget adding a map to rules to enable them. If there is no mapping they won’t work and listed as gray color. For the simplicity of this documentation we won&#039;t mention it anymore but all rules needs a mapping.
+</p>
+</div><!-- EDIT{&quot;target&quot;:&quot;plugin_wrap_end&quot;,&quot;secid&quot;:10,&quot;range&quot;:&quot;0-&quot;} -->
+<p>
+As a result of this configuration order state values should update correctly when we add a Coffee Coupon product into a ticket. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons11cb0e.html?id=en%3Apreparing_sambapos_to_sell_coffee_coupons" class="media" title="en:promotions:coupons11.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons1178cb.jpg_%3b?w=700&amp;tok=04c0df" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Coupon Ordered and Coffee values displays correctly. Now we know this order should generate a coupon, not paid yet and generates a coupon for Coffee.
+</p>
+
+<p>
+When we full settle the ticket <code>Coupon Ordered</code> value should change to <code>Coupon Paid</code>. Now we’ll handle <code>Ticket Close</code> event to check if ticket is paid. In fact there is already a rule for this named as “Ticket Payment Check” but for this tutorial we’ll create new Rule. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Adding Coffee Coupon Order Handling Rules&quot;,&quot;hid&quot;:&quot;adding_coffee_coupon_order_handling_rules&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:8,&quot;range&quot;:&quot;7044-8728&quot;} -->
+<h2 class="sectionedit11" id="handling_payment_to_update_order_states">Handling Payment to update Order states</h2>
+<div class="level2">
+
+<p>
+We’ll create a new rule for <code>Before Ticket Closing</code> event to check if ticket is paid or not. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons12cb0e.html?id=en%3Apreparing_sambapos_to_sell_coffee_coupons" class="media" title="en:promotions:coupons12.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons1245be.jpg_%3b?w=700&amp;tok=ee9854" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+While closing the ticket if <code>Remaining Amount</code> is 0 we’ll update order states to <code>Coupon Paid</code> where order state equals to <code>Coupon Ordered</code>.
+</p>
+
+<p>
+So create a new ticket now, add Coffee Coupon product and settle that ticket. When you open this ticket from ticket explorer, Order State of the Coffee Coupon product should be “Coupon Paid”. 
+</p>
+
+<p>
+Our customer bought a Breakfast, one coffee and a coffee coupon. As you can see order state changed to <code>Coupon Paid</code>. Other order states didn’t changed since we set the <code>Current State</code> for the action. It only changed for orders that already have “Coupon Ordered” state.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons13cb0e.html?id=en%3Apreparing_sambapos_to_sell_coffee_coupons" class="media" title="en:promotions:coupons13.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons13aae7.jpg_%3b?w=700&amp;tok=66300e" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Getting state handling in SambaPOS is important to create a flawless workflow for your business. Feel free to ask any questions on our forums so we can update our documentation to give more details about them.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Handling Payment to update Order states&quot;,&quot;hid&quot;:&quot;handling_payment_to_update_order_states&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:11,&quot;range&quot;:&quot;8729-9799&quot;} -->
+<h2 class="sectionedit12" id="creating_coupons">Creating Coupons</h2>
+<div class="level2">
+
+<p>
+As the order state changes from <code>Coupon Ordered</code> to <code>Coupon Paid</code> we’ll create the Coupon Entity. To be able to handle it we’ll create a rule for <code>Order State Updated</code> event.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons14cb0e.html?id=en%3Apreparing_sambapos_to_sell_coffee_coupons" class="media" title="en:promotions:coupons14.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons14afb5.jpg_%3b?w=700&amp;tok=1b87aa" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+I’ve created two constraints to determine ordered Coupon is paid. If constraints are true it executes <code>Create Coupon</code> action to create a coupon entity. After creating that it executes second action to update coupon’s menu item name. As you have noticed I’m reading <code>Menu Item Name</code> from Order State by using <code>{ORDER STATE:X}</code> tag. You’ll remember we are using same tag in printer templates to print order states. 
+</p>
+
+<p>
+To test this rule sell another Coffee Coupon and check if a Coupon Entity created or not. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons15cb0e.html?id=en%3Apreparing_sambapos_to_sell_coffee_coupons" class="media" title="en:promotions:coupons15.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons1520eb.jpg_%3b?w=700&amp;tok=3fe80d" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+This is what SambaPOS generated for me. Coupon Number, Redeemed value and Menu Item Name all correctly updated. Expiration date is empty so this coupon never expires. We’ll handle expiration topic on further documentation.
+</p>
+<ul>
+<li class="level1"><div class="li"> Back to <a href="promotion_coupons_documentation.html" class="wikilink1" title="en:promotion_coupons_documentation">Promotion Coupons Documentation</a></div>
+</li>
+<li class="level1"><div class="li"> Next Topic &gt; <a href="redeeming_coupons.html" class="wikilink1" title="en:redeeming_coupons">Redeeming Coupons</a></div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Creating Coupons&quot;,&quot;hid&quot;:&quot;creating_coupons&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:12,&quot;range&quot;:&quot;9800-&quot;} --></div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/preparing_sambapos_to_sell_coffee_coupons?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:51:43 GMT -->
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/how_to_link_entities_together?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:50:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:how_to_link_entities_together</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,how_to_link_entities_together"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="how_to_link_entities_togetherdecf.html?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="how_to_link_entities_together47cd.html?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="how_to_link_entities_togetherf7dc.txt?do=export_raw"/>
+<link rel="canonical" href="how_to_link_entities_together.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/how_to_link_entities_together"},"id":"en:how_to_link_entities_together","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+<!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#how_to_link_entities_together">How to Link Entities together</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#step_1_-_preparations_of_tables-entity">Step 1 - Preparations of Tables-Entity:</a></div></li>
+<li class="level2"><div class="li"><a href="#step_2_-_create_the_rooms-entity-type">Step 2 - Create the Rooms-Entity-Type :</a></div></li>
+<li class="level2"><div class="li"><a href="#step_3_-_create_some_room-entities">Step 3 - Create some Room-Entities:</a></div></li>
+<li class="level2"><div class="li"><a href="#step_4_-_table-settings">Step 4 - Table-Settings:</a></div></li>
+<li class="level2"><div class="li"><a href="#step_5_-_create_the_room-selecting-action">Step 5 - Create the Room-Selecting-Action:</a></div></li>
+<li class="level2"><div class="li"><a href="#step_6_create_the_rules">Step 6 – Create the Rules:</a></div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="how_to_link_entities_together">How to Link Entities together</h1>
+<div class="level1">
+
+<p>
+In this how-to I describe how to add a related Entity on selection on another Entity-Type to the current ticket. For example you have tables which can be grouped by rooms or sitting-areas. In this example when you select a particular Table-Entity named Garden Left 1” you would like to have a Room-(or SittingArea)Entity “Garden” or “Garden Left” as well selected on your Ticket. This How-To shows you how to configure SambaPOS 3 to enable this.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;How to Link Entities together&quot;,&quot;hid&quot;:&quot;how_to_link_entities_together&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-502&quot;} -->
+<h2 class="sectionedit2" id="step_1_-_preparations_of_tables-entity">Step 1 - Preparations of Tables-Entity:</h2>
+<div class="level2">
+
+<p>
+First navigate in the Manage-Screen to Entities → Entity Types and edit your Tables-Entity. In the Custom Fields-Tab add a Custom-Field with the name Room. For field type select string.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Step 1 - Preparations of Tables-Entity:&quot;,&quot;hid&quot;:&quot;step_1_-_preparations_of_tables-entity&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;503-744&quot;} -->
+<h2 class="sectionedit3" id="step_2_-_create_the_rooms-entity-type">Step 2 - Create the Rooms-Entity-Type :</h2>
+<div class="level2">
+
+<p>
+In the Entity Types Tab add an Entity-Type and name it as you like.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Step 2 - Create the Rooms-Entity-Type :&quot;,&quot;hid&quot;:&quot;step_2_-_create_the_rooms-entity-type&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;745-866&quot;} -->
+<h2 class="sectionedit4" id="step_3_-_create_some_room-entities">Step 3 - Create some Room-Entities:</h2>
+<div class="level2">
+
+<p>
+Navigate to Entities → Entities and add some Room-Entities with the name like “Garden” and “Indoors”
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Step 3 - Create some Room-Entities:&quot;,&quot;hid&quot;:&quot;step_3_-_create_some_room-entities&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;867-1026&quot;} -->
+<h2 class="sectionedit5" id="step_4_-_table-settings">Step 4 - Table-Settings:</h2>
+<div class="level2">
+
+<p>
+On every table you want to link to a Room-Entity you have to fill out the Custom-Field Room you have created in Step 1. If the Custom-Field doesn’t show up restart SambaPOS. For example set the Room-Field to “Garden” in the table “Garden Left 1” or “Indoors” in the table “Indoors 1”.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Step 4 - Table-Settings:&quot;,&quot;hid&quot;:&quot;step_4_-_table-settings&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;1027-1368&quot;} -->
+<h2 class="sectionedit6" id="step_5_-_create_the_room-selecting-action">Step 5 - Create the Room-Selecting-Action:</h2>
+<div class="level2">
+
+<p>
+For every Room-Entity we want to link to Table we need a Room-Selecting-Action. Navigate to Automation → Actions and add an Action. Name it appropriately as you wish. I named mine “Select Indoors Action”.
+</p>
+
+<p>
+<strong>Action Type:</strong> Change Ticket Entity<br/>
+
+<strong>CanCreateTicket:</strong> False (We don’t want an extra ticket floating around)<br/>
+
+<strong>EntityTypeName:</strong> Rooms<br/>
+
+<strong>EntityName:</strong> Indoors<br/>
+
+</p>
+
+<p>
+Repeat this step for every Room-Entity you want to link to the Table. Change the EntityName-Value to the right value.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Step 5 - Create the Room-Selecting-Action:&quot;,&quot;hid&quot;:&quot;step_5_-_create_the_room-selecting-action&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;1369-1929&quot;} -->
+<h2 class="sectionedit7" id="step_6_create_the_rules">Step 6 – Create the Rules:</h2>
+<div class="level2">
+
+<p>
+In this last step we need for every Room-Entity a Rule which is triggered when the Ticket Entity Changed. Don’t use the Entity Selected Event because with this event there isn’t any ticket created which we need to be conceptually wright. Name it appropriately as you wish. I named mine “Indoors-Table selected”
+</p>
+
+<p>
+<strong>Event Name:</strong> Ticket Entity Changed<br/>
+
+<strong>EntityTypeName:</strong> Tables<br/>
+
+<strong>CustomData:</strong> {“Name”:“Room”,“Value”:“Indoors”} (The Indoors-String changes on every Room) Also change the “=” to a “?” (this isn&#039;t shown in the image!) The “?” means “conain” and therefore checks if CustomData contains this string.
+</p>
+
+<p>
+Leave every other field empty as we don’t need to configure this values. Under Select Actions select the appropriate action we created in Step 5. Don’t forget to add a mapping because if you don’t map it to something this rule isn’t checked for anywhere. Repeat this step for every Room-Entity you want to link to the Table.
+</p>
+
+<p>
+<strong>Finished:</strong>
+If you select a Table you will get automatically the appropriate Room also on the Ticket.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Step 6 \u2013 Create the Rules:&quot;,&quot;hid&quot;:&quot;step_6_create_the_rules&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:7,&quot;range&quot;:&quot;1930-&quot;} --></div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/how_to_link_entities_together?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:50:59 GMT -->
+</html>

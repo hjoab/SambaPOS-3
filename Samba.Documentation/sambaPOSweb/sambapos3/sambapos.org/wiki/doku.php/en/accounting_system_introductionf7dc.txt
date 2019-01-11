@@ -1,0 +1,33 @@
+====== Accounting System Introduction ======
+
+===== What is an account? =====
+
+
+V3 accounting is a simple accounting system designed for restaurants. Basically if you need to track a financial amount what you'll need is an account. For example:
+
+  * What I sold? > Sales account
+  * How much I'll receive? > Receivables account
+  * How much Cash settled? > Cash account
+  * Discount totals? > Discount account
+  * How much Mr. Brown should pay? Customer account.
+  * How much tax I'll pay? > Tax account.
+
+During installation SambaPOS automatically generates some accounts for general use. You can create additional accounts or account types for your business needs. 
+
+===== Account Types =====
+
+We have lots of accounts of same type. For example we have Customer Accounts, Payment Accounts or Discount Accounts. Do you need to track personnel wages? You'll start by creating an account type called "Personnel Accounts". Will you track Taxes? You need to create "Tax Accounts" type. 
+
+===== Account Transactions =====
+
+An account transaction works with two accounts. A source account and a target account. It transfers amount from source account to target account. Or we can say it debits an account and credits another. Or for some cases we can think one account increases and other one decreases.
+
+For example Mr. Brown pays his previous bills with Cash. His account total will decrease and the cash account total will increase. Account Transactions does that. 
+
+===== Account Transaction Types =====
+
+We need to know how an account transaction will work. For example Customer Cash Payment Transaction type Debits Customer Accounts and Credits Cash Account. It is a pre-defined transaction type. If you create new account types you'll need new transaction types to operate them. For example if you need to track personnel wages you'll create an Account Type named as "Personnel Accounts" and a "Account Transaction Type" named "Wage Payment". Wage Payment Transaction type will increase "Personnel Account" amount and decrease "Cash Account" amount .  That means amount will transfer from Cash to Personnel account. 
+
+===== Accounting Related Transactions =====
+
+Normally we'll add account transactions through Accounts screen. Some SambaPOS operations automatically generates account transactions too. For example creating a ticket creates a "Sale" transaction. A Tax Template creates a "tax liability" transaction. A payment creates a "payment transaction" or a discount creates a "discount transaction". We can monitor all transactions from Accounts > Transactions menu.

@@ -1,0 +1,42 @@
+~~NOTOC~~
+====== SambaPOS V3 Documentation ======
+
+Hello. After using Drupal's documentation features for a while we decided wiki have better collobrative document creation features so we'll slowly transfer documentation here. If you want to help us on creating / correcting documentation contact me throught emre@sambapos.com so I'll create an account for you. 
+
+[[Documentation Index]]
+
+==== Tutorials ====
+
+[[Promotion Coupons Documentation|Promotion Coupons]]\\
+[[Accounting System Introduction]]\\
+[[SambaCard Tutorial]]\\
+[[Adding Discounts to Orders with Order Tags]]\\
+[[Adding Refund Button for Cash]]\\
+[[Configuring Cash Transactions for V2 users]]\\
+[[Creating Printer Templates]]\\
+[[Custom Package Delivery System]]\\
+[[Custom Package Delivery System Part 2]]\\
+[[Custom Package Delivery System Part 3]]\\
+[[Grouping on Ticket Printer Template]]\\
+[[How to Configure Multiple Taxes]]\\
+[[How to Integrate SambaPOS to Post Code databases]]\\
+[[How to Link Entities together]]\\
+
+==== Promotion Tutorials ====
+
+[[How to add %50 discount button?]]\\
+
+
+==== Development====
+
+[[Release Notes]]\\
+[[How to contribute source code to SambaPOS?]]\\
+[[How to help translation]]\\
+
+==== Database ====
+
+[[Installing SQL Express 2012 for SambaPOS V3]]\\
+
+
+==== Tips & Tricks for new users ====
+[[Tips & Tricks for new users]]\\

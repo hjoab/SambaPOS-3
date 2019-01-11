@@ -1,0 +1,37 @@
+====== Adding Refund Button for Cash ======
+
+Sometimes we need to return payments back to customer. On this documentation we'll add **Refund** button to Cash account sceen.
+
+We'll start by creating an account for Cash Refunds so we can track its amount. I named it as "Cash Refund" and selected Account Type as "Refund Accounts" that I've recently created.
+
+{{:en:refund:adding_refund_button_for_cash-001.jpg?700|}}
+
+Second step will be telling SambaPOS how Cash Refund account works. When we refund cash it will decrease "Cash" account amount and increase "Cash Refund" account amount. We can configure it by creating a new account transaction type and configure it as shown at the screen shot.
+
+{{:en:refund:adding_refund_button_for_cash-002.jpg?700|}}
+
+Finally we'll need a button on cash screen for that transaction. We can do it by adding an Account Transaction Document Type.
+
+After setting up visual parameters we'll set Account Type as "Payment Accounts" and we'll add "Refund Cash Transaction" to the Transaction Types list. That means when we click "Refund Button" it will create "Refund Cash Transaction"
+
+{{:en:refund:adding_refund_button_for_cash-003.jpg?700|}}
+
+We'll switch to Mappings page to map this document type to admin user role. Click Save to save your changes.
+
+{{:en:refund:adding_refund_button_for_cash-004.jpg?700|}}
+
+This is how my accounts screen looks like. I'll click Cash and Click "Display Details"
+
+{{:en:refund:adding_refund_button_for_cash-005.jpg?700|}}
+
+We have a "Refund" Button. Click it to create a transaction.
+
+{{:en:refund:adding_refund_button_for_cash-006.jpg?700|}}
+
+... and refund $5.
+
+{{:en:refund:adding_refund_button_for_cash-007.jpg?700|}}
+
+Cash balance decreased to 9.72 as a result.
+
+{{:en:refund:adding_refund_button_for_cash-008.jpg?700|}}

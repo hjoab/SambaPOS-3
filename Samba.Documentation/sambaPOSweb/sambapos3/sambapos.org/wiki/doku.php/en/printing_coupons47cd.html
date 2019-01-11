@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/printing_coupons?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:52:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:printing_coupons</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,printing_coupons"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="printing_couponsdecf.html?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="printing_coupons47cd.html?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="printing_couponsf7dc.txt?do=export_raw"/>
+<link rel="canonical" href="printing_coupons.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/printing_coupons"},"id":"en:printing_coupons","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+<!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#printing_coupons">Printing Coupons</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#generating_multiple_coupons">Generating Multiple Coupons</a></div></li>
+<li class="level2"><div class="li"><a href="#preparing_a_printer_template_for_coupons">Preparing a Printer Template for Coupons</a></div></li>
+<li class="level2"><div class="li"><a href="#printing_coupons1">Printing Coupons</a></div></li>
+<li class="level2"><div class="li"><a href="#saving_coupon_numbers_to_a_text_file">Saving Coupon numbers to a Text File</a></div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="printing_coupons">Printing Coupons</h1>
+<div class="level1">
+
+<p>
+If you’ve noticed every coupon sales generates a single coupon entity. If we need to generate 5 coupons we have to enter 5 different order lines. However we should be able to generate multiple coupons with a single Coupon Sale. So our first step will be improving Coupon generation for multiple Coupons. 
+</p>
+
+<p>
+Selling coupons is an important business. If you have corporate connections you can sell large amounts of coupons at once with a discounted price. So coupon printing is something that should be handled nicely. We can print single coupons for personal promotions but for batch coupon generation we may need different solutions. We’ll discuss our options under this chapter. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Printing Coupons&quot;,&quot;hid&quot;:&quot;printing_coupons&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-717&quot;} -->
+<h2 class="sectionedit2" id="generating_multiple_coupons">Generating Multiple Coupons</h2>
+<div class="level2">
+
+<p>
+You’ll remember we’re generating coupon entities when a ticket is paid. We created this rule for this task.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons346f2c.html?id=en%3Aprinting_coupons" class="media" title="en:promotions:coupons34.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons34ccf3.jpg_%3b?w=700&amp;tok=202dcc" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+When an order state changes to <code>Coupon Paid</code> we’re executing Coupon Creating actions. 
+</p>
+
+<p>
+SambaPOS Rule System have a <code>Value Looper</code> feature that can be used to trigger multiple events. For generating multiple coupons we’ll read order quantity, pass it as a parameter to value looper and let it create multiple coupons. Let’s do it. 
+</p>
+
+<p>
+First we need to create the <code>Loop Values</code> action.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons356f2c.html?id=en%3Aprinting_coupons" class="media" title="en:promotions:coupons35.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons35b1e4.jpg_%3b?w=700&amp;tok=ab507a" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+When called Loop Values action triggers <code>Value Looped</code> event multiple times. Values parameter used to configure the loop. We can split values with comma and define ranges with brackets.
+</p>
+<ul>
+<li class="level1"><div class="li"> If Values parameter is 100 it triggers Value Looped event once and passes 100 value to the event. </div>
+</li>
+<li class="level1"><div class="li"> If Values parameter is 100,150 it triggers Value Looped event two times and passes 100 and 150 values as parameters.</div>
+</li>
+<li class="level1"><div class="li"> If Values is (100) it triggers Value Looped event 100 times and passes each value to the event.</div>
+</li>
+<li class="level1"><div class="li"> If value is a range like (50-100) it works from 50 to 100. </div>
+</li>
+<li class="level1"><div class="li"> If value is a file path it loads lines form file and executes them one by one.</div>
+</li>
+</ul>
+
+<p>
+So we need to pass Quantity in brackets. To be able to generate 5 coupons <code>Values</code> Parameter should be (5). For this reason we’ll define [:Quantity] parameter in brackets. 
+</p>
+
+<p>
+Now we’ll create “Value Looped” Rule.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons366f2c.html?id=en%3Aprinting_coupons" class="media" title="en:promotions:coupons36.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons36cf18.jpg_%3b?w=700&amp;tok=053e99" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+This rule does just the same thing as <code>Create Coupon when Coupon Paid</code> rule. It creates a coupon and update it’s Menu Item name. 
+</p>
+
+<p>
+On next step we’ll modify <code>Create Coupon when Coupon Paid</code> rule to trigger <code>Generate Coupons</code> action instead of generating coupons. Edit this rule, remove existing actions and add Generate Coupons action.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons376f2c.html?id=en%3Aprinting_coupons" class="media" title="en:promotions:coupons37.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons370728.jpg_%3b?w=700&amp;tok=48592a" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+After this modification if we sell 5 Coffee Coupons on a single order line it should generate 5 coupons. 
+</p>
+
+<p>
+We’ve implemented multiple coupon generation. Now we need to think about how we’ll print them. Let’s start by creating a template for printing coupons. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Generating Multiple Coupons&quot;,&quot;hid&quot;:&quot;generating_multiple_coupons&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;718-2921&quot;} -->
+<h2 class="sectionedit3" id="preparing_a_printer_template_for_coupons">Preparing a Printer Template for Coupons</h2>
+<div class="level2">
+
+<p>
+Coupons are entities so we can use entity printing tags in our template. Available tags are:
+</p>
+<div class="table sectionedit4"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0">Tag</th><th class="col1">Description</th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<th class="col0">{ENTITY NAME}</th><td class="col1">We’ll use this tag to print coupon numbers</td>
+	</tr>
+	<tr class="row2">
+		<th class="col0">{ENTITY BALANCE}</th><td class="col1">Prints account balance</td>
+	</tr>
+	<tr class="row3">
+		<th class="col0">{ENTITY DATA:X}</th><td class="col1">We’ll use this tag to print custom field values</td>
+	</tr>
+	<tr class="row4">
+		<th class="col0">{ENTITY STATE:X}</th><td class="col1">Prints entity state</td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table&quot;,&quot;secid&quot;:4,&quot;range&quot;:&quot;3070-3297&quot;} -->
+<p>
+So a sample printer template can be something like that.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons386f2c.html?id=en%3Aprinting_coupons" class="media" title="en:promotions:coupons38.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons38cdaf.jpg_%3b?w=700&amp;tok=d2e510" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We’ll use this template when we need an immediate coupon print from our thermal ticket printer. &lt;QR&gt; tag is a new tag for V3 version. You can read more about <a href="barcode_printing_tags.html" class="wikilink1" title="en:barcode_printing_tags">Barcode Printing Tags</a>.
+</p>
+
+<p>
+The printer template prints this coupon.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons396f2c.html?id=en%3Aprinting_coupons" class="media" title="en:promotions:coupons39.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons396cc8.jpg_%3b?w=700&amp;tok=4fcb00" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+￼Now we need to decide when we’ll trigger this print. If you want to print it as soon as we generate the coupon we can create a <code>Print Entity</code> action and execute it as soon as we create Coupon. So let’s see how we can do it.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Preparing a Printer Template for Coupons&quot;,&quot;hid&quot;:&quot;preparing_a_printer_template_for_coupons&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;2922-3898&quot;} -->
+<h2 class="sectionedit5" id="printing_coupons1">Printing Coupons</h2>
+<div class="level2">
+
+<p>
+We’ll create a <code>Print Entity</code> action.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons406f2c.html?id=en%3Aprinting_coupons" class="media" title="en:promotions:coupons40.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons40fed8.jpg_%3b?w=700&amp;tok=c2ba0f" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We’ll choose Printer and the Printer Template we recently created. We can pass Coupon Number so this action can load and print the entity but since we’ll execute it just after “Create Entity” action passing this parameter is not required. All entity related actions can locate new created entity when executed after “Create Entity” action. 
+</p>
+
+<p>
+Now we’ll modify <code>Batch Generate Coupons</code> Rule and add this action there.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons416f2c.html?id=en%3Aprinting_coupons" class="media" title="en:promotions:coupons41.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons416706.jpg_%3b?w=700&amp;tok=60556f" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+So when we create a new Coupon we’ll also print that.
+</p>
+
+<p>
+That will work fine when we generate few coupons but on some cases we’ll need to generate large amounts of coupons for professional printing or brochures. We can also sell hundreds of coupons at once if we have business connections with large corporations. So instead of printing them we can generate a text file that contains new generated coupon codes. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Printing Coupons&quot;,&quot;hid&quot;:&quot;printing_coupons1&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;3899-4898&quot;} -->
+<h2 class="sectionedit6" id="saving_coupon_numbers_to_a_text_file">Saving Coupon numbers to a Text File</h2>
+<div class="level2">
+
+<p>
+Our first step will be generating a file name. We’ll use <code>Update Program Setting</code> action.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons426f2c.html?id=en%3Aprinting_coupons" class="media" title="en:promotions:coupons42.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons4269c2.jpg_%3b?w=700&amp;tok=f67718" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+File name will be a random number under Coupons folder. The {RANDOM} tag generates a string based on current date and time so we can find it easily. The file will be generated under [MY Documents]\SambaPOS3\Coupons folder. Please notice we used / character instead of \ character while defining the file path. 
+</p>
+
+<p>
+This action Stores generated File Path under <code>Coupon File</code> setting so we can read it with {:Coupon File} tag. We can read all stored setting values with {:X} syntax.
+</p>
+
+<p>
+We’ll execute this action just before we generate coupons so every batch coupons will stored another file. We’ll modify <code>Create Coupon when Coupon Paid</code> Rule to call this action.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons436f2c.html?id=en%3Aprinting_coupons" class="media" title="en:promotions:coupons43.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons430072.jpg_%3b?w=700&amp;tok=0da998" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Click <code>Select Actions</code> and add <code>Create new file name</code> action just before <code>Generate Coupons</code> action. You can change sort order of actions by dragging them on <code>Select Actions</code> window.
+</p>
+
+<p>
+You’ll remember <code>Generate Coupons</code> action is a value looper that generates coupon entities. We’ll add lines to the text file in “Value Looped” event but before doing it we’ll create another action to add lines to text file.
+</p>
+
+<p>
+We’ll create another action to append a line into the text file. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons446f2c.html?id=en%3Aprinting_coupons" class="media" title="en:promotions:coupons44.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons446759.jpg_%3b?w=700&amp;tok=16a54d" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+<code>Add Line to Text File</code> action reads stored file path with {:Coupon File} and adds a line that contains a text defined with Text parameter. We configured Text parameter as a variable so we can send coupon number to this action. 
+</p>
+
+<p>
+This action is also useful to generate log files. For example you can store every logins and logouts. 
+</p>
+
+<p>
+Instead of executing Coupon Printing action we’ll call this action. So let’s modify “Batch Generate Coupons” rule. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons456f2c.html?id=en%3Aprinting_coupons" class="media" title="en:promotions:coupons45.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons45f02f.jpg_%3b?w=700&amp;tok=bd76cd" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We replaced <code>Print Coupon</code> action with <code>Add Coupon to File</code>. We’ll configure line format here. I want to print product name and coupon number. You can change it to add only coupon numbers. 
+</p>
+
+<p>
+Now switch to POS screen and sell 50 coffee coupons and settle ticket to test if file generates correctly or not. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons466f2c.html?id=en%3Aprinting_coupons" class="media" title="en:promotions:coupons46.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons46c345.jpg_%3b?w=700&amp;tok=a8393e" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+I have all coupon numbers that generated on last batch in a single text file. Since we used current time as file names all new sales will generate new text file. We can use this file to print brochures, barcode tags or e-mail to customer. 
+</p>
+
+<p>
+We can print coupons or store them in a text file. On next chapter we’ll see how to create Buy 6 Get 1 Free promotions. At the end of that chapter we’ll print promotion coupons immediately and when we sell coupons they’ll be stored in a text file. If you frequently sell small numbers of coupons and want to print them immediately you can switch back to immediate printing and create a specific ticket type called “Batch Coupon Sale”. So when you sell coupons through regular ticket it immediately prints coupons but when you sell through “Batch Coupon Sale” ticket it can create text file. Possibilities are endless…
+</p>
+<ul>
+<li class="level1"><div class="li"> Back to <a href="promotion_coupons_documentation.html" class="wikilink1" title="en:promotion_coupons_documentation">Promotion Coupons Documentation</a></div>
+</li>
+<li class="level1"><div class="li"> Next Topic &gt; <a href="tracking_coffee_purchases_of_loyal_customers.html" class="wikilink1" title="en:tracking_coffee_purchases_of_loyal_customers">Tracking Coffee Purchases of Loyal Customers</a></div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Saving Coupon numbers to a Text File&quot;,&quot;hid&quot;:&quot;saving_coupon_numbers_to_a_text_file&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;4899-&quot;} --></div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/printing_coupons?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:52:25 GMT -->
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="no-js">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/how_to_configure_multiple_taxes?do=edit by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:50:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <title>How to Configure Multiple Taxes [SambaPOS V3]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="https://sambapos.org/wiki/doku.php/en/how_to_configure_multiple_taxes?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="https://sambapos.org/wiki/doku.php/en/how_to_configure_multiple_taxes?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="https://sambapos.org/wiki/doku.php/en/how_to_configure_multiple_taxes?do=export_raw"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"edit","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/how_to_configure_multiple_taxes"},"id":"en:how_to_configure_multiple_taxes","namespace":"en","ACT":"source","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8">/*<![CDATA[*/$.noConflict();
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/plugins/aceeditor/build.js"></script>
+<script type="text/javascript" charset="utf-8">/*<![CDATA[*/window.require = undefined;
+/*!]]>*/</script>
+<!--<![endif]-->
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="shortcut icon" href="https://sambapos.org/wiki/lib/tpl/dokuwiki/images/favicon.ico" />
+<link rel="apple-touch-icon" href="https://sambapos.org/wiki/lib/tpl/dokuwiki/images/apple-touch-icon.png" />
+    </head>
+
+<body>
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_source tpl_dokuwiki     hasSidebar">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header"><div class="pad group">
+
+    
+    <div class="headings group">
+        <ul class="a11y skip">
+            <li><a href="#dokuwiki__content">skip to content</a></li>
+        </ul>
+
+        <h1><a href="https://sambapos.org/wiki/doku.php/p"  accesskey="h" title="[H]"><img src="https://sambapos.org/wiki/lib/exe/fetch.php/wiki/logo.png" width="70" height="70" alt="" /> <span>SambaPOS V3</span></a></h1>
+            </div>
+
+    <div class="tools group">
+        <!-- USER TOOLS -->
+                    <div id="dokuwiki__usertools">
+                <h3 class="a11y">User Tools</h3>
+                <ul>
+                    <li class="action login"><a href="https://sambapos.org/wiki/doku.php/en/how_to_configure_multiple_taxes?do=login&amp;sectok=" title="Log In" rel="nofollow"><span>Log In</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 17.25V14H3v-4h7V6.75L15.25 12 10 17.25M8 2h9a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-4h2v4h9V4H8v4H6V4a2 2 0 0 1 2-2z"/></svg></a></li>                </ul>
+            </div>
+        
+        <!-- SITE TOOLS -->
+        <div id="dokuwiki__sitetools">
+            <h3 class="a11y">Site Tools</h3>
+            <form action="https://sambapos.org/wiki/doku.php/p" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="en:how_to_configure_multiple_taxes" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>            <div class="mobileTools">
+                <form action="https://sambapos.org/wiki/doku.php" method="get" accept-charset="utf-8"><div class="no"><input type="hidden" name="id" value="en:how_to_configure_multiple_taxes" /><select name="do" class="edit quickselect" title="Tools"><option value="">Tools</option><optgroup label="Page Tools"><option value="">Show page</option><option value="revisions">Old revisions</option><option value="backlink">Backlinks</option></optgroup><optgroup label="Site Tools"><option value="recent">Recent Changes</option><option value="media">Media Manager</option><option value="index">Sitemap</option></optgroup><optgroup label="User Tools"><option value="login">Log In</option></optgroup></select><button type="submit">&gt;</button></div></form>            </div>
+            <ul>
+                <li class="action recent"><a href="https://sambapos.org/wiki/doku.php/en/how_to_configure_multiple_taxes?do=recent" title="Recent Changes [r]" rel="nofollow" accesskey="r">Recent Changes</a></li><li class="action media"><a href="https://sambapos.org/wiki/doku.php/en/how_to_configure_multiple_taxes?do=media&amp;ns=en" title="Media Manager" rel="nofollow">Media Manager</a></li><li class="action index"><a href="https://sambapos.org/wiki/doku.php/en/how_to_configure_multiple_taxes?do=index" title="Sitemap [x]" rel="nofollow" accesskey="x">Sitemap</a></li>            </ul>
+        </div>
+
+    </div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                                        <div class="trace"><span class="bchead">Trace:</span> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/barcode_printing_tags"  class="breadcrumbs" title="en:barcode_printing_tags">Barcode Printing Tags</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/random_number_generator_tag"  class="breadcrumbs" title="en:random_number_generator_tag">Random Number Generator Tags</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/primary_field_editing_formats"  class="breadcrumbs" title="en:primary_field_editing_formats">Primary Field Editing Formats</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/task_widget"  class="breadcrumbs" title="en:task_widget">Task Widget</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/modify_variable_action"  class="breadcrumbs" title="en:modify_variable_action">Modify Variable Action</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/preparing_sambapos_to_sell_coffee_coupons"  class="breadcrumbs" title="en:preparing_sambapos_to_sell_coffee_coupons">Preparing SambaPOS to Sell Coffee Coupons</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/redeeming_coupons"  class="breadcrumbs" title="en:redeeming_coupons">Redeeming Coupons</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/printing_coupons"  class="breadcrumbs" title="en:printing_coupons">Printing Coupons</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/tracking_coffee_purchases_of_loyal_customers"  class="breadcrumbs" title="en:tracking_coffee_purchases_of_loyal_customers">Tracking Coffee Purchases of Loyal Customers</a></bdi> <span class="bcsep">•</span> <span class="curid"><bdi><a href="https://sambapos.org/wiki/doku.php/en/giving_free_coffee"  class="breadcrumbs" title="en:giving_free_coffee">Giving Free Coffee</a></bdi></span></div>
+                    </div>
+    
+
+
+    <hr class="a11y" />
+</div></div><!-- /header -->
+
+        <div class="wrapper group">
+
+            
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <div class="pageId"><span>en:how_to_configure_multiple_taxes</span></div>
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    
+<p>
+This page is read only. You can view the source, but not change it. Ask your administrator if you think this is wrong.
+</p>
+    <div class="editBox" role="application">
+
+    <div class="toolbar group">
+        <div id="draft__status" class="draft__status"></div>
+        <div id="tool__bar" class="tool__bar"></div>
+    </div>
+    <form id="dw__editform" method="post" action="#" accept-charset="utf-8"><div class="no">
+<input type="hidden" name="sectok" value="" /><input type="hidden" name="id" value="en:how_to_configure_multiple_taxes" /><input type="hidden" name="rev" value="0" /><input type="hidden" name="date" value="0" /><input type="hidden" name="prefix" value="." /><input type="hidden" name="suffix" value="" /><input type="hidden" name="changecheck" value="8410e0839f1720870659fb89907dcc0f" /><input type="hidden" name="target" value="section" /><textarea name="wikitext" id="wiki__text" dir="auto" class="edit" cols="80" rows="10" tabindex="1" readonly="readonly">
+====== How to Configure Multiple Taxes ======
+
+Hello. On this documentation I'll show you how to configure taxes. On this sample we'll have two taxes. One one them is %10 for beverages and %20 for food.
+
+First of all we need to create accounts for both tax rates so we can watch how much we owe to tax office. Navigate to Accounts &gt; Accounts and create new account.
+
+{{:en:tax:how_to_configure_multiple_taxes-001.jpg?700|}}
+
+I've selected &quot;Sales Accounts&quot; as Account Type. If you need you can create separate account types for tax accounts.
+
+I'll create another one for %20 tax.
+
+{{:en:tax:how_to_configure_multiple_taxes-002.jpg?700|}}
+
+Now I have to tell SambaPOS how these accounts works. There are lots of different tax rules on different countries so that configuration may differ but this sample should work on most cases.
+
+I'll create a new Account Transaction Type for %10 Tax.
+
+{{:en:tax:how_to_configure_multiple_taxes-003.jpg?700|}}
+
+That transaction debits Tax %10 Account (we owe) and credits Receivables account because we'll receive tax amount from customer.
+
+We'll create another Transaction Type for %20 Tax. The only difference with the other one is we'll chose Tax %20 account as &quot;Default Source Account&quot;.
+
+Here are the Tax Transaction Templates:
+
+{{:en:tax:how_to_configure_multiple_taxes-004.jpg?700|}}
+
+On this step we'll configure Tax Templates. Navigate to Products &gt; Tax Templates and add a new Tax Template. We'll choose %10 Tax Transaction as Transaction Type and enter 10 to Rate. Rounding might be an important setting for some cases. In some countries Tax amount rounded while calculating tax for a single product. If you need such behavior enter 2 there. For most cases leaving it 0 should work fine.
+
+{{:en:tax:how_to_configure_multiple_taxes-005.jpg?700|}}
+
+Now we'll map this tax to products. We've mapped it to Beverages. You can also map this rate to a specific product by choosing a product.
+
+{{:en:tax:how_to_configure_multiple_taxes-006.jpg?700|}}
+
+We'll create another Tax Template to configure %20 Tax.
+
+{{:en:tax:how_to_configure_multiple_taxes-007.jpg?700|}}
+
+If you are familiar with SambaPOS mapping features you may think entering a default map should do the job. Since SambaPOS supports multiple taxes for a single Product we should exliciptly configure mappings. If we add default mapping and leave product group as * Beverages Tax becomes %10 + %20 because we previously configured %10 Tax for Beverages. To avoid this map each product group that have %20 Tax as shown here.
+
+{{:en:tax:how_to_configure_multiple_taxes-008.jpg?700|}}
+
+Finally we have to configure if prices are Tax Included or Tax Excluded. To enable Tax Included prices Navigate to Tickets &gt; Ticket Types &gt; edit &quot;Ticket&quot; and enable Tax Included setting.
+
+{{:en:tax:how_to_configure_multiple_taxes-009.jpg?700|}}
+
+Default Printer Templates does not contain Tax Values. Let's see how we can configure Ticket Template.
+
+Navigate to Settings &gt; Printer Templates and edit &quot;Ticket Template&quot;.
+
+To enable printing taxes we have to create a section for taxes. As shown on the tag list we need to add {TAXES} tag for marking the point we want to list taxes and [TAXES] tag for format.
+
+I'll list Taxes just after listing {DISCOUNTS}.
+
+{{:en:tax:how_to_configure_multiple_taxes-015.jpg?700|}}
+
+I'll create a Dynamic Section for Taxes and configure how a single tax rate should listed. I'll insert **[TAXES]** section at the end of the template.
+
+{{:en:tax:how_to_configure_multiple_taxes-011.jpg?700|}}
+
+Required configuration ends here. Now I'll create a ticket.
+
+{{:en:tax:how_to_configure_multiple_taxes-012.jpg?700|}}
+
+Tax total displayed over Balance. I've used demo printer to generating the output.
+
+{{:en:tax:how_to_configure_multiple_taxes-013.jpg?500|}}
+
+You can improve this configuration for your needs. For example you'll notice there is no tag for &quot;Tax Excluded Sum&quot;. Experienced SambaPOS users knows that can be added easily by using Printer Template Expressions. I'll add this line before printing Ticket Total.
+
+&lt;code&gt;
+&lt;J10&gt;Sub Total:|[=F(TN('{TICKET TOTAL}')-TN('{TAX TOTAL}'))]
+&lt;/code&gt;
+
+That generates Sub Total Line.
+
+
+{{:en:tax:how_to_configure_multiple_taxes-014.jpg?500|}}
+
+Finally this is what you'll see when you display Account Screen
+
+{{:en:tax:how_to_configure_multiple_taxes-015.jpg?700|}}
+
+You can download sample template file from this link: https://gist.github.com/emreeren/5896654
+
+You can also find sdf download link for this sample at the end of the document.
+
+Let us know if it works fine for you or not. Thanks.
+
+Notes:
+
+&lt;WRAP center round tip 75%&gt;
+You'll need at least V3.011 Beta version for this sample.
+&lt;/WRAP&gt;
+
+
+&lt;WRAP center round download 75%&gt;
+Sample Database file {{:en:database:sambapos3_tax.sdf|Download it.}}
+&lt;/WRAP&gt;</textarea>
+<div id="wiki__editbar" class="editBar">
+<div id="size__ctl">
+</div>
+</div>
+</div></form>
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                <div class="docInfo"><bdi>en/how_to_configure_multiple_taxes.txt</bdi> · Last modified: 2013/11/12 01:57 (external edit)</div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <!-- PAGE ACTIONS -->
+            <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li class="show"><a href="https://sambapos.org/wiki/doku.php/en/how_to_configure_multiple_taxes?do=" title="Show page [v]" rel="nofollow" accesskey="v"><span>Show page</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5V9M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2h9m3-4v-2H6v2h12z"/></svg></a></li><li class="revs"><a href="https://sambapos.org/wiki/doku.php/en/how_to_configure_multiple_taxes?do=revisions" title="Old revisions [o]" rel="nofollow" accesskey="o"><span>Old revisions</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11 7v5.11l4.71 2.79.79-1.28-4-2.37V7m0-5C8.97 2 5.91 3.92 4.27 6.77L2 4.5V11h6.5L5.75 8.25C6.96 5.73 9.5 4 12.5 4a7.5 7.5 0 0 1 7.5 7.5 7.5 7.5 0 0 1-7.5 7.5c-3.27 0-6.03-2.09-7.06-5h-2.1c1.1 4.03 4.77 7 9.16 7 5.24 0 9.5-4.25 9.5-9.5A9.5 9.5 0 0 0 12.5 2z"/></svg></a></li><li class="backlink"><a href="https://sambapos.org/wiki/doku.php/en/how_to_configure_multiple_taxes?do=backlink" title="Backlinks" rel="nofollow"><span>Backlinks</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 0 0 0-4.24 2.982 2.982 0 0 0-4.24 0l-3.53 3.53a2.982 2.982 0 0 0 0 4.24m2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.43l-.47.47a2.982 2.982 0 0 0 0 4.24 2.982 2.982 0 0 0 4.24 0l3.53-3.53a2.982 2.982 0 0 0 0-4.24.973.973 0 0 1 0-1.42z"/></svg></a></li><li class="top"><a href="#dokuwiki__top" title="Back to top [t]" rel="nofollow" accesskey="t"><span>Back to top</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg></a></li>                    </ul>
+                </div>
+            </div>
+        </div><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer"><div class="pad">
+    <div class="license">Except where otherwise noted, content on this wiki is licensed under the following license: <bdi><a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license" class="urlextern">CC Attribution-Share Alike 4.0 International</a></bdi></div>
+    <div class="buttons">
+        <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license"><img src="https://sambapos.org/wiki/lib/images/license/button/cc-by-sa.png" alt="CC Attribution-Share Alike 4.0 International" /></a>        <a href="https://www.dokuwiki.org/donate" title="Donate" ><img
+            src="https://sambapos.org/wiki/lib/tpl/dokuwiki/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="https://php.net/" title="Powered by PHP" ><img
+            src="https://sambapos.org/wiki/lib/tpl/dokuwiki/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="https://sambapos.org/wiki/lib/tpl/dokuwiki/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="https://sambapos.org/wiki/lib/tpl/dokuwiki/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="https://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="https://sambapos.org/wiki/lib/tpl/dokuwiki/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div>
+</div></div><!-- /footer -->
+
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="https://sambapos.org/wiki/lib/exe/indexer.php?id=en%3Ahow_to_configure_multiple_taxes&amp;1547095430" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div></body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/how_to_configure_multiple_taxes?do=edit by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:50:57 GMT -->
+</html>

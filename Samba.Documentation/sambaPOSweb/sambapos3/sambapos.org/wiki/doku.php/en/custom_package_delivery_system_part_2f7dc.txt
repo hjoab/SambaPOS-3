@@ -1,0 +1,92 @@
+====== Custom Package Delivery System Part 2 ======
+
+<wrap hi>If you didn't do so reading [[http://sambapos.com/wiki/doku.php/en/custom_package_delivery_system|Part 1]] of this document is strongly recommended. If you want to continue from where Part 1 ends please download sdf file from Part 1 and upgrade to 3.0.11 (or later).</wrap>
+
+We'll contiune configuring our Custom Package Delivery System. On this tutorial we'll configure Servicing Fee by Customer Region.
+
+We'll start by creating an Account for Servicing Fees. From this account we'll track how much servicing fee we've settled during our business. Navigate to Management > Accounts and create a new Account. 
+
+{{:en:cdps2:custom_package_delivery_system_part_2-001.jpg?700|}}
+
+I've selected "Sales Accounts" as account type. If you need you can create separate account type. To make this documentation simpler I'll create single account for servicing fees but if you need you can create individual accounts for each servicing fee type.
+
+Next, I have to configure how servicing account works. To do this I'll create a new **Account Transaction Type**. That transaction debits "Servicing Fee" account and credits "Receviables" account.
+
+{{:en:cdps2:custom_package_delivery_system_part_2-002.jpg?700|}}
+
+On this step we'll create a **Calculation Type**. Calculation Types are values we add to tickets such as ticket based taxes, servicing fees or other similar additions. Discounts are calculations too but they decreases ticket amounts. Since we track Servicing Fees from a single account Singe Calculation type will be enough for us.
+
+We'll set Servicing Fee Transaction as Account Transaction type and Fixed Amount as calculation method. Since we'll update amounts dynamically from rule we can leave "Amount" value zero. I'll also enable "Include Tax" setting because we want to add this amount to ticket amount after tax calculation.
+
+You can try different calculation methods if your servicing fee calculation is different.
+
+{{:en:cdps2:custom_package_delivery_system_part_2-003.jpg?700|}}
+
+We'll create an Action to update Ticket Servicing fee after a customer selected. Action Type will be "Update Ticket Calculation" and Calculation Type should be "Servicing Fee". As you've noticed this is the calculation type we've recently created.
+
+If I enter 5 as Amount this action will always add $5 as servicing fee but we want to determine Fee amount by Customer Region. For this reason I'll create a variable by typing [:Fee] as Amount Value. 
+
+{{:en:cdps2:custom_package_delivery_system_part_2-004.jpg?700|}}
+
+We'll need 4 different rules because we have 4 different regions and 4 different Servicing Fee amounts. This rule will work when we select a customer to the ticket so we'll handle "Ticket Entity Changed" event.
+
+From the Conditions section we'll choose "Customers" as Entity Type Name because we want it to work only if the selected entity is a customer.
+
+Second condtion will be Region check. A customer custom data contains a lot of information like Phone Number, Address and what you've added for your needs. So we need to check if that data Contains "Region 1" value. We can do it by changing equality operator to question mark (?).
+
+We'll select "Update Servicing Fee" action we've recently created. Since we configured fee amount as a variable we can see it by expanding blue action box. Enter 3.90 there because customers from Region 1 will pay that amount.
+
+{{:en:cdps2:custom_package_delivery_system_part_2-005.jpg?700|}}
+
+We want this rule to work only on Delivery department. To do this switch to Mappings section and map this rule to "Delivery" Department and "Delivery Ticket" Ticket Type.
+
+Save it when you finish that.
+
+{{:en:cdps2:custom_package_delivery_system_part_2-006.jpg?700|}}
+
+We have 4 regions so we'll need three more rules. You can right click "Update Servicing Fee by Region 1" rule from Rules List and "Clone" it for easier configuration. Name it, update region check and region fee. This is how rule for Region 4 configured.
+
+{{:en:cdps2:custom_package_delivery_system_part_2-007.jpg?700|}}
+
+When we save it we should see something like that on rules list.
+
+{{:en:cdps2:custom_package_delivery_system_part_2-008.jpg?700|}}
+
+This is what happens when we create a ticket for a Customer from Region 1
+
+{{:en:cdps2:custom_package_delivery_system_part_2-009.jpg?700|}}
+
+Even if I change the customer, servicing fee changes by region.
+
+{{:en:cdps2:custom_package_delivery_system_part_2-010.jpg?700|}}
+
+This is what we'll see on Accounts Screen.
+
+{{:en:cdps2:custom_package_delivery_system_part_2-011.jpg?700|}}
+
+Now we'll see how we can update Ticket Templates to display Servicing Fee on Bills.
+
+I'll list Services just after Discounts.
+
+{{:en:cdps2:custom_package_delivery_system_part_2-012.jpg?700|}}
+
+I'll list services just af
+
+{{:en:cdps2:custom_package_delivery_system_part_2-013.jpg?700|}}
+
+I can configure how Services looks on printer Ticket by creating a Section for [SERVICES] at the end of the template. We'll print Calculation Template Name and Calculation Amount.
+
+This is how it looks.
+
+{{:en:cdps2:custom_package_delivery_system_part_2-014.jpg?600|}}
+
+Notes:
+
+<WRAP center round tip 75%>
+You'll need at least V3.011 Beta version for this sample.
+</WRAP>
+
+
+<WRAP center round download 75%>
+Sample Database file {{:en:database:sambapos3-packages.sdf|Download it.}}
+</WRAP>

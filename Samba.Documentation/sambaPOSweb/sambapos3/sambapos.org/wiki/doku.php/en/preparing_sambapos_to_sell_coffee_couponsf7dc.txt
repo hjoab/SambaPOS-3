@@ -1,0 +1,136 @@
+====== Preparing SambaPOS to Sell Coffee Coupons ======
+
+Promotion Coupon is an entity that we use to enter free items to tickets. This is a well formatted random number. We can print this number as a barcode or QR Tag. When this number is scanned on a SambaPOS terminal it will add related product into the ticket as a gift product. When redeemed we’ll update coupon status so it can’t be used multiple times. 
+
+After finishing this chapter you can create coupons and sell them through a ticket. For example you can sell 100 coffee coupons with a discounted price. That can be a company that wishes to give coffee coupons to  their personnel. 
+
+===== Creating Coupon Entity =====
+
+{{:en:promotions:Coupons2.jpg?700|}}
+
+We’ll create new Entity Type for Coupons. When a new coupon created we’ll store it as a new entity. Primary field of coupon entity is Coupon Number. This number will be a 9 digit number. Eight digits are random generated numbers and ninth digit is check digit to validate number. It starts with CP prefix so we can understand entered random number is a Coupon Number. As a result Coupon Numbers becomes 11 digit numbers. For easy editing we’ll split this number with minus characters. On Primary Field Format C is a place holder for a single character. Define length and editing format as CCCCC-CCC-CCC. Read [[Primary Field Editing Formats]] document for more info.
+
+We’ll create some custom fields for coupons. 
+
+{{:en:promotions:Coupons3.jpg?700|}}
+
+We have three custom fields. 
+
+  -**Menu Item Name:** This field used to assign Coupon to a Menu Item. So when redeemed the menu item typed there will be added as a gift. Instead of assigning coupons to a single menu item we created a field for more flexibility in case of we want to create coupons for other menu items.
+  -**Redeemed:** We’ll track status of coupon under this field. It have three values. New created Coupons will have “No” value. When we use coupon in a ticket it will be “In Ticket” and when ticket submitted value becomes “Yes”. When value is “Yes” it means this coupon used and can’t used again. 
+  -**Expiration Date:** We can set an expiration date for coupons so it can’t be used after expiration date.
+
+===== Adding Actions to Update Field Values =====
+
+We’ll need actions to update Coupon custom fields. For example we have to change Redeemed value to “Yes” when coupon is used in a ticket. Let’s create a new action to update Coupon Menu Item Name.
+
+{{:en:promotions:Coupons4.jpg?700|}}
+
+Action Name will be ''Update Coupon Menu Item Name'' and Action Type will be ''Update Entity Data''. We’ll set Entity Type Name as ''Coupons'' so this action updates Coupons. Field Name will be ''Menu Item Name'' since we store menu item names under this field. We’ll send Coupon Number and Menu Item Name values from calling rule for this reason we’ll configure these parameters as variables.
+
+We need another action to update Coupon Redeem Status. Let's clone a new action from previous one. 
+
+{{:en:promotions:Coupons5.jpg?700|}}
+
+Change action name to ''Update Coupon Status'' and Field Name as ''Redeemed''. We’ll use this action when we create new coupons and when we need to disable them. 
+
+===== Creating Coffee Coupon Product =====
+
+Until this step we created Coupon Entity Type, needed custom fields and two actions to update these custom fields. Now we’ll need a product called “Coffee Coupon” to sell Coffee Coupons. 
+
+  -Create a new menu category called “Coupons”.
+  -Create “Coffee Coupon” product. Group Code is “Coupons” and Tag it as Coffee to relate it with Coffee Product. Enter desired price for the coupon and add it to Coupons Category.
+
+You should have something like this.
+
+{{:en:promotions:Coupons6.jpg?700|}}
+
+You can add more coupon products under this category. Coffee price is $1.45 on my sample data so I’ve priced Coffee Coupon as $1.45 to match it to Coffee price. 
+
+===== Updating Coffee Coupon Order State =====
+
+So when we sell ''Coffee Coupon'' we’ll create a new Coupon entity. For this reason we need to handle ''Order Added'' event to understand if Coffee Coupon is added to ticket. However we need to solve an issue here. We can’t create coupon entity as soon as ''Coffee Coupon'' product added to ticket because user can cancel it after printing Coupon to generate free coupons. We need to create coupons when ticket gets paid. We can use ''Order Status'' feature to determine if Coffee Coupon Product is paid or not. When we first add Coupon Product we’ll change order state to ''Coupon Ordered'' and when Ticket Paid we’ll change it to ''Coupon Paid''. SambaPOS generates additional events when an order status is changed so we can understand Coupon is paid. Let’s create needed actions to update order states.
+
+{{:en:promotions:Coupons7.jpg?700|}}
+
+When we add a ''Coffee Coupon'' product to a ticket default order state will be ''Coupon Ordered''. When ticket paid it becomes ''Coupon Paid''. We’ll handle the moment order status changes to ''Coupon Paid'' from ''Coupon Ordered'' to create coupons. Group order and State order values are useful to sort state values while displaying multiple orders.
+
+===== Updating Coffee Coupon Menu Item =====
+
+You'll remember Coupon entity has a field called ''Menu Item Name''. We use this field to map coupons to Menu Items. So while creating a coupon we need to update ''Menu Item Name'' value. Instead of directly mapping Coffee Coupons to Coupon entities we’ll create additional Order State to store Menu Item Name. It will give more flexibility when you need to create coupons for different products. 
+
+{{:en:promotions:Coupons8.jpg?700|}}
+
+Now we have another order state called ''Coupon Product''. We don’t need to know previous state value so we’ll leave Current State parameter empty. Group and State Order values are 5 since we want to display this value at the end. 
+
+As a result Coupon Order Lines stores two additional data.
+  - **Coupon Order State:** It will be ''Coupon Ordered'' when coupon product first added and ''Coupon Paid'' when ticket paid.
+  - **Menu Item Name of the coupon:** We’ll use this value update menu item name of the coupon entity while creating coupons. 
+
+===== Adding Create Coupon Action =====
+
+Another action we need is ''Create Coupon'' action. When we call it creates a new Coupon Entity named with a Random Number.
+
+{{:en:promotions:Coupons9.jpg?700|}}
+
+Entity Type Name is ''Coupons'' since we need to create a coupon entity. Entity name should be ''CP{RANDOMC:8}''. {RANDOMC:8} tag is a [[Random Number Generator Tag|Random Number Generator Tag]] that generates a 8 digit random number with check digit. So it becomes 9 digits. We also want to prefix Coupon Numbers with CP letters to be able to understand this random number is a coupon number. Finally Custom Data field contains ''Redeemed=No'' value to define default Redeemed field value.
+
+We’re ready to create rules that creates Coupons when ''Coffee Coupon Product'' sold.
+
+===== Adding Coffee Coupon Order Handling Rules =====
+
+When we first add Coffee Coupon order in a ticket its order state should be Coupon Ordered. We’ll create a rule to configure this.
+
+{{:en:promotions:coupons10.jpg?700|}}
+
+We’ll handle ''Order Added to Ticket'' event and execute this rule if Menu Item Group Code Equals to ''Coupons'' value. If you didn’t do so change ''Coffee Coupon'' product’s Group Code to ''Coupons'' so this rule will handle it. New coupons under this product group will just work without changes.
+
+When it detects a Coupon it executes two actions.
+
+  - Calls ''Update Coupon Product Order State'' action to update order state as ''Coupon Ordered''.
+  - Calls ''Update Coupon Product Menu Item Name'' action to send Coupon Product Tag value to Order State as the Coupon Menu Item Name.
+
+<WRAP center round tip 60%>
+Don’t forget adding a map to rules to enable them. If there is no mapping they won’t work and listed as gray color. For the simplicity of this documentation we won't mention it anymore but all rules needs a mapping.
+</WRAP>
+
+As a result of this configuration order state values should update correctly when we add a Coffee Coupon product into a ticket. 
+
+{{:en:promotions:coupons11.jpg?700|}}
+
+Coupon Ordered and Coffee values displays correctly. Now we know this order should generate a coupon, not paid yet and generates a coupon for Coffee.
+
+When we full settle the ticket ''Coupon Ordered'' value should change to ''Coupon Paid''. Now we’ll handle ''Ticket Close'' event to check if ticket is paid. In fact there is already a rule for this named as “Ticket Payment Check” but for this tutorial we’ll create new Rule. 
+
+===== Handling Payment to update Order states =====
+ 
+We’ll create a new rule for ''Before Ticket Closing'' event to check if ticket is paid or not. 
+
+{{:en:promotions:coupons12.jpg?700|}}
+
+While closing the ticket if ''Remaining Amount'' is 0 we’ll update order states to ''Coupon Paid'' where order state equals to ''Coupon Ordered''.
+
+So create a new ticket now, add Coffee Coupon product and settle that ticket. When you open this ticket from ticket explorer, Order State of the Coffee Coupon product should be “Coupon Paid”. 
+
+Our customer bought a Breakfast, one coffee and a coffee coupon. As you can see order state changed to ''Coupon Paid''. Other order states didn’t changed since we set the ''Current State'' for the action. It only changed for orders that already have “Coupon Ordered” state.
+
+{{:en:promotions:coupons13.jpg?700|}}
+
+Getting state handling in SambaPOS is important to create a flawless workflow for your business. Feel free to ask any questions on our forums so we can update our documentation to give more details about them.
+
+===== Creating Coupons =====
+
+As the order state changes from ''Coupon Ordered'' to ''Coupon Paid'' we’ll create the Coupon Entity. To be able to handle it we’ll create a rule for ''Order State Updated'' event.
+
+{{:en:promotions:coupons14.jpg?700|}}
+
+I’ve created two constraints to determine ordered Coupon is paid. If constraints are true it executes ''Create Coupon'' action to create a coupon entity. After creating that it executes second action to update coupon’s menu item name. As you have noticed I’m reading ''Menu Item Name'' from Order State by using ''{ORDER STATE:X}'' tag. You’ll remember we are using same tag in printer templates to print order states. 
+
+To test this rule sell another Coffee Coupon and check if a Coupon Entity created or not. 
+
+{{:en:promotions:coupons15.jpg?700|}}
+
+This is what SambaPOS generated for me. Coupon Number, Redeemed value and Menu Item Name all correctly updated. Expiration date is empty so this coupon never expires. We’ll handle expiration topic on further documentation.
+
+  * Back to [[Promotion Coupons Documentation]]
+  * Next Topic > [[Redeeming Coupons]]

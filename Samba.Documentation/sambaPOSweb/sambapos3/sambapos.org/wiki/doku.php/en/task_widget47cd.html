@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/task_widget?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:51:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:task_widget</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,task_widget"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="task_widgetdecf.html?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="task_widget47cd.html?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="task_widgetf7dc.txt?do=export_raw"/>
+<link rel="canonical" href="task_widget.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/task_widget"},"id":"en:task_widget","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+
+<h1 class="sectionedit1" id="task_widget">Task Widget</h1>
+<div class="level1">
+
+<p>
+Task Widget is a Custom Entity Screen widget that we can use for taking notes on screen. It supports custom fields so you can customize widget for your needs. Sample screen shot shows a widget that customised to note customer reservations.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/widgets/taskwidget/taskwidget17c23.html?id=en%3Atask_widget" class="media" title="en:widgets:taskwidget:taskwidget1.jpg"><img src="../../lib/exe/fetch.php/en/widgets/taskwidget/taskwidget168e7.jpg_%3b?w=700&amp;tok=4a9f31" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+This widget can also execute automation commands and send custom field values as command value. On widget settings you can configure three types of automation commands.
+</p>
+<ol>
+<li class="level1"><div class="li"> Task Create Commands: These commands executes when task first created or re-enabled.</div>
+</li>
+<li class="level1"><div class="li"> Task Complete Commands: These commands executes when task completes.</div>
+</li>
+<li class="level1"><div class="li"> Task Commands: These commands appears as a hyperlink under each task and executes when clicked.  </div>
+</li>
+</ol>
+
+<p>
+<a href="../../lib/exe/detail.php/en/widgets/taskwidget/taskwidget27c23.html?id=en%3Atask_widget" class="media" title="en:widgets:taskwidget:taskwidget2.jpg"><img src="../../lib/exe/fetch.php/en/widgets/taskwidget/taskwidget23ad1.jpg_%3b?w=700&amp;tok=f65942" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Enter a single command name for each line. For example if you have an Automation Commnand named as ReserveTable you can execute it by writing command name in the box. If you want to pass Table field value as command parameter you can write it as <code>ReserveTable:[Table]</code>. Finally if you want to display it as a hyperlink you can change display name with <code>=</code> symbol. So the final syntax becomes: 
+</p>
+
+<p>
+<strong>DisplayName=CommandName:[CustomFieldName]</strong>
+</p>
+
+<p>
+So you can execute ReservTable command as you create tasks to change Reserve state of the tables. On sample screen shot we have a Entity Grid widget that displays reservation state of tables. So if you type a table name while creating the task it appears on different color.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/widgets/taskwidget/taskwidget37c23.html?id=en%3Atask_widget" class="media" title="en:widgets:taskwidget:taskwidget3.jpg"><img src="../../lib/exe/fetch.php/en/widgets/taskwidget/taskwidget3951f.jpg_%3b?w=700&amp;tok=51c1f9" class="media" alt="" width="700" /></a>
+</p>
+
+</div>
+</div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/task_widget?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:51:31 GMT -->
+</html>

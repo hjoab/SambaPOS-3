@@ -1,0 +1,93 @@
+====== Custom Package Delivery System Part 3 ======
+
+Hello. On this documentation we'll integrate sending SMS function to SambaPOS Custom Package Delivery sample configuration. We want to send SMS to a customer when we assign deliverer to a ticket to notify them their package is delivered.
+
+<wrap hi>Note: This documentation continues from where [[http://sambapos.com/wiki/doku.php/en/custom_package_delivery_system_part_2|Part 2]] ends. You can download sdf file from end of part 2 documentation and re-install V3.0.15 (or later) to update sdf and follow this step by step tutorial. You can also find the sdf for this sample at the end of this page.</wrap>
+
+We can send SMS by using Internet Services. For this sample we'll use voipbuster.com service but you can use any service that supports sending SMS from URL's . vopipbuster url for sending SMS is something like that.
+
+<codejava>
+https://www.voipbuster.com/myaccount/sendsms.php?
+username=USERNAME&password=PASS&from=FROM&to=@number@&text=@SMS@
+</code>
+
+USERNAME and PASS values are our username and password we've received from voipbuster while registering account. FROM is the text that will be displayed as sender. We'll change these values with our values so it becomes something like that.
+
+
+<codejava>
+https://www.voipbuster.com/myaccount/sendsms.php?
+username=u&password=p&from=me&to=@number@&text=@SMS@
+</code>
+
+These values are fictional so change them with your values that you've received from your service provider.
+
+We have two variable parts here **@number@** and **@SMS@** part. @number@ will be the customer number and @SMS@ will be the message we'll send. We need to read these values dynamically from ticket and build URL that needs to be called to send the SMS. We can use SambaPOS printing functionality for this task.
+
+As of V3.0.15 we have Custom Printers feature and added a sample custom printer called URL Printer. We can configure an URL Printer to build and call SMS sending URL.
+
+We'll start by configuring a new Printer called SMS Printer. Add a new printer from Management > Settings > Printers.
+
+{{:en:cdps3:custom_package_delivery_system_part_3-001.jpg?700|}}
+
+You'll notice when you choose Custom Printer type additional combobox appears to select custom printer type. We'll select **URL Printer** as the custom printer type. Please notice we've entered dot (.) as the printer share name. Since this printer is not a physcial printer there is no share name but we need to enter something be able to enable this printer.
+
+After choosing "URL Printer" click **Settings** link for printer configuration
+
+{{:en:cdps3:custom_package_delivery_system_part_3-003.jpg?700|}}
+
+I've inserted the URL template and entered @ as the **Token Char** since we configured our variable parts as @variable@. I've left **Live Mode** unchecked so SambaPOS will display URL in a message box instead of calling it. It will be useful during configuration but don't forget to enable Live Mode to call URL's instead of displaying Message Box.
+
+Now we'll configure a Printer Template. Add a new Printer Template from Printer Templates list.
+
+{{:en:cdps3:custom_package_delivery_system_part_3-004.jpg?700|}}
+
+The template I've entered is :
+
+<codejava>
+number={ENTITY DATA:Customer:Phone}
+SMS=Dear {ENTITY NAME:Customer}. Your order is on it's way
+</code>
+
+
+What we configured here is @variable@ values in URL format of the URL Printer. So @number@ variable replaces with Customer Phone and @SMS@ variable replaces with our SMS message.
+
+On next step we'll configure a print job.
+
+{{:en:cdps3:custom_package_delivery_system_part_3-005.jpg?700|}}
+
+It maps SMS Printer to SMS Printer Template and we'll execute this print job to Send SMS's.
+
+We'll need an Action to call this print job so I'll create a new Action from Management > Automation > Actions.
+
+{{:en:cdps3:custom_package_delivery_system_part_3-006.jpg?700|}}
+
+Finally I'll add this action to the Update Delivery Ticket Status when Deliverer Selected Rule. As you can remember from previous parts of this tutorial this rule executes when a Deliverer selected to a ticket so it is a good place to send notification SMS to the customer.
+
+First we'll edit this rule
+
+{{:en:cdps3:custom_package_delivery_system_part_3-007.jpg?700|}}
+
+And add Send SMS action.
+
+{{:en:cdps3:custom_package_delivery_system_part_3-008.jpg?700|}}
+
+After clicking save we can test how it works. Let's assume we have two waiting orders.
+
+{{:en:cdps3:custom_package_delivery_system_part_3-009.jpg?700|}}
+
+Click Sibel Gök and Click Kate C. to assign Deliverer Kate to Customer Sibel's order. We should see a message box that displays the URL to be called.
+
+{{:en:cdps3:custom_package_delivery_system_part_3-010.jpg?700|}}
+
+Since the SMS Printer is not in **Live Mode** it displays URL instead of calling it. You can enable Live Mode by editing SMS Printer and click Settings next to Custom Printer Combobox.
+
+Notes:
+
+<WRAP center round tip 75%>
+You'll need at least V3.012 Beta version for this sample.
+</WRAP>
+
+
+<WRAP center round download 75%>
+Sample Database file {{:en:database:sambapos3_cdps3.sdf|Download it.}}
+</WRAP>

@@ -1,0 +1,70 @@
+====== Tracking Coffee Purchases of Loyal Customers ======
+
+If you read previous chapters you’ll get the idea. We’ll add a custom field to store promotion status of customer and when it reaches to a specific amount we’ll gift free coupons. 
+
+If you didn’t do before I strongly suggest reading “SambaCard Tutorial”. This tutorial is about giving loyalty cards to customers. On this tutorial we’ll store promotion status on customer entity but if you want to enable this promotion for only Card Holders you can use SambaCard entity instead. Also you can have multiple promotions for different type of card holders. For example regular card receives free coffee for 6 purchases but gold card can receive it for 2 purchases.
+
+===== Preparing Customer Entity =====
+
+We’ll start by adding needed custom fields for customer.
+
+{{:en:promotions:coupons47.jpg?700|}}
+
+I’ve added a Number field named as Coffee Promotion. I’ve also enabled ''Hidden'' setting to hide this field on Customer listings.
+
+On previous New Customer promotion document we’ve used Entity State feature to store if customer is a new customer or not. For this sample we can also use Entity State to store ''Coffee Promotion'' data because Entity States can also store numbers. If you want to make it editable through customer card use custom fields. If no use Entity States.
+
+On next step we’ll add an action to update this field. We’ll use ''Update Entity Data'' action to change Coffee Promotion value. 
+
+{{:en:promotions:coupons48.jpg?700|}}
+
+When executed this action updates ''Coffee Promotion'' field value of the customer. While executing this action we’ll set customer name and promotion quantity so we defined them as variables. 
+
+If you’ll create SambaCard entity you’ll choose that entity type instead of Customers. 
+
+===== Preparing Tickets for Coffee Promotion =====
+
+We need to understand a promotion product added into the ticket. On this sample this product is coffee so we’ll mark coffee order lines as promotion. Let’s create an action to mark coffee orders as promotion.
+
+{{:en:promotions:coupons49.jpg?700|}}
+
+We’ll use ''Update Order State'' action to change ''Promotion State'' of the order. When we add a new Coffee Order it’s order state should become ''Promotion Ordered''. When ticket paid we’ll update it to ''Promotion Paid'' and we’ll update Customer Data. Now we’ll create a rule to mark Coffee orders as promotion.
+
+We’ll create a rule for ''Order Added to Ticket'' event. 
+
+{{:en:promotions:coupons50.jpg?700|}}
+
+I’ve created a constraint to understand if added product is Coffee or Not. If you want to enable promotion for multiple types of coffee you can add additional product names here by clicking ''Add Custom Constraint'' link. 
+
+If added product is Coffee we’ll execute ''Update Order Promotion State'' action to change order state to ''Promotion Ordered''. 
+
+When Ticket paid we’ll update order state to ''Promotion Paid'' so we’ll add another rule for that. 
+
+We’ll handle ''Before Ticket Closing'' event and if remaining amount of ticket is 0 we’ll update orders marked as ''Promotion Ordered'' to ''Promotion Paid''.
+
+{{:en:promotions:coupons51.jpg?700|}}
+
+When we set ''Current State'' value it will change only orders that already have ''Promotion Ordered'' state. If we leave it empty it will change all order’s states to ''Promotion Paid''. This it not what we want for now but this feature might be handy in some cases. 
+
+Now you can test if rules updates Coffee order states fine.
+
+Until now we didn’t checked if a customer selected on ticket or not. We do not check it while adding orders because in some cases customers tells they have loyalty card just before payment. If needed you can add an additional action to reset order state to a different value other than ''Promotion Paid'' if no customer selected.
+
+Our ticket is ready to handle Coffee Promotions. 
+
+===== Updating Customer Data =====
+
+We’ll handle ''Order State Updated'' event to update customer promotion count. 
+
+{{:en:promotions:coupons52.jpg?700|}}
+
+We’ll check if a customer is assigned or not here. On ''Update Customer Coffee Promotion Count'' action we’ll set Quantity parameter with ''{QUANTITY}'' tag. + sign behind tag means we’ll increase the value. So if 4 coffee ordered parameter becomes +4 and it increases Promotion Count on customer card by 4.
+
+We can test how it works. As we sell coffee to a customer her Coffee Promotion Count should increase. 
+
+{{:en:promotions:coupons53a.jpg?700|}}
+
+{{:en:promotions:coupons53b.jpg?700|}}
+
+  * Back to [[Promotion Coupons Documentation]]
+  * Next Topic > [[Giving Free Coffee]]

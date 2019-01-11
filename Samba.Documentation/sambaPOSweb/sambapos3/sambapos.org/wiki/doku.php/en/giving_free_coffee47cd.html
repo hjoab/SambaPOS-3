@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/giving_free_coffee?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:52:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:giving_free_coffee</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,giving_free_coffee"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="giving_free_coffeedecf?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="giving_free_coffee47cd.html?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="giving_free_coffeef7dc.txt?do=export_raw"/>
+<link rel="canonical" href="giving_free_coffee.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/giving_free_coffee"},"id":"en:giving_free_coffee","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+<!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#giving_free_coffee">Giving Free Coffee</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#enabling_promotion_commands_on_ticket">Enabling Promotion Commands on Ticket</a></div></li>
+<li class="level2"><div class="li"><a href="#enabling_redeem_now_button">Enabling Redeem Now button</a></div></li>
+<li class="level2"><div class="li"><a href="#enabling_redeem_later_button">Enabling Redeem Later Button</a></div></li>
+<li class="level2"><div class="li"><a href="#enabling_print_coupon_button">Enabling Print Coupon Button</a></div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="giving_free_coffee">Giving Free Coffee</h1>
+<div class="level1">
+
+<p>
+When a customer selected on a ticket we’ll read their promotion status. If it reached to a certain amount we’ll display promotion commands. Customer can either get her free coffee, want to use it later or request a coffee coupon for it. 
+</p>
+
+<p>
+We’ll use coupons we’ve configured on previous chapter. If customer wants her coffee or want to use this promotion later there is no need to print a coupon but optionally we can create and print a free coffee coupon. It is up to you. You can force customer to redeem it or let her use it later. On this tutorial we’ll create commands for all options but you can consider not to use all of them. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Giving Free Coffee&quot;,&quot;hid&quot;:&quot;giving_free_coffee&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-680&quot;} -->
+<h2 class="sectionedit2" id="enabling_promotion_commands_on_ticket">Enabling Promotion Commands on Ticket</h2>
+<div class="level2">
+
+<p>
+When customer’s promotion count reaches to 6 we’ll display some additional commands on ticket. We’ll have 3 options.
+</p>
+<ul>
+<li class="level1"><div class="li"> Print Coupon</div>
+</li>
+<li class="level1"><div class="li"> Redeem Now</div>
+</li>
+<li class="level1"><div class="li"> Redeem Later</div>
+</li>
+</ul>
+
+<p>
+On first step we’ll create automation command buttons for these options.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons54f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons54.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons549798.jpg_%3b?w=700&amp;tok=18f979" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+This is how Print Coupon Command is configured. After setting up visual properties switch to <code>Mappings</code> page to configure when and where this command button will appear.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons55f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons55.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons553cdd.jpg_%3b?w=700&amp;tok=dbbf67" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Visible States value is used to map this button to a specific Ticket State. So when Ticket State becomes <code>Coffee Promotion</code>, this button will appear. 
+</p>
+
+<p>
+We have different options to place this button. On previous tutorials we used different places but on this tutorial we’ll use a new section called <code>Command Selector</code>. Command Selector region appears where menu items are displayed.
+</p>
+
+<p>
+We’ll use same mappings for other two buttons we’ll create so don’t forget to update their mappings as shown here. Now I’ll clone two more buttons from this button.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons56f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons56.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons5647e5.jpg_%3b?w=700&amp;tok=ede6e2" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+I’ll choose different color for this button. Don’t forget to check mappings. They should be same as the previous button.
+</p>
+
+<p>
+Now I’ll add one more button.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons57f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons57.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons571254.jpg_%3b?w=700&amp;tok=4495e3" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Redeem Later button is used to cancel promotion state and hide promotion buttons. Until we create a new ticket for this customer we won’t see Promotion Commands. We should be able to see Promotion Command Buttons when customer (or customer card) selected for ticket. 
+</p>
+
+<p>
+To be able to update ticket state to display promotion commands we’ll create a new action. We’ll create a <code>Update Ticket State</code> action. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons58f0ce.jpg?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons58.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons58052f.jpg_%3b?w=700&amp;tok=f5f92e" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+When executed this action changes Ticket Promotion State to <code>Coffee Promotion</code>. 
+</p>
+
+<p>
+To be able to display <code>Command Selector</code> region we need to execute another action.
+</p>
+
+<p>
+Select Automation Command action displays <code>Command Selector</code> region. This region located where menu items are displayed. Since we’ll update ticket promotion state to <code>Coffee Promotion</code> we’ll see promotion commands there.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons59f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons59.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons594945.jpg_%3b?w=700&amp;tok=d44d5f" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Portion and Order Tag Selector screens will also display automation commands that are mapped to current ticket state so for order line based automation commands there is no need to call this action.
+</p>
+
+<p>
+Now we can create a rule to trigger these actions. We’ll create the rule for <code>Ticket Entity Changed</code> event.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons60f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons60.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons600329.jpg_%3b?w=700&amp;tok=48f269" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+When ticket entity changes this rule executes. If entity type is <code>Customers</code> and <code>Coffee Promotion Count</code> equals or greater than 6 we’ll enable coffee promotion and display command selector region.
+</p>
+
+<p>
+Let’s test if it works or not. Create a new customer. Sell 6 or more coffee and see what happens when you create a new ticket for that customer.
+</p>
+
+<p>
+On previous tests I’ve sold 7 coffee to Mary White. When I create a new ticket for Mary White this screen welcomes us. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons61f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons61.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons618806.jpg_%3b?w=700&amp;tok=cac90a" class="media" alt="" width="700" /></a>
+￼
+Nothing happens when I click on these buttons. On next step we’ll add some functionality.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Enabling Promotion Commands on Ticket&quot;,&quot;hid&quot;:&quot;enabling_promotion_commands_on_ticket&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;681-3891&quot;} -->
+<h2 class="sectionedit3" id="enabling_redeem_now_button">Enabling Redeem Now button</h2>
+<div class="level2">
+
+<p>
+Redeem Now button should add a free coffee into the ticket, disable ticket’s promotion state and decrease customer promotion data by 6 (or maybe you can prefer resetting it to zero).
+</p>
+
+<p>
+So we need an action to Disable Ticket’s promotion state. Let’s create it first.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons62f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons62.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons628acd.jpg_%3b?w=700&amp;tok=4f0a7d" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+When we set an empty state value it disables Promotion state and hides command buttons. We’ll force ticket to refresh itself to hide commands section. So we’ll create another action to refresh the ticket.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons63f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons63.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons6399f9.jpg_%3b?w=700&amp;tok=5df30a" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Executing Display Ticket action with Ticket ID set to zero should refresh current ticket. 
+</p>
+
+<p>
+If you followed all steps you already have <code>Add Gift Product</code> action. We can use it to add free coffee in ticket but I’ll create another action to demonstrate different settings. Remember on previous case we redeemed coupon after order submitted. Now we’ll execute promotion immediately and forbid order canceling. You can clone <code>Add Gift Product</code> Action for easier configuration.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons64f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons64.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons64373d.jpg_%3b?w=700&amp;tok=0b10a7" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+This action dedicated to Coffee Product. It changes <code>GStatus</code> of the line as Promotion and Locked parameter is True. So operator won&#039;t be able to cancel that order. 
+</p>
+
+<p>
+We can configure Redeem Now button. When we click to an automation command button <code>Automation Command Executed</code> event raises. We can create a rule for this event to define button logic. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons65f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons65.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons650979.jpg_%3b?w=700&amp;tok=355c9e" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We’ll create a constraint to test command name. We’ll add a gift order for coffee, decrease customers promotion count by 6 and disable promotion state of ticket. Our final step will be calling <code>Refresh Ticket</code> action. 
+</p>
+
+<p>
+Now we can test how it works. Select previous customer and when commands displayed click <code>Redeem Now</code> button.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons66f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons66.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons66c9a9.jpg_%3b?w=700&amp;tok=3b0304" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Clicking <code>Redeem Now</code> button adds <code>Coffee</code> into ticket, disables promotion state and displays menu. Coffee order is also bold since it is in Locked state. That means we can’t cancel that order and since we updated GStatus as Promotion we won’t be able to gift or void that line. In simple words we can’t remove this line. Like we did on previous tutorials you can define a middle order state to enable canceling redeem before submitting ticket.  
+</p>
+
+<p>
+We need to consider one more thing. If you notice Promotion State of this order line is <code>Promotion Ordered</code> that means it will increase customers promotion count by one. If it is not a wanted behavior we can disable it by adding one more action to <code>Redeem Now</code> rule. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons67f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons67.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons6760c6.jpg_%3b?w=700&amp;tok=0470fb" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We’ll leave Promotion State as empty to disable promotion counting for that order. After this change gifts added through <code>Redeem Now</code> button should not have <code>Promotion Ordered</code> state.
+</p>
+
+<p>
+Since she redeemed her promotion we won’t see command buttons until her promotion count reaches 6. Now we can implement <code>Redeem Later</code> button.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Enabling Redeem Now button&quot;,&quot;hid&quot;:&quot;enabling_redeem_now_button&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;3892-6897&quot;} -->
+<h2 class="sectionedit4" id="enabling_redeem_later_button">Enabling Redeem Later Button</h2>
+<div class="level2">
+
+<p>
+If our customer do not want coffee now we can click Redeem Later button so commands will disappear until her next purchase. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons68f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons68.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons68d887.jpg_%3b?w=700&amp;tok=22daa4" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We’ll just disable Coffee Promotion and Refresh Ticket to hide command buttons. On this ticket these buttons won’t enable again. After testing it we can configure next button. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Enabling Redeem Later Button&quot;,&quot;hid&quot;:&quot;enabling_redeem_later_button&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;6898-7286&quot;} -->
+<h2 class="sectionedit5" id="enabling_print_coupon_button">Enabling Print Coupon Button</h2>
+<div class="level2">
+
+<p>
+Printing coupon might be better than just canceling promotion. So we already have coupon creating features. We just need to add Coffee Coupon product, mark it as gift and decrease promotion count of customer. If you remember on previous chapter we cancelled coupon printing and implemented text file generation instead. Now we need to print coupon immediately so we’ll handle this case on “Print Coupon Button” Rule.
+</p>
+
+<p>
+First we’ll create an action to add Coffee Coupon into the ticket.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons69f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons69.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons69e9df.jpg_%3b?w=700&amp;tok=6bb7de" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Gift status of this item is <code>Gift</code> and the order is locked too. Now we’ll handle Print Coupon execute event.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons70f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons70.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons70e0d0.jpg_%3b?w=700&amp;tok=0e3a5b" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+This rule is a little crowded so I’ll add another screen shot to display action parameters.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons71f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons71.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons718357.jpg_%3b?w=700&amp;tok=9c2676" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+<code>Update Customer Coffee Promotion Count</code> action uses <code>{ENTITY NAME:Customer}</code> tag to read actual customer name and passes -6 to decrease promotion count by 6.
+</p>
+
+<p>
+Update Coupon Product Order State action sets order state to <code>Coupon Printed</code> so it never switches to <code>Coupon Paid</code>. Since we’ll handle coupon creation we don’t want Value Looper action to execute.
+</p>
+
+<p>
+Finally we update Menu Item Name of Coupon to Coffee.
+</p>
+
+<p>
+This is what should happen when we click on <code>Print Coupon</code> button. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons72f0ce.html?id=en%3Agiving_free_coffee" class="media" title="en:promotions:coupons72.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons72ca78.jpg_%3b?w=700&amp;tok=920a0b" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+When we create coupon through <code>Print Coupon</code> button it will print a coupon immediately but when we sell coupons they will be copied in a text file. 
+</p>
+
+<p>
+We reached to the end of this tutorial. I’ve tried to demonstrate all possible options. How this coupon system works might not be what you exactly need. You can change it as your business needs. Feel free to contact us through forums or our website. 
+</p>
+<ul>
+<li class="level1"><div class="li"> Back to <a href="promotion_coupons_documentation.html" class="wikilink1" title="en:promotion_coupons_documentation">Promotion Coupons Documentation</a></div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Enabling Print Coupon Button&quot;,&quot;hid&quot;:&quot;enabling_print_coupon_button&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;7287-&quot;} --></div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/giving_free_coffee?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:52:44 GMT -->
+</html>

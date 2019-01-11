@@ -1,0 +1,31 @@
+====== V3.0.27 Beta ======
+
+Hello. Here are the new features:
+
+  * [[Task Widget]] added. This widget is useful for adding small notes on Custom Entity Screens. 
+  * 1D barcode printing support. Read more about [[Barcode Printing Tags]]
+  * [[Random Number Generator Tag]] implemented.
+  * [[Update Entity Data Action]] added. You can change custom data of entities with that action.
+  * [[Create Entity Action]] improved for setting default custom data values. With **Field1=Value1;Field2=Value** syntax you can set multiple custom field values at once.
+  * [[Loop Values Action]] imporved to support ranges and text file reading.
+  * {DATE}, {TIME}, {SETTING:X} and Random Number Generator Tags are accessible from all sections of printer templates.
+  * Ticket Line Merger code rewritten for better handling order states.
+  * Update Entity Data, Update Entity State and Update Ticket State actions supports quantity expressions. So if you add ''+'' or ''-'' sign before a numeric value it increases or decreases target value.
+  * [[Add Order Action]] improved to support more properties of new orders.
+  * Date Filtering support on Account Transaction Screens.
+  * Date Custom Field Type added to Entity Custom Fields.
+  * Automation Command Support for Entity Grids. If an automation command entered it executes that automation command instead of creating a new ticket.
+  * You can hide / show Ticket, Entity and Order states on reports and tickets. Create a new state from Settings > States and enable requried settings. If ''Group Name'' matches to ''State Name'' or ''State'' matches to ''State'' values settings activates. Admin users can see all order and ticket states on tickets. 
+  * [[Modify Variable Action]] implemented. You can use this action to alter rule variables. 
+  * Batch Entity Editor screen implemented to change Custom Fields of entities from a single screen.
+  * A lot of small fixes and improvements for better perfomance and better looking UI screens.
+  * Languages Refreshed.
+
+<WRAP center round tip 60%>
+[[Promotion Coupons Documentation]] demonstrates most of these new features.
+</WRAP>
+
+<WRAP center round download 60%>
+[[http://sambapos.com/en/content/v3027-beta|Download V3.0.27]]
+</WRAP>
+

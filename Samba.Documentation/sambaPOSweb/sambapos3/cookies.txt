@@ -1,0 +1,5 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+sambapos.org	TRUE	/wiki/	FALSE	1999999999	DokuWiki	h8cjorujuas6juo3cb0u0e01u5
+sambapos.org	TRUE	/wiki/	FALSE	1999999999	DWd6fcb57a725757b22fe830cccebe05e6	deleted
+

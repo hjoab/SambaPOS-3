@@ -1,0 +1,17 @@
+====== How to help translation ======
+
+We use transifex.com for managing SambaPOS V3 translations. Transifex is an online translation tool so you can easily update translations through your web browser.
+
+This is our transifex URL:
+
+https://www.transifex.com/projects/p/sambapos/
+
+{{:en:22.02.jpg?700|}}
+
+On our project page you can see an overview of current translations. You can click to a language to join or request your language if not listed yet. 
+
+Transifex helps us to auto update your changes on the project source code. It also checks our github repo for new words that needs to translate.
+
+If we have V2 translation for your language we'll upload it when creating your language. So generally it starts from %70 for previously translated languages.
+
+Thank you for your help. 

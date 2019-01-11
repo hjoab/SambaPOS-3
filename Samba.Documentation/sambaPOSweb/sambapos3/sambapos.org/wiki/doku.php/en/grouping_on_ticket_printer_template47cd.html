@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/grouping_on_ticket_printer_template?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:50:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:grouping_on_ticket_printer_template</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,grouping_on_ticket_printer_template"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="grouping_on_ticket_printer_templatedecf.html?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="grouping_on_ticket_printer_template47cd.html?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="grouping_on_ticket_printer_templatef7dc.txt?do=export_raw"/>
+<link rel="canonical" href="grouping_on_ticket_printer_template.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/grouping_on_ticket_printer_template"},"id":"en:grouping_on_ticket_printer_template","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+
+<h1 class="sectionedit1" id="grouping_on_ticket_printer_template">Grouping on Ticket Printer Template</h1>
+<div class="level1">
+
+<p>
+SambaPOS V3 have some nice grouping features that we can use for grouping orders on tickets. We need use <strong>Group</strong> keyword to define and configure groups.
+</p>
+
+<p>
+[Orders Group|PRODUCT GROUP]
+</p>
+
+<p>
+Adding that dynamic section to a printer template means we want to Group Orders by Product Group Code. Product Group Code is the value we entered as Group Code while creating product records.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/gpt/grouping_on_ticket_printer_template-0019ac4.html?id=en%3Agrouping_on_ticket_printer_template" class="media" title="en:gpt:grouping_on_ticket_printer_template-001.jpg"><img src="../../lib/exe/fetch.php/en/gpt/grouping_on_ticket_printer_template-0019bee.jpg_%3b?w=700&amp;tok=aaa80f" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+On that section I can add a header for groups. Adding &lt;C00&gt;-{GROUP KEY}- means it will print Group Code on the header of each section. {GROUP KEY} is the tag we can use printing the value that we used for grouping. For example if we use PRODUCT TAG for grouping {GROUP KEY} tag prints Product Tag value.
+</p>
+
+<p>
+So when used together Group section becomes.
+</p>
+<pre class="code">[ORDERS GROUP|PRODUCT GROUP]
+&lt;C00&gt;-{GROUP KEY}-</pre>
+
+<p>
+This is what this configuration generates.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/gpt/grouping_on_ticket_printer_template-0029ac4.html?id=en%3Agrouping_on_ticket_printer_template" class="media" title="en:gpt:grouping_on_ticket_printer_template-002.jpg"><img src="../../lib/exe/fetch.php/en/gpt/grouping_on_ticket_printer_template-002e4dc.jpg_%3b?w=500&amp;tok=fb6804" class="media" alt="" width="500" /></a>
+</p>
+
+<p>
+Notice how it groups items and display group codes centrally as we defined on ORDER GROUP section.
+</p>
+
+<p>
+<strong>Formatting Specific Groups</strong>
+</p>
+
+<p>
+I can format specific group keys. For example we can use different formatting for İçecekler (drinks) group.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/gpt/grouping_on_ticket_printer_template-0039ac4.html?id=en%3Agrouping_on_ticket_printer_template" class="media" title="en:gpt:grouping_on_ticket_printer_template-003.jpg"><img src="../../lib/exe/fetch.php/en/gpt/grouping_on_ticket_printer_template-003c90c.jpg_%3b?w=700&amp;tok=eb70f8" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+I&#039;ll create another section for İçecekler group key value
+</p>
+<pre class="code">[ORDERS GROUP:İçecekler]
+&lt;C00&gt;-{GROUP KEY}-
+&lt;C00&gt;%50 discount for Coke on Fridays!</pre>
+
+<p>
+If SambaPOS finds a specific format for a group key it uses this format. If can&#039;t it uses general formatting.
+</p>
+
+<p>
+This configuration generates:
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/gpt/grouping_on_ticket_printer_template-0049ac4.html?id=en%3Agrouping_on_ticket_printer_template" class="media" title="en:gpt:grouping_on_ticket_printer_template-004.jpg"><img src="../../lib/exe/fetch.php/en/gpt/grouping_on_ticket_printer_template-00498ef.jpg_%3b?w=500&amp;tok=5aea42" class="media" alt="" width="500" /></a>
+</p>
+
+<p>
+Notice the promotion tag we added for İçecekler (drinks) group.
+</p>
+
+<p>
+<strong>Group Footers</strong>
+</p>
+
+<p>
+We can also configure footers for groups.
+</p>
+<pre class="code">[ORDERS FOOTER]
+&lt;R&gt;Toplam: {GROUP SUM}</pre>
+
+<p>
+{GROUP SUM} is a special tag to print totals. I can use it on headers too.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/gpt/grouping_on_ticket_printer_template-0059ac4.html?id=en%3Agrouping_on_ticket_printer_template" class="media" title="en:gpt:grouping_on_ticket_printer_template-005.jpg"><img src="../../lib/exe/fetch.php/en/gpt/grouping_on_ticket_printer_template-005988f.jpg_%3b?w=700&amp;tok=5f7724" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+This configuration should display group totals:
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/gpt/grouping_on_ticket_printer_template-0069ac4.html?id=en%3Agrouping_on_ticket_printer_template" class="media" title="en:gpt:grouping_on_ticket_printer_template-006.jpg"><img src="../../lib/exe/fetch.php/en/gpt/grouping_on_ticket_printer_template-006ac9d.jpg_%3b?w=500&amp;tok=1d2692" class="media" alt="" width="500" /></a>
+</p>
+
+<p>
+We can configure footer for specific groups keys too. Something like <strong>[ORDERS FOOTER:İçecekler]</strong>
+</p>
+
+<p>
+Full Gist of this Template <a href="https://gist.github.com/emreeren/5821927" class="urlextern" title="https://gist.github.com/emreeren/5821927" rel="nofollow">https://gist.github.com/emreeren/5821927</a>
+</p>
+
+<p>
+By playing with these values we can change how groups formats. For example I can use no header and only use footers to create a different look.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/gpt/grouping_on_ticket_printer_template-0079ac4.html?id=en%3Agrouping_on_ticket_printer_template" class="media" title="en:gpt:grouping_on_ticket_printer_template-007.jpg"><img src="../../lib/exe/fetch.php/en/gpt/grouping_on_ticket_printer_template-007f37b.jpg_%3b?w=700&amp;tok=fe324d" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+I&#039;ve removed formatting from ORDERS GROUP section and used only FOOTER format. I have also specific footer format for İçecekler value.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/gpt/grouping_on_ticket_printer_template-0089ac4.html?id=en%3Agrouping_on_ticket_printer_template" class="media" title="en:gpt:grouping_on_ticket_printer_template-008.jpg"><img src="../../lib/exe/fetch.php/en/gpt/grouping_on_ticket_printer_template-008800a.jpg_%3b?w=500&amp;tok=a0e763" class="media" alt="" width="500" /></a>
+</p>
+
+<p>
+Full gist located here <a href="https://gist.github.com/emreeren/5821894" class="urlextern" title="https://gist.github.com/emreeren/5821894" rel="nofollow">https://gist.github.com/emreeren/5821894</a>
+</p>
+
+<p>
+<strong>Other Possible Grouping Values</strong>
+</p>
+
+<p>
+You can group orders by:
+</p>
+<ul>
+<li class="level1"><div class="li"> PRODUCT GROUP</div>
+</li>
+<li class="level1"><div class="li"> PRODUCT TAG</div>
+</li>
+<li class="level1"><div class="li"> ORDER TAG:x</div>
+</li>
+<li class="level1"><div class="li"> ORDER STATE:x</div>
+</li>
+</ul>
+
+<p>
+x means you&#039;ll write which value you want to use. For example if you want to group by Gift state GROUP section becomes: <strong>[ORDERS GROUP|ORDER STATE:GStatus]</strong>
+</p>
+
+<p>
+GStatus is an internal value to store gift state of an order. You can configure these values by changing Gift related rules and actions.
+</p>
+
+</div>
+</div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/grouping_on_ticket_printer_template?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:50:42 GMT -->
+</html>

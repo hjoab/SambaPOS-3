@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/how_to_integrate_sambapos_to_post_code_databases?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:50:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:how_to_integrate_sambapos_to_post_code_databases</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,how_to_integrate_sambapos_to_post_code_databases"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="how_to_integrate_sambapos_to_post_code_databasesdecf.html?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="how_to_integrate_sambapos_to_post_code_databases47cd.html?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="how_to_integrate_sambapos_to_post_code_databasesf7dc.txt?do=export_raw"/>
+<link rel="canonical" href="how_to_integrate_sambapos_to_post_code_databases.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/how_to_integrate_sambapos_to_post_code_databases"},"id":"en:how_to_integrate_sambapos_to_post_code_databases","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+
+<h1 class="sectionedit1" id="how_to_integrate_sambapos_to_post_code_databases">How to Integrate SambaPOS to Post Code databases</h1>
+<div class="level1">
+
+<p>
+With 3.0.15 version we&#039;ve introduced a Entity Custom Field Type called Query Field. This field type can read values from CVS files and update other field values with matched values. We can use it to integrate SambaPOS to PostCode databases.
+</p>
+
+<p>
+This screenshot is a sample configuration for Customer Entities. We have Street and City values as string values and PostCode field type is Query
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/how_to_integrate_sambapos_to_post_code_databases-0016386.html?id=en%3Ahow_to_integrate_sambapos_to_post_code_databases" class="media" title="en:how_to_integrate_sambapos_to_post_code_databases-001.jpg"><img src="../../lib/exe/fetch.php/en/how_to_integrate_sambapos_to_post_code_databases-001a455.jpg_%3b?w=700&amp;tok=443934" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+As Query field configured it will load it&#039;s values from c:\test.txt file. test.txt file is a cvs formatted file.
+</p>
+
+<p>
+<span class="wrap_center wrap_round wrap_tip " style="width: 60%;">
+If your user account does not have access to c:\ root folder you can prefer placing it under [my documents]
+</span>
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/how_to_integrate_sambapos_to_post_code_databases-0026386.html?id=en%3Ahow_to_integrate_sambapos_to_post_code_databases" class="media" title="en:how_to_integrate_sambapos_to_post_code_databases-002.jpg"><img src="../../lib/exe/fetch.php/en/how_to_integrate_sambapos_to_post_code_databases-0024d74.jpg_%3b?w=700&amp;tok=d4025d" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+All values are inside double quotes and separated with comma as a standard CSV file. All rows contains three values, First one is Post Code, Second one is the street and the third one is City.
+</p>
+
+<p>
+So when we enter a value to the query field it tries to match a row with entered value and if it finds one it fills other fields with values. So the editing format of the PostCode field means:
+</p>
+
+<p>
+<strong>PostCode=$1;Street=$2;City=$3</strong>
+</p>
+
+<p>
+Post Code field value equals to first value, Street is the second and City is third.
+</p>
+
+<p>
+So entering <strong>2285TM</strong> value to PostCode field should automatically update Street and City fields as seen here
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/how_to_integrate_sambapos_to_post_code_databases-0036386.html?id=en%3Ahow_to_integrate_sambapos_to_post_code_databases" class="media" title="en:how_to_integrate_sambapos_to_post_code_databases-003.jpg"><img src="../../lib/exe/fetch.php/en/how_to_integrate_sambapos_to_post_code_databases-003782b.jpg_%3b?w=700&amp;tok=fb8e14" class="media" alt="" width="700" /></a>
+</p>
+
+</div>
+</div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/how_to_integrate_sambapos_to_post_code_databases?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:50:57 GMT -->
+</html>

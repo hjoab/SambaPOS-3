@@ -1,0 +1,46 @@
+====== How to Link Entities together ======
+
+In this how-to I describe how to add a related Entity on selection on another Entity-Type to the current ticket. For example you have tables which can be grouped by rooms or sitting-areas. In this example when you select a particular Table-Entity named Garden Left 1” you would like to have a Room-(or SittingArea)Entity “Garden” or “Garden Left” as well selected on your Ticket. This How-To shows you how to configure SambaPOS 3 to enable this.
+
+===== Step 1 - Preparations of Tables-Entity: =====
+
+
+First navigate in the Manage-Screen to Entities -> Entity Types and edit your Tables-Entity. In the Custom Fields-Tab add a Custom-Field with the name Room. For field type select string.
+
+===== Step 2 - Create the Rooms-Entity-Type : =====
+
+In the Entity Types Tab add an Entity-Type and name it as you like.
+
+===== Step 3 - Create some Room-Entities: =====
+
+Navigate to Entities -> Entities and add some Room-Entities with the name like “Garden” and “Indoors”
+
+===== Step 4 - Table-Settings: =====
+
+On every table you want to link to a Room-Entity you have to fill out the Custom-Field Room you have created in Step 1. If the Custom-Field doesn’t show up restart SambaPOS. For example set the Room-Field to “Garden” in the table “Garden Left 1” or “Indoors” in the table “Indoors 1”.
+
+===== Step 5 - Create the Room-Selecting-Action: ===== 
+
+For every Room-Entity we want to link to Table we need a Room-Selecting-Action. Navigate to Automation -> Actions and add an Action. Name it appropriately as you wish. I named mine “Select Indoors Action”.
+
+**Action Type:** Change Ticket Entity\\
+**CanCreateTicket:** False (We don’t want an extra ticket floating around)\\
+**EntityTypeName:** Rooms\\
+**EntityName:** Indoors\\
+
+Repeat this step for every Room-Entity you want to link to the Table. Change the EntityName-Value to the right value.
+
+===== Step 6 – Create the Rules: =====
+
+In this last step we need for every Room-Entity a Rule which is triggered when the Ticket Entity Changed. Don’t use the Entity Selected Event because with this event there isn’t any ticket created which we need to be conceptually wright. Name it appropriately as you wish. I named mine “Indoors-Table selected”
+
+**Event Name:** Ticket Entity Changed\\
+**EntityTypeName:** Tables\\
+**CustomData:** {"Name":"Room","Value":"Indoors"} (The Indoors-String changes on every Room) Also change the "=" to a "?" (this isn't shown in the image!) The "?" means "conain" and therefore checks if CustomData contains this string.
+
+Leave every other field empty as we don’t need to configure this values. Under Select Actions select the appropriate action we created in Step 5. Don’t forget to add a mapping because if you don’t map it to something this rule isn’t checked for anywhere. Repeat this step for every Room-Entity you want to link to the Table.
+
+**Finished:**
+If you select a Table you will get automatically the appropriate Room also on the Ticket.
+
+ 

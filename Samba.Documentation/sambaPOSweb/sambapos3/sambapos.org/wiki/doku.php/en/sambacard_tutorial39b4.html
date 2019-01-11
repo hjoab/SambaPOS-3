@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="no-js">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/sambacard_tutorial?do=edit by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:49:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <title>SambaCard Tutorial [SambaPOS V3]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="https://sambapos.org/wiki/doku.php/en/sambacard_tutorial?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="https://sambapos.org/wiki/doku.php/en/sambacard_tutorial?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="https://sambapos.org/wiki/doku.php/en/sambacard_tutorial?do=export_raw"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"edit","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/sambacard_tutorial"},"id":"en:sambacard_tutorial","namespace":"en","ACT":"source","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8">/*<![CDATA[*/$.noConflict();
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/plugins/aceeditor/build.js"></script>
+<script type="text/javascript" charset="utf-8">/*<![CDATA[*/window.require = undefined;
+/*!]]>*/</script>
+<!--<![endif]-->
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="shortcut icon" href="https://sambapos.org/wiki/lib/tpl/dokuwiki/images/favicon.ico" />
+<link rel="apple-touch-icon" href="https://sambapos.org/wiki/lib/tpl/dokuwiki/images/apple-touch-icon.png" />
+    </head>
+
+<body>
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_source tpl_dokuwiki     hasSidebar">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header"><div class="pad group">
+
+    
+    <div class="headings group">
+        <ul class="a11y skip">
+            <li><a href="#dokuwiki__content">skip to content</a></li>
+        </ul>
+
+        <h1><a href="https://sambapos.org/wiki/doku.php/p"  accesskey="h" title="[H]"><img src="https://sambapos.org/wiki/lib/exe/fetch.php/wiki/logo.png" width="70" height="70" alt="" /> <span>SambaPOS V3</span></a></h1>
+            </div>
+
+    <div class="tools group">
+        <!-- USER TOOLS -->
+                    <div id="dokuwiki__usertools">
+                <h3 class="a11y">User Tools</h3>
+                <ul>
+                    <li class="action login"><a href="https://sambapos.org/wiki/doku.php/en/sambacard_tutorial?do=login&amp;sectok=" title="Log In" rel="nofollow"><span>Log In</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 17.25V14H3v-4h7V6.75L15.25 12 10 17.25M8 2h9a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-4h2v4h9V4H8v4H6V4a2 2 0 0 1 2-2z"/></svg></a></li>                </ul>
+            </div>
+        
+        <!-- SITE TOOLS -->
+        <div id="dokuwiki__sitetools">
+            <h3 class="a11y">Site Tools</h3>
+            <form action="https://sambapos.org/wiki/doku.php/p" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="en:sambacard_tutorial" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>            <div class="mobileTools">
+                <form action="https://sambapos.org/wiki/doku.php" method="get" accept-charset="utf-8"><div class="no"><input type="hidden" name="id" value="en:sambacard_tutorial" /><select name="do" class="edit quickselect" title="Tools"><option value="">Tools</option><optgroup label="Page Tools"><option value="">Show page</option><option value="revisions">Old revisions</option><option value="backlink">Backlinks</option></optgroup><optgroup label="Site Tools"><option value="recent">Recent Changes</option><option value="media">Media Manager</option><option value="index">Sitemap</option></optgroup><optgroup label="User Tools"><option value="login">Log In</option></optgroup></select><button type="submit">&gt;</button></div></form>            </div>
+            <ul>
+                <li class="action recent"><a href="https://sambapos.org/wiki/doku.php/en/sambacard_tutorial?do=recent" title="Recent Changes [r]" rel="nofollow" accesskey="r">Recent Changes</a></li><li class="action media"><a href="https://sambapos.org/wiki/doku.php/en/sambacard_tutorial?do=media&amp;ns=en" title="Media Manager" rel="nofollow">Media Manager</a></li><li class="action index"><a href="https://sambapos.org/wiki/doku.php/en/sambacard_tutorial?do=index" title="Sitemap [x]" rel="nofollow" accesskey="x">Sitemap</a></li>            </ul>
+        </div>
+
+    </div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                                        <div class="trace"><span class="bchead">Trace:</span> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/barcode_printing_tags"  class="breadcrumbs" title="en:barcode_printing_tags">Barcode Printing Tags</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/random_number_generator_tag"  class="breadcrumbs" title="en:random_number_generator_tag">Random Number Generator Tags</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/primary_field_editing_formats"  class="breadcrumbs" title="en:primary_field_editing_formats">Primary Field Editing Formats</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/task_widget"  class="breadcrumbs" title="en:task_widget">Task Widget</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/modify_variable_action"  class="breadcrumbs" title="en:modify_variable_action">Modify Variable Action</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/preparing_sambapos_to_sell_coffee_coupons"  class="breadcrumbs" title="en:preparing_sambapos_to_sell_coffee_coupons">Preparing SambaPOS to Sell Coffee Coupons</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/redeeming_coupons"  class="breadcrumbs" title="en:redeeming_coupons">Redeeming Coupons</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/printing_coupons"  class="breadcrumbs" title="en:printing_coupons">Printing Coupons</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://sambapos.org/wiki/doku.php/en/tracking_coffee_purchases_of_loyal_customers"  class="breadcrumbs" title="en:tracking_coffee_purchases_of_loyal_customers">Tracking Coffee Purchases of Loyal Customers</a></bdi> <span class="bcsep">•</span> <span class="curid"><bdi><a href="https://sambapos.org/wiki/doku.php/en/giving_free_coffee"  class="breadcrumbs" title="en:giving_free_coffee">Giving Free Coffee</a></bdi></span></div>
+                    </div>
+    
+
+
+    <hr class="a11y" />
+</div></div><!-- /header -->
+
+        <div class="wrapper group">
+
+            
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <div class="pageId"><span>en:sambacard_tutorial</span></div>
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    
+<p>
+This page is read only. You can view the source, but not change it. Ask your administrator if you think this is wrong.
+</p>
+    <div class="editBox" role="application">
+
+    <div class="toolbar group">
+        <div id="draft__status" class="draft__status"></div>
+        <div id="tool__bar" class="tool__bar"></div>
+    </div>
+    <form id="dw__editform" method="post" action="#" accept-charset="utf-8"><div class="no">
+<input type="hidden" name="sectok" value="" /><input type="hidden" name="id" value="en:sambacard_tutorial" /><input type="hidden" name="rev" value="0" /><input type="hidden" name="date" value="0" /><input type="hidden" name="prefix" value="." /><input type="hidden" name="suffix" value="" /><input type="hidden" name="changecheck" value="eecfe95f2c3eaa3622940cf4af37d4be" /><input type="hidden" name="target" value="section" /><textarea name="wikitext" id="wiki__text" dir="auto" class="edit" cols="80" rows="10" tabindex="1" readonly="readonly">
+====== SambaCard Tutorial ======
+
+Pre-paid cards works like Sodexo or Multinet cards.  The difference is you give these cards to your customers and you sell credits. Once funds added to a card the customer can spend it on your restaurant. Some businesses prefers that because instead of paying comission to card companies they want to make discounts to their customers.
+
+SambaCard is just a fictional name. You can name it as you like.
+
+**Configuration**
+
+Hint: Before starting you can read a brief introduction of V3 Accounting Features. 
+
+===== SambaCard Account Type: =====
+
+We'll create a new Account Type called &quot;SambaCard Accounts&quot; by navigating to Management &gt; Accounts &gt; Account Types
+
+{{:en:sc:sambacard_tutorial-001.jpg?700|}}
+
+A new SambaCard account is created for every card we give to our customers. 
+
+We need an account to track SambaCard Sales. We'll create a new Sales Account to differ them from normal Sales.
+
+{{:en:sc:sambacard_tutorial-002.jpg?700|}}
+
+We'll create a new Account Transaction Type to be able to Add Funds to Customer Cards. We can create it by navigating to Accounts &gt; Transaction Types.
+
+{{:en:sc:sambacard_tutorial-003.jpg?700|}}
+
+We'll configure here how &quot;SambaCard Sales Account&quot; and related &quot;SambaCard Account&quot; works when we add funds to a card. This configuration means when we Add Fund to a customer card, it credits SambaCard Sales account and debits &quot;the SambaCard Account.
+
+We'll need a &quot;Add Funds&quot; button on Card accounts to add funds to cards easily. We'll do that by configuring a &quot;Transaction Document Type&quot;
+
+{{:en:sc:sambacard_tutorial-004.jpg?700|}}
+
+This configuration will create a green button labelled as &quot;Add Funds&quot; at Account Transaction Screens. We'll use it to add funds to SambaCards so to be able to display that button for SambaCard accounts we selected &quot;Account Type&quot; as &quot;SambaCard Accounts&quot;. Since it will create a SambaCard Sale Transaction we add it to the transaction list by clicking to &quot;Add Account Transaction Type&quot; link.
+
+Now we'll configure how that button will display. So we switch to &quot;Mappings&quot; screen.
+
+{{:en:sc:sambacard_tutorial-005.jpg?700|}}
+
+We'll configure here on which user accounts, departments or terminals that button will appear. * means &quot;ALL&quot; so we'll leave everything as * to make it work for everyone. That's all we need to do for Adding Funds to Customer Cards.
+ 
+==== Entity Configuration ====
+
+On this step we'll introduce a new Entity Type so SambaPOS will know we have something called &quot;SambaCard&quot; in our Restaurant and we need to select it on tickets like we select Tables, Customers or other similar entities.
+
+We do it by creating a new Entity Type. Navigate to Entities &gt; Entity Types for creating a new Entity Type
+
+{{:en:sc:sambacard_tutorial-006.jpg?700|}}
+
+  * **Name:** A descriptive name of the entity.
+  * **Entity Name:** The singular name of the Entity. It is &quot;SambaCard&quot;
+  * **Warehouse Type:** We'll leave it empty since this entity is not related with Warehouses.
+  * **Account Type:** The Account Type of these Entities. We'll choose &quot;SambaCard Accounts&quot; here.
+  * **Account Name Template:** When we create a new entity we'll also create an account linked to this Entity. For example for your &quot;Customers&quot; you can open an account or not. If they have an account they can make payments later. What we configure here is how we need to configure linked account names. Since we create them automatically SambaPOS needs to know it. SK-[Customer Name]-[Phone] means for the Customer Emre EREN with Phone  number 111222333, the account name will be SK-Emre Eren-111222333
+  * **Custom Fields:** We'll configure additional data fields we need. Do it as it appears on the screen shot. You can create new fields from &quot;right-click menu&quot;
+
+That configuration means when we create a new SambaCard it will ask us the &quot;Customer Name&quot;, &quot;Phone&quot; and the &quot;Address&quot;. It will also automatically create a new SambaCard account and link it with new SambaCard.
+
+Now we need a POS Screen to &quot;search, add, edit&quot; cards. We can do it by creating a new &quot;Entity Screen&quot;
+
+{{:en:sc:sambacard_tutorial-007.jpg?700|}}
+
+The screen name is also &quot;SambaCard&quot; and it will display as a POS button on top of the screen. Ticket Type will be Ticket and the ViewMode should be &quot;Search&quot; . We'll switch to Entity List screen.
+
+{{:en:sc:sambacard_tutorial-008.jpg?700|}}
+
+On this page we'll configure which Entity Types we'll use on this screen. Obviously it should be &quot;SambaCard Entity Type&quot;. We also need to configure how that screen displays to users.
+
+{{:en:sc:sambacard_tutorial-009.jpg?700|}}
+
+If we have multiple departments we may want to disble &quot;SambaCard Selection Screen&quot; for specific departments. For example we may want to disable it for Delivery department. I'll use default settings by adding a new mapping and leaving all values as *.
+
+{{:en:sc:sambacard_tutorial-012.jpg?700|}}
+
+To be able to use this entity on Tickets we need to assign this Entity Type to the Ticket Type we'll use. You can configure the default Ticket Type from Management &gt; Tickets &gt; Ticket Types menu.
+
+==== Payment Type Configuration ====
+
+Since we'll use SambaCard as a payment type we need to create a new custom Payment Type for it. But before creating a new payment type we need to define how this payment works. For example Cash Payment moves amount &quot;Receivables Account&quot; to &quot;Cash Account&quot;. Likewise a SambaCard Payment transaction moves amount from &quot;Receivables&quot; to &quot;SambaCard Accounts&quot;. We can configure it by defining a new Account Transaction Type.
+
+{{:en:sc:sambacard_tutorial-010.jpg?700|}}
+
+It looks like the SambaCard Sale Transaction but it does the reverse transaction. 
+
+Now we cen create the Custom Payment Type.
+
+{{:en:sc:sambacard_tutorial-011.jpg?700|}}
+
+I named it as SambaCard and assingned &quot;SambaCard Account Transaction&quot; to it.
+
+{{:en:sc:sambacard_tutorial-012_0.jpg?700|}}
+
+Mapping screen works likes the others but this time we also choose where it displays. We can show that payment button on payment screen, under ticket or both.
+
+That is all we need to do for the configuration. Let's see how it works.
+
+==== Demonstration ====
+
+
+We have an additional &quot;SambaCard&quot; button on POS screen. This works like the Customer Search screen. We'll use unique card numbers as the card names. We can search for a card number by typing it or by using a keyboard emulated magnetic card reader.
+
+{{:en:sc:sambacard_tutorial-013.jpg?700|}}
+
+There is no 55716911 Card so no results shown. We can create this card by clicking &quot;New SambaCard&quot; button.
+
+{{:en:sc:sambacard_tutorial-014.jpg?700|}}
+
+And we enter the card details. Notice how address field permits multiple lines because it configured as Wide String Field. Clicking Create Account button will create SambaCard, Create linked account and assign it to SambaCard.
+
+After creating a SambaCard we return to search screen to complete further actions.
+
+{{:en:sc:sambacard_tutorial-015.jpg?700|}}
+
+  * **Select SambaCard:** Creates a new ticket or displays if there is an open ticket linked to that card.
+  * **Edit SambaCard:** You can change details or create linked account if not created before.
+  * **New SambaCard:** Creates a new SambaCard.
+  * **No SambaCard:** When enabled it unlinks card from ticket.
+  * **Account Details:** Displays Card Transactions.
+
+Click &quot;Account Details&quot; to display Account Functions
+
+{{:en:sc:sambacard_tutorial-016.jpg?700|}}
+
+We should see the &quot;Add Funds&quot; button that we configured to add credits to SambaCard. Click it to add funds.
+
+{{:en:sc:sambacard_tutorial-017.jpg?700|}}
+
+We added $200 Credits to the Card Account. Notice how account name genated from Card Data we entered.
+
+{{:en:sc:sambacard_tutorial-018.jpg?700|}}
+
+When saved it displays our transaction.
+
+Now we can create a ticket and assign SambaCard to it.
+
+{{:en:sc:sambacard_tutorial-020.jpg?700|}}
+
+Click &quot;Select SambaCard&quot; button to display SambaCard Search screen.
+
+{{:en:sc:sambacard_tutorial-021.jpg?700|}}
+
+Type card number and click &quot;Select SambaCard&quot; (or press enter key)
+
+{{:en:sc:sambacard_tutorial-022.jpg?700|}}
+
+Card assigned to the ticket. Add some orders and click &quot;Settle&quot;
+
+SambaPOS switched to Payment Screen. You should see the SambaCard balance next to account name. Also we have the &quot;SambaCard&quot; payment button.
+
+
+{{:en:sc:sambacard_tutorial-023.jpg?700|}}
+
+Click &quot;All&quot; and settle the ticket with &quot;SambaCard&quot; payment. It should close ticket with &quot;SambaCard&quot; payment.
+
+Check the End of Day report to see if it recorded fine or not.
+
+You can also check Card Account to display or print past transactions.
+</textarea>
+<div id="wiki__editbar" class="editBar">
+<div id="size__ctl">
+</div>
+</div>
+</div></form>
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                <div class="docInfo"><bdi>en/sambacard_tutorial.txt</bdi> · Last modified: 2013/10/02 03:53 (external edit)</div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <!-- PAGE ACTIONS -->
+            <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li class="show"><a href="https://sambapos.org/wiki/doku.php/en/sambacard_tutorial?do=" title="Show page [v]" rel="nofollow" accesskey="v"><span>Show page</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5V9M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2h9m3-4v-2H6v2h12z"/></svg></a></li><li class="revs"><a href="https://sambapos.org/wiki/doku.php/en/sambacard_tutorial?do=revisions" title="Old revisions [o]" rel="nofollow" accesskey="o"><span>Old revisions</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11 7v5.11l4.71 2.79.79-1.28-4-2.37V7m0-5C8.97 2 5.91 3.92 4.27 6.77L2 4.5V11h6.5L5.75 8.25C6.96 5.73 9.5 4 12.5 4a7.5 7.5 0 0 1 7.5 7.5 7.5 7.5 0 0 1-7.5 7.5c-3.27 0-6.03-2.09-7.06-5h-2.1c1.1 4.03 4.77 7 9.16 7 5.24 0 9.5-4.25 9.5-9.5A9.5 9.5 0 0 0 12.5 2z"/></svg></a></li><li class="backlink"><a href="https://sambapos.org/wiki/doku.php/en/sambacard_tutorial?do=backlink" title="Backlinks" rel="nofollow"><span>Backlinks</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 0 0 0-4.24 2.982 2.982 0 0 0-4.24 0l-3.53 3.53a2.982 2.982 0 0 0 0 4.24m2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.43l-.47.47a2.982 2.982 0 0 0 0 4.24 2.982 2.982 0 0 0 4.24 0l3.53-3.53a2.982 2.982 0 0 0 0-4.24.973.973 0 0 1 0-1.42z"/></svg></a></li><li class="top"><a href="#dokuwiki__top" title="Back to top [t]" rel="nofollow" accesskey="t"><span>Back to top</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg></a></li>                    </ul>
+                </div>
+            </div>
+        </div><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer"><div class="pad">
+    <div class="license">Except where otherwise noted, content on this wiki is licensed under the following license: <bdi><a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license" class="urlextern">CC Attribution-Share Alike 4.0 International</a></bdi></div>
+    <div class="buttons">
+        <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license"><img src="https://sambapos.org/wiki/lib/images/license/button/cc-by-sa.png" alt="CC Attribution-Share Alike 4.0 International" /></a>        <a href="https://www.dokuwiki.org/donate" title="Donate" ><img
+            src="https://sambapos.org/wiki/lib/tpl/dokuwiki/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="https://php.net/" title="Powered by PHP" ><img
+            src="https://sambapos.org/wiki/lib/tpl/dokuwiki/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="https://sambapos.org/wiki/lib/tpl/dokuwiki/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="https://sambapos.org/wiki/lib/tpl/dokuwiki/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="https://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="https://sambapos.org/wiki/lib/tpl/dokuwiki/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div>
+</div></div><!-- /footer -->
+
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="https://sambapos.org/wiki/lib/exe/indexer.php?id=en%3Asambacard_tutorial&amp;1547095254" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div></body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/sambacard_tutorial?do=edit by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:49:37 GMT -->
+</html>

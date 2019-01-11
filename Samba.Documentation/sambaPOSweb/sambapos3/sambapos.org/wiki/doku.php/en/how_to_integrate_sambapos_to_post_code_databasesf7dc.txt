@@ -1,0 +1,28 @@
+====== How to Integrate SambaPOS to Post Code databases ======
+
+With 3.0.15 version we've introduced a Entity Custom Field Type called Query Field. This field type can read values from CVS files and update other field values with matched values. We can use it to integrate SambaPOS to PostCode databases.
+
+This screenshot is a sample configuration for Customer Entities. We have Street and City values as string values and PostCode field type is Query
+
+{{:en:how_to_integrate_sambapos_to_post_code_databases-001.jpg?700|}}
+
+As Query field configured it will load it's values from c:\test.txt file. test.txt file is a cvs formatted file.
+
+<wrap center round tip 60%>
+If your user account does not have access to c:\ root folder you can prefer placing it under [my documents]
+</wrap>
+
+
+{{:en:how_to_integrate_sambapos_to_post_code_databases-002.jpg?700|}}
+
+All values are inside double quotes and separated with comma as a standard CSV file. All rows contains three values, First one is Post Code, Second one is the street and the third one is City.
+
+So when we enter a value to the query field it tries to match a row with entered value and if it finds one it fills other fields with values. So the editing format of the PostCode field means:
+
+**PostCode=$1;Street=$2;City=$3**
+
+Post Code field value equals to first value, Street is the second and City is third.
+
+So entering **2285TM** value to PostCode field should automatically update Street and City fields as seen here
+
+{{:en:how_to_integrate_sambapos_to_post_code_databases-003.jpg?700|}}

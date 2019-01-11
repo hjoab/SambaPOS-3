@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/how_to_add_50_discount_button?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:50:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:how_to_add_50_discount_button</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,how_to_add_50_discount_button"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="how_to_add_50_discount_buttondecf.html?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="how_to_add_50_discount_button47cd.html?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="how_to_add_50_discount_buttonf7dc.txt?do=export_raw"/>
+<link rel="canonical" href="how_to_add_50_discount_button.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/how_to_add_50_discount_button"},"id":"en:how_to_add_50_discount_button","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+<!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#how_to_add_50_discount_button">How to add %50 discount button?</a></div>
+<ul class="toc">
+<li class="clear">
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#add_50_discount_action">1. Add %50 Discount action</a></div></li>
+<li class="level3"><div class="li"><a href="#cancel_discount">2. Cancel Discount</a></div></li>
+<li class="level3"><div class="li"><a href="#update_order_discount_state">3. Update Order Discount State</a></div></li>
+<li class="level3"><div class="li"><a href="#discount_button">%50 Discount Button</a></div></li>
+<li class="level3"><div class="li"><a href="#cancel_discount_button">Cancel Discount Button</a></div></li>
+<li class="level3"><div class="li"><a href="#discount_adding_rule">Discount Adding Rule</a></div></li>
+<li class="level3"><div class="li"><a href="#discount_removing_rule">Discount Removing Rule</a></div></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="how_to_add_50_discount_button">How to add %50 discount button?</h1>
+<div class="level1">
+
+<p>
+<em>Works after 3.04 Beta</em>
+</p>
+
+<p>
+<span class="wrap_hi ">You can visit <a href="adding_discounts_to_orders_with_order_tags.html" class="wikilink1" title="en:adding_discounts_to_orders_with_order_tags">Adding Discounts to Orders with Order Tags</a> documentation for alternative (and simpler) implementation.</span>
+</p>
+
+<p>
+Hello. On this tutorial we&#039;ll add %50 discount button for orders. It will also be a good demonstration of new V3 “Order States” feature. I&#039;ll start with sample database.
+</p>
+
+<p>
+We&#039;ll start by adding required actions.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;How to add %50 discount button?&quot;,&quot;hid&quot;:&quot;how_to_add_50_discount_button&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-470&quot;} -->
+<h3 class="sectionedit2" id="add_50_discount_action">1. Add %50 Discount action</h3>
+<div class="level3">
+
+<p>
+This action updates order price to half price.
+</p>
+<pre class="code">Action Type: Update Order
+Price: [=Order.Price / 2]</pre>
+
+<p>
+<a href="../../lib/exe/detail.php/en/ht/how_to_add_50_discount_button-0013e1e.html?id=en%3Ahow_to_add_50_discount_button" class="media" title="en:ht:how_to_add_50_discount_button-001.jpg"><img src="../../lib/exe/fetch.php/en/ht/how_to_add_50_discount_button-001152b.jpg_%3b?w=700&amp;tok=1341b3" class="media" alt="" width="700" /></a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;1. Add %50 Discount action&quot;,&quot;hid&quot;:&quot;add_50_discount_action&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;471-679&quot;} -->
+<h3 class="sectionedit3" id="cancel_discount">2. Cancel Discount</h3>
+<div class="level3">
+
+<p>
+This action updates Order Price to Portion Price
+</p>
+<pre class="code">Action Type: Update Order
+Portion Name: [=Order.PortionName]
+Price Tag: [=Order.PriceTag]</pre>
+
+<p>
+<a href="../../lib/exe/detail.php/en/ht/how_to_add_50_discount_button-0023e1e.html?id=en%3Ahow_to_add_50_discount_button" class="media" title="en:ht:how_to_add_50_discount_button-002.jpg"><img src="../../lib/exe/fetch.php/en/ht/how_to_add_50_discount_button-002ae92.jpg_%3b?w=700&amp;tok=8d36c2" class="media" alt="" width="700" /></a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;2. Cancel Discount&quot;,&quot;hid&quot;:&quot;cancel_discount&quot;,&quot;codeblockOffset&quot;:1,&quot;secid&quot;:3,&quot;range&quot;:&quot;680-920&quot;} -->
+<h3 class="sectionedit4" id="update_order_discount_state">3. Update Order Discount State</h3>
+<div class="level3">
+
+<p>
+This action changes discount state of the order. We&#039;ll set values from Discount rule.
+</p>
+<pre class="code">State Name: DStatus
+Group Order: 3
+Current State: [:Current Status]
+State: [:Status]
+State Order: 3
+State Value: [:Value]</pre>
+
+<p>
+Group Order and State Order values is used to sort order state listings.
+</p>
+
+<p>
+These are the needed actions. Now we&#039;ll create two Automation Commands. One of them will display “%50 Discount” button and the other button will be “Cancel Discount”
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/ht/how_to_add_50_discount_button-0033e1e.html?id=en%3Ahow_to_add_50_discount_button" class="media" title="en:ht:how_to_add_50_discount_button-003.jpg"><img src="../../lib/exe/fetch.php/en/ht/how_to_add_50_discount_button-0031ab7.jpg_%3b?w=700&amp;tok=ebeb34" class="media" alt="" width="700" /></a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;3. Update Order Discount State&quot;,&quot;hid&quot;:&quot;update_order_discount_state&quot;,&quot;codeblockOffset&quot;:2,&quot;secid&quot;:4,&quot;range&quot;:&quot;921-1483&quot;} -->
+<h3 class="sectionedit5" id="discount_button">%50 Discount Button</h3>
+<div class="level3">
+
+<p>
+Create a new Automation Command and name it as “%50 Discount”. Button Header is the button label visible to user. Choose a color if needed  and switch to Mappings page.
+</p>
+
+<p>
+Add a new mapping and
+</p>
+<ol>
+<li class="level1"><div class="li"> Change Visibility to “Order Line”</div>
+</li>
+<li class="level1"><div class="li"> Enabled states should be * so button will be enabled on all cases.</div>
+</li>
+<li class="level1"><div class="li"> We want to display this button if this discount not applied before. So the Discount State of the order should be empty. Type DStatus= there. That means DStatus value should be empty.</div>
+</li>
+</ol>
+
+<p>
+<a href="../../lib/exe/detail.php/en/ht/how_to_add_50_discount_button-0043e1e.html?id=en%3Ahow_to_add_50_discount_button" class="media" title="en:ht:how_to_add_50_discount_button-004.jpg"><img src="../../lib/exe/fetch.php/en/ht/how_to_add_50_discount_button-0046579.jpg_%3b?w=700&amp;tok=5308aa" class="media" alt="" width="700" /></a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;%50 Discount Button&quot;,&quot;hid&quot;:&quot;discount_button&quot;,&quot;codeblockOffset&quot;:3,&quot;secid&quot;:5,&quot;range&quot;:&quot;1484-2059&quot;} -->
+<h3 class="sectionedit6" id="cancel_discount_button">Cancel Discount Button</h3>
+<div class="level3">
+
+<p>
+When a discount applied we&#039;ll need another button to cancel that discount. Create a new Automation Command, name and color it as you need. Switch to Mappings Page.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/ht/how_to_add_50_discount_button-0053e1e.html?id=en%3Ahow_to_add_50_discount_button" class="media" title="en:ht:how_to_add_50_discount_button-005.jpg"><img src="../../lib/exe/fetch.php/en/ht/how_to_add_50_discount_button-005b46b.jpg_%3b?w=700&amp;tok=151fa2" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+When we apply discount we&#039;ll change Order Discount State to <strong>%50 Off</strong> value so we need to display that button when Order State is %50 Off
+</p>
+
+<p>
+You can also change User Role, Terminal and Department mappings for finer control on this feature.
+</p>
+
+<p>
+Finally we&#039;ll wire automation commands with actions. We&#039;ll need two Rules.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Cancel Discount Button&quot;,&quot;hid&quot;:&quot;cancel_discount_button&quot;,&quot;codeblockOffset&quot;:3,&quot;secid&quot;:6,&quot;range&quot;:&quot;2060-2630&quot;} -->
+<h3 class="sectionedit7" id="discount_adding_rule">Discount Adding Rule</h3>
+<div class="level3">
+
+<p>
+Create a new rule and handle Automation Command Executed Event. Select AutomationCommandName as %50 Discount and choose <strong>Add %50 Discount</strong> and <strong>Update Order Discount State</strong> actions.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/ht/how_to_add_50_discount_button-0063e1e.html?id=en%3Ahow_to_add_50_discount_button" class="media" title="en:ht:how_to_add_50_discount_button-006.jpg"><img src="../../lib/exe/fetch.php/en/ht/how_to_add_50_discount_button-006ec7a.jpg_%3b?w=700&amp;tok=cfd4e6" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Also switch to Mappings page and add a default map.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Discount Adding Rule&quot;,&quot;hid&quot;:&quot;discount_adding_rule&quot;,&quot;codeblockOffset&quot;:3,&quot;secid&quot;:7,&quot;range&quot;:&quot;2631-2957&quot;} -->
+<h3 class="sectionedit8" id="discount_removing_rule">Discount Removing Rule</h3>
+<div class="level3">
+
+<p>
+Similar to Discount Adding Rule but it handles Cancel Discount command and Update Order Discount State action clears order&#039;s discount state.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/ht/how_to_add_50_discount_button-0073e1e.html?id=en%3Ahow_to_add_50_discount_button" class="media" title="en:ht:how_to_add_50_discount_button-007.jpg"><img src="../../lib/exe/fetch.php/en/ht/how_to_add_50_discount_button-007f3f7.jpg_%3b?w=700&amp;tok=8a64e1" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+That&#039;s All !
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/ht/how_to_add_50_discount_button-0083e1e.html?id=en%3Ahow_to_add_50_discount_button" class="media" title="en:ht:how_to_add_50_discount_button-008.jpg"><img src="../../lib/exe/fetch.php/en/ht/how_to_add_50_discount_button-008cee7.jpg_%3b?w=700&amp;tok=29e3d0" class="media" alt="" width="700" /></a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Discount Removing Rule&quot;,&quot;hid&quot;:&quot;discount_removing_rule&quot;,&quot;codeblockOffset&quot;:3,&quot;secid&quot;:8,&quot;range&quot;:&quot;2958-&quot;} --></div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/how_to_add_50_discount_button?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:50:59 GMT -->
+</html>

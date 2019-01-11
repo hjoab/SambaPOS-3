@@ -1,0 +1,19 @@
+====== How to contribute source code to SambaPOS? ======
+
+We are proud to see a lot of people wants to help us on SambaPOS development. This is great because more development power means more quality, more features and quicker releases. So I decided to prepare a small guide for people who wants to add features to SambaPOS.
+
+When you change something on SambaPOS it is essential to send your changes to merge with main repo. This is essential because if we do not merge them future SambaPOS releases won't contain your changes so you'll need to code them again. 
+
+When you want to change something on SambaPOS:
+
+1. Before coding anyting create a github issue and talk about your idea with us: It will be very useful becuase these features might be already programmed, there might be a better solution or we won't be able to accept such change. Github issues is our primary communication area. Use it everytime.
+
+2. Fork SambaPOS, make your changes and create a pull request. We'll review your pull request and let you know if further steps needed. You can read more about github workflow on help.github.com. 
+
+3. Please submit your changes as frequent as possible. Normally each pull request should relate with a single issue. Do not include multiple changes in your pull request because if we can't accept one we can't accept others.
+
+4. Pull latest changes before start working on an existing fork. If your fork outdates we might not be able to merge your changes.
+
+https://github.com/emreeren/SambaPOS-3 is our github repository address.
+
+Thank you very much for your help.

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/configuring_cash_transactions_for_v2_users?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:49:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:configuring_cash_transactions_for_v2_users</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,configuring_cash_transactions_for_v2_users"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="configuring_cash_transactions_for_v2_usersdecf.html?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="configuring_cash_transactions_for_v2_users47cd.html?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="configuring_cash_transactions_for_v2_usersf7dc?do=export_raw"/>
+<link rel="canonical" href="configuring_cash_transactions_for_v2_users.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/configuring_cash_transactions_for_v2_users"},"id":"en:configuring_cash_transactions_for_v2_users","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+
+<h1 class="sectionedit1" id="configuring_cash_transactions_for_v2_users">Configuring Cash Transactions for V2 users</h1>
+<div class="level1">
+
+<p>
+V2 users will notice that we don&#039;t have cash, credit card and voucher amount entries while starting a work period. That was a great feature to input beginning cash values while starting the work period but with V3 there are some differences.
+</p>
+
+<p>
+The main reason of this difference is V3 have it&#039;s own accounting system, custom payment types support, multiple cash support and foreign currencies support. Unlike V2 cash transactions are not hard coded anymore and we have to configure transactions for our needs. On this document I&#039;ll show you how we&#039;ll do it.
+</p>
+
+<p>
+Unlike V2 cash account does not automatically close while closing a work period. Before ending work period we need to create an expense transaction for the amount we receive from cash. To be able to this we have to configure transaction types for cash.
+</p>
+
+<p>
+First I&#039;ll configure some sample accounts for using with cash transactions.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/cash/configuring_cash_transactions_for_v2_users-001469d.html?id=en%3Aconfiguring_cash_transactions_for_v2_users" class="media" title="en:cash:configuring_cash_transactions_for_v2_users-001.jpg"><img src="../../lib/exe/fetch.php/en/cash/configuring_cash_transactions_for_v2_users-001b88e.jpg_%3b?w=700&amp;tok=09cfd7" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+You can add more accounts for your business needs. General idea is if you wan&#039;t to see a total for your business transactions you&#039;ll create an account for it. For example if you need to know how much you&#039;ve paid for grocery you&#039;ll create an account for it.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/cash/configuring_cash_transactions_for_v2_users-002469d.html?id=en%3Aconfiguring_cash_transactions_for_v2_users" class="media" title="en:cash:configuring_cash_transactions_for_v2_users-002.jpg"><img src="../../lib/exe/fetch.php/en/cash/configuring_cash_transactions_for_v2_users-00217a6.jpg_%3b?w=700&amp;tok=fac19e" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+While batch creating accounts we&#039;ll define account types by starting their names with #
+</p>
+
+<p>
+Let&#039;s create “Account Transaction Types”. On SambaPOS accounting system all account transactions should have a source and a target account. First we&#039;ll configure “Income Transactions” type.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/cash/configuring_cash_transactions_for_v2_users-003469d.html?id=en%3Aconfiguring_cash_transactions_for_v2_users" class="media" title="en:cash:configuring_cash_transactions_for_v2_users-003.jpg"><img src="../../lib/exe/fetch.php/en/cash/configuring_cash_transactions_for_v2_users-0033fbb.jpg_%3b?w=700&amp;tok=47d998" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+… and Expense Transactions
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/cash/configuring_cash_transactions_for_v2_users-004469d.html?id=en%3Aconfiguring_cash_transactions_for_v2_users" class="media" title="en:cash:configuring_cash_transactions_for_v2_users-004.jpg"><img src="../../lib/exe/fetch.php/en/cash/configuring_cash_transactions_for_v2_users-0042f1c.jpg_%3b?w=700&amp;tok=86d81b" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Now SambaPOS knows how cash, income and expense accounts are mapped together. As you&#039;ve noticed we&#039;ve left Default Target Account empty on expense transaction because We&#039;ll choose it while creating the transaction.
+</p>
+
+<p>
+Now we&#039;ll create buttons for transactions. We&#039;ll configure it by creating Document Types. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/cash/configuring_cash_transactions_for_v2_users-005469d.html?id=en%3Aconfiguring_cash_transactions_for_v2_users" class="media" title="en:cash:configuring_cash_transactions_for_v2_users-005.jpg"><img src="../../lib/exe/fetch.php/en/cash/configuring_cash_transactions_for_v2_users-005f9f7.jpg_%3b?w=700&amp;tok=6d2a49" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We&#039;ll add default mapping here.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/cash/configuring_cash_transactions_for_v2_users-006469d.html?id=en%3Aconfiguring_cash_transactions_for_v2_users" class="media" title="en:cash:configuring_cash_transactions_for_v2_users-006.jpg"><img src="../../lib/exe/fetch.php/en/cash/configuring_cash_transactions_for_v2_users-00657e4.jpg_%3b?w=700&amp;tok=988025" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We&#039;ll do the same for Expense Button.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/cash/configuring_cash_transactions_for_v2_users-007469d.html?id=en%3Aconfiguring_cash_transactions_for_v2_users" class="media" title="en:cash:configuring_cash_transactions_for_v2_users-007.jpg"><img src="../../lib/exe/fetch.php/en/cash/configuring_cash_transactions_for_v2_users-00702ed.jpg_%3b?w=700&amp;tok=beb93c" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+When we finish this configuration we&#039;ll Click Accounts &gt; Cash &gt; Account Details.
+</p>
+
+<p>
+We should see two buttons for Income and Expense transactions.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/cash/configuring_cash_transactions_for_v2_users-009469d.html?id=en%3Aconfiguring_cash_transactions_for_v2_users" class="media" title="en:cash:configuring_cash_transactions_for_v2_users-009.jpg"><img src="../../lib/exe/fetch.php/en/cash/configuring_cash_transactions_for_v2_users-0090f0a.jpg_%3b?w=700&amp;tok=0c1232" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+This is how a transaction should appear.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/cash/configuring_cash_transactions_for_v2_users-008469d.html?id=en%3Aconfiguring_cash_transactions_for_v2_users" class="media" title="en:cash:configuring_cash_transactions_for_v2_users-008.jpg"><img src="../../lib/exe/fetch.php/en/cash/configuring_cash_transactions_for_v2_users-0087321.jpg_%3b?w=700&amp;tok=6893d8" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+You can change “Account Screens” configuration for displaying Income and Expense Transactions or create a new Account Screen for displaying Income and Expense account details.
+</p>
+
+<p>
+At the end of work period you can close cash by creating an Expense transaction and choose “Cash Closing” account there.
+</p>
+
+<p>
+We&#039;ll be happy if you try this and share your thoughts to help us on improving these features. Bye.
+</p>
+
+</div>
+</div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/configuring_cash_transactions_for_v2_users?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:49:48 GMT -->
+</html>

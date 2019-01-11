@@ -1,0 +1,9 @@
+====== V3.0.28 Beta ======
+
+  * Entity primary field editor mask issue fixed
+  * Searching by ticket number and ticket note on ticket explorer
+  * ''Message Server Error'' messsage renamed to ''Message Server not Connected''
+  * Batch entity editor column regeneration fixed.
+  * Printer tag support for Entity Selector Grid Automation Command.
+  * Caption wrap support for Sub Category Buttons.
+  * Sub category row count set to 1 if it is less than 1. 

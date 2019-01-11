@@ -1,0 +1,80 @@
+====== Barcode Printing Tags ======
+
+SambaPOS contains some useful tags for printing barcode through thermal printers. 
+===== 1D Barcodes =====
+
+To print 1D barcodes we use ''<BAR>'' tag. For example ''<BAR>123456789'' line in a printer template prints a 1D barcode that contains 123456789 data in it. By default <BAR> tag prints barcode in Code 128 format. Here are the supported formats
+
+^Tag^Format^Check Digit^
+|<BAR>|Code 128|No|
+|<BAR39>|Code 39|No|
+|<BAR13>|Ean 13|Yes|
+|<BAR08>|Ean 8|Yes|
+|<BAR93>|Code 93|Yes|
+|<BAR11>|Code 11|No|
+|<BAR25>|Code 25|No|
+
+===== QR Tags =====
+You can print 2D barcodes in widely used QR Tag Format. ''<QR>'' tag is used to print QR Tags. For Example ''<QR>ABCDEFG'' printer template line prints a QR Tag that have ABCDEFG data in it. 
+
+There are two settings that can be configured as <QRxy>
+  * x stands for Size. That can be a number between 1 and 9
+  * y stands for error correction. This is a number between 1 and 4. If you increase error correction there will be more chance to scan damaged barcodes. 
+  
+For example <QR64> means Size = 6 and Error Correction = High. 
+
+===== Positioning =====
+
+We can position barcodes on ticket in by using one of these methods.
+
+==== Method 1 ====
+
+We have 3 new tags to align bitmaps on ticket templates. These tags toggles bitmap printing alignment to left, center or right. 
+
+  * <el> : Enables Left Alingment.
+  * <ec> : Enables Center Alingment.
+  * <er> : Enables Right Alingment.
+
+It works like <EB> <DB> tags that we use to print bold lines. So when an alignment activated bitmaps under this tag printed by using this alignment. Text lines that does not contains any formatting tag also uses this setting. After enabling center alignment you can disable it by using one of other alingment tags.
+
+==== Method 2 ====
+
+You can insert spaces between barcode tag and barcode data to add spaces before printer bitmap. For example ''<QR>   123'' format contains three spaces between ''<QR>'' tag and ''123'' so that pushes barcode to right by three characters. 
+
+<WRAP center round tip 60%>
+You can use these positioning methods for printing logo bitmaps.
+</WRAP>
+
+===== Barcode Label Printers =====
+
+You can also use Barcode Label Printers with SambaPOS. Barcode label printers are useful if you prefer to print Free Coffee Coupon Barcodes on sticky labels. So you can apply these on brochures or pre-printed Coupon Cards. These printers are different from ticket printers. They have a sensor next to their printing head to correctly align labels. If you frequently print high amount of labels at a time using barcode label printers is a must.
+
+Barcode printers supports their own Barcode Printing Language. Widely supported barcode printing languages are ZPL, EPL and TSPL languages. Most printers supports all or some of these languages.
+
+To be able to directly send these commands to printers we have have a new printer type called ''Raw Printer''. This printer directly sends data to printer without modifying it. 
+
+I've tested this printer with a TSC Firmware installed label printer. This firmware supports TSPL language so our sample format written in TSPL. If your printer supports it you can read more about this format from [[http://www.tscprinters.com/cms/upload/download_en/TSPL_TSPL2_Programming.pdf|TSPL Programming Language Manual]]
+
+==== Sample TSPL Template ====
+
+This template prints a 40x80 label with a QR tag on the left and "SambaPOS Coffee Coupon" on the right and human readable code on right bottom side. 
+
+{{:en:promotions:barodetemplate1.jpg?700|}}
+
+=== Description ===
+
+|**SIZE 40 mm,80 mm**|
+|Page Size in milimeters.|
+|**CLS**|
+|Clears buffer |
+|**TEXT 250,400,"3",90,1,1,"SambaPOS" \\ 
+TEXT 220,400,"3",90,1,1,"Coffee Coupon" \\ 
+TEXT 150,400,"3",90,1,1,"{DATE}" \\ 
+TEXT 50,480,"3",90,1,1,"{ENTITY NAME}"**|
+|To be able to print on the label horizontally we've rotated labels by 90 degrees. So x, y coordinates are alined to rotated canvas. |
+|**QRCODE 30,80,H,10,A,0,"{ENTITY NAME}"**|
+|This code prints the QR Tag. Instead of using our <QR> tag we used label printer's internal command to print the QR Tag. |
+|**PRINT 1,1**|
+|This line tells printer to start printing.|
+
+{{:tr:yazicilar:yazicilar_05.jpg?700|}}

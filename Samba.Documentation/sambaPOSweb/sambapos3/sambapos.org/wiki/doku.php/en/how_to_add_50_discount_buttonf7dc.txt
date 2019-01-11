@@ -1,0 +1,93 @@
+====== How to add %50 discount button? ======
+
+//Works after 3.04 Beta//
+
+<wrap hi>You can visit [[en:adding_discounts_to_orders_with_order_tags|Adding Discounts to Orders with Order Tags]] documentation for alternative (and simpler) implementation.</wrap>
+
+Hello. On this tutorial we'll add %50 discount button for orders. It will also be a good demonstration of new V3 "Order States" feature. I'll start with sample database.
+
+We'll start by adding required actions.
+
+==== 1. Add %50 Discount action ====
+
+This action updates order price to half price.
+
+<code>
+Action Type: Update Order
+Price: [=Order.Price / 2]
+</code>
+
+{{:en:ht:how_to_add_50_discount_button-001.jpg?700|}}
+
+==== 2. Cancel Discount ====
+
+This action updates Order Price to Portion Price
+
+<code>
+Action Type: Update Order
+Portion Name: [=Order.PortionName]
+Price Tag: [=Order.PriceTag]
+</code>
+
+{{:en:ht:how_to_add_50_discount_button-002.jpg?700|}}
+
+==== 3. Update Order Discount State ====
+
+This action changes discount state of the order. We'll set values from Discount rule.
+
+<code>
+State Name: DStatus
+Group Order: 3
+Current State: [:Current Status]
+State: [:Status]
+State Order: 3
+State Value: [:Value]
+</code>
+
+Group Order and State Order values is used to sort order state listings.
+
+These are the needed actions. Now we'll create two Automation Commands. One of them will display "%50 Discount" button and the other button will be "Cancel Discount"
+
+{{:en:ht:how_to_add_50_discount_button-003.jpg?700|}}
+
+==== %50 Discount Button ====
+
+Create a new Automation Command and name it as "%50 Discount". Button Header is the button label visible to user. Choose a color if needed  and switch to Mappings page.
+
+Add a new mapping and
+
+  - Change Visibility to "Order Line"
+  - Enabled states should be * so button will be enabled on all cases.
+  - We want to display this button if this discount not applied before. So the Discount State of the order should be empty. Type DStatus= there. That means DStatus value should be empty.
+
+{{:en:ht:how_to_add_50_discount_button-004.jpg?700|}}
+
+==== Cancel Discount Button ====
+
+When a discount applied we'll need another button to cancel that discount. Create a new Automation Command, name and color it as you need. Switch to Mappings Page.
+
+{{:en:ht:how_to_add_50_discount_button-005.jpg?700|}}
+
+When we apply discount we'll change Order Discount State to **%50 Off** value so we need to display that button when Order State is %50 Off
+
+You can also change User Role, Terminal and Department mappings for finer control on this feature.
+
+Finally we'll wire automation commands with actions. We'll need two Rules.
+
+==== Discount Adding Rule ====
+
+Create a new rule and handle Automation Command Executed Event. Select AutomationCommandName as %50 Discount and choose **Add %50 Discount** and **Update Order Discount State** actions.
+
+{{:en:ht:how_to_add_50_discount_button-006.jpg?700|}}
+
+Also switch to Mappings page and add a default map.
+
+==== Discount Removing Rule ====
+
+Similar to Discount Adding Rule but it handles Cancel Discount command and Update Order Discount State action clears order's discount state.
+
+{{:en:ht:how_to_add_50_discount_button-007.jpg?700|}}
+
+That's All !
+
+{{:en:ht:how_to_add_50_discount_button-008.jpg?700|}}

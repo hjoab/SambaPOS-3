@@ -1,0 +1,5 @@
+====== Random Number Generator Tags ======
+^Tag ^Description^
+|{RANDOM}|Generates a Random string that contains only numbers. This tag uses actual time of day to generate the number|
+|{RANDOM:X}|Generates a Random string that contains alphanumeric uppercase characters. X is the length of the string so {RANDOM:5} generates a 5 character string|
+|{RANDOMC:X}|Same as {Random:X} tag but that appends a check digit after number. So {RANDOMC:5} generates a 6 character string. Modulo10 algorithm used to calculate the check digit.|

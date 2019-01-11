@@ -1,0 +1,124 @@
+====== Printing Coupons ======
+
+If you’ve noticed every coupon sales generates a single coupon entity. If we need to generate 5 coupons we have to enter 5 different order lines. However we should be able to generate multiple coupons with a single Coupon Sale. So our first step will be improving Coupon generation for multiple Coupons. 
+
+Selling coupons is an important business. If you have corporate connections you can sell large amounts of coupons at once with a discounted price. So coupon printing is something that should be handled nicely. We can print single coupons for personal promotions but for batch coupon generation we may need different solutions. We’ll discuss our options under this chapter. 
+
+===== Generating Multiple Coupons =====
+
+You’ll remember we’re generating coupon entities when a ticket is paid. We created this rule for this task.
+
+{{:en:promotions:coupons34.jpg?700|}}
+
+When an order state changes to ''Coupon Paid'' we’re executing Coupon Creating actions. 
+
+SambaPOS Rule System have a ''Value Looper'' feature that can be used to trigger multiple events. For generating multiple coupons we’ll read order quantity, pass it as a parameter to value looper and let it create multiple coupons. Let’s do it. 
+
+First we need to create the ''Loop Values'' action.
+
+{{:en:promotions:coupons35.jpg?700|}}
+
+When called Loop Values action triggers ''Value Looped'' event multiple times. Values parameter used to configure the loop. We can split values with comma and define ranges with brackets.
+
+  * If Values parameter is 100 it triggers Value Looped event once and passes 100 value to the event. 
+  * If Values parameter is 100,150 it triggers Value Looped event two times and passes 100 and 150 values as parameters.
+  * If Values is (100) it triggers Value Looped event 100 times and passes each value to the event.
+  * If value is a range like (50-100) it works from 50 to 100. 
+  * If value is a file path it loads lines form file and executes them one by one.
+
+So we need to pass Quantity in brackets. To be able to generate 5 coupons ''Values'' Parameter should be (5). For this reason we’ll define [:Quantity] parameter in brackets. 
+
+Now we’ll create “Value Looped” Rule.
+
+{{:en:promotions:coupons36.jpg?700|}}
+
+This rule does just the same thing as ''Create Coupon when Coupon Paid'' rule. It creates a coupon and update it’s Menu Item name. 
+
+On next step we’ll modify ''Create Coupon when Coupon Paid'' rule to trigger ''Generate Coupons'' action instead of generating coupons. Edit this rule, remove existing actions and add Generate Coupons action.
+
+{{:en:promotions:coupons37.jpg?700|}}
+
+After this modification if we sell 5 Coffee Coupons on a single order line it should generate 5 coupons. 
+
+We’ve implemented multiple coupon generation. Now we need to think about how we’ll print them. Let’s start by creating a template for printing coupons. 
+
+===== Preparing a Printer Template for Coupons =====
+
+Coupons are entities so we can use entity printing tags in our template. Available tags are:
+
+^Tag^Description^
+^{ENTITY NAME}|We’ll use this tag to print coupon numbers|
+^{ENTITY BALANCE}|Prints account balance|
+^{ENTITY DATA:X}|We’ll use this tag to print custom field values|
+^{ENTITY STATE:X}|Prints entity state|
+
+So a sample printer template can be something like that.
+
+{{:en:promotions:coupons38.jpg?700|}}
+
+We’ll use this template when we need an immediate coupon print from our thermal ticket printer. <QR> tag is a new tag for V3 version. You can read more about [[Barcode Printing Tags]].
+
+The printer template prints this coupon.
+
+{{:en:promotions:coupons39.jpg?700|}}
+
+￼Now we need to decide when we’ll trigger this print. If you want to print it as soon as we generate the coupon we can create a ''Print Entity'' action and execute it as soon as we create Coupon. So let’s see how we can do it.
+
+===== Printing Coupons =====
+
+We’ll create a ''Print Entity'' action.
+
+{{:en:promotions:coupons40.jpg?700|}}
+
+We’ll choose Printer and the Printer Template we recently created. We can pass Coupon Number so this action can load and print the entity but since we’ll execute it just after “Create Entity” action passing this parameter is not required. All entity related actions can locate new created entity when executed after “Create Entity” action. 
+
+Now we’ll modify ''Batch Generate Coupons'' Rule and add this action there.
+
+{{:en:promotions:coupons41.jpg?700|}}
+
+So when we create a new Coupon we’ll also print that.
+
+That will work fine when we generate few coupons but on some cases we’ll need to generate large amounts of coupons for professional printing or brochures. We can also sell hundreds of coupons at once if we have business connections with large corporations. So instead of printing them we can generate a text file that contains new generated coupon codes. 
+
+===== Saving Coupon numbers to a Text File =====
+
+Our first step will be generating a file name. We’ll use ''Update Program Setting'' action.
+
+{{:en:promotions:coupons42.jpg?700|}}
+
+File name will be a random number under Coupons folder. The {RANDOM} tag generates a string based on current date and time so we can find it easily. The file will be generated under [MY Documents]\SambaPOS3\Coupons folder. Please notice we used / character instead of \ character while defining the file path. 
+
+This action Stores generated File Path under ''Coupon File'' setting so we can read it with {:Coupon File} tag. We can read all stored setting values with {:X} syntax.
+
+We’ll execute this action just before we generate coupons so every batch coupons will stored another file. We’ll modify ''Create Coupon when Coupon Paid'' Rule to call this action.
+
+{{:en:promotions:coupons43.jpg?700|}}
+
+Click ''Select Actions'' and add ''Create new file name'' action just before ''Generate Coupons'' action. You can change sort order of actions by dragging them on ''Select Actions'' window.
+
+You’ll remember ''Generate Coupons'' action is a value looper that generates coupon entities. We’ll add lines to the text file in “Value Looped” event but before doing it we’ll create another action to add lines to text file.
+
+We’ll create another action to append a line into the text file. 
+
+{{:en:promotions:coupons44.jpg?700|}}
+
+''Add Line to Text File'' action reads stored file path with {:Coupon File} and adds a line that contains a text defined with Text parameter. We configured Text parameter as a variable so we can send coupon number to this action. 
+
+This action is also useful to generate log files. For example you can store every logins and logouts. 
+
+Instead of executing Coupon Printing action we’ll call this action. So let’s modify “Batch Generate Coupons” rule. 
+
+{{:en:promotions:coupons45.jpg?700|}}
+
+We replaced ''Print Coupon'' action with ''Add Coupon to File''. We’ll configure line format here. I want to print product name and coupon number. You can change it to add only coupon numbers. 
+
+Now switch to POS screen and sell 50 coffee coupons and settle ticket to test if file generates correctly or not. 
+
+{{:en:promotions:coupons46.jpg?700|}}
+
+I have all coupon numbers that generated on last batch in a single text file. Since we used current time as file names all new sales will generate new text file. We can use this file to print brochures, barcode tags or e-mail to customer. 
+
+We can print coupons or store them in a text file. On next chapter we’ll see how to create Buy 6 Get 1 Free promotions. At the end of that chapter we’ll print promotion coupons immediately and when we sell coupons they’ll be stored in a text file. If you frequently sell small numbers of coupons and want to print them immediately you can switch back to immediate printing and create a specific ticket type called “Batch Coupon Sale”. So when you sell coupons through regular ticket it immediately prints coupons but when you sell through “Batch Coupon Sale” ticket it can create text file. Possibilities are endless...
+
+  * Back to [[Promotion Coupons Documentation]]
+  * Next Topic > [[Tracking Coffee Purchases of Loyal Customers]]

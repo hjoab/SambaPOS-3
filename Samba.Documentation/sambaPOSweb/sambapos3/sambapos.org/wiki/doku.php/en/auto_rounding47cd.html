@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/auto_rounding?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:51:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:auto_rounding</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,auto_rounding"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="auto_roundingdecf.html?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="auto_rounding47cd.html?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="auto_roundingf7dc.txt?do=export_raw"/>
+<link rel="canonical" href="auto_rounding.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/auto_rounding"},"id":"en:auto_rounding","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+
+<h1 class="sectionedit1" id="auto_rounding">Auto Rounding</h1>
+<div class="level1">
+
+<p>
+You can auto round ticket totals by creating a calculation type and a calculation selector.
+</p>
+
+<p>
+First we&#039;ll create a Calculation Type. Add new Calculation Type from <code>Management &gt; Settings &gt; Calculation Types</code>.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/tickets/calculations/autoround140f0.html?id=en%3Aauto_rounding" class="media" title="en:tickets:calculations:autoround1.jpg"><img src="../../lib/exe/fetch.php/en/tickets/calculations/autoround1f4a5.jpg_%3b?w=700&amp;tok=de555d" class="media" alt="" width="700" /></a>
+</p>
+<div class="table sectionedit2"><table class="inline">
+	<tr class="row0">
+		<td class="col0">Template Name</td><td class="col1">This is how calcuation appears under ticket. I&#039;ve named it as <code>Auto Round</code></td>
+	</tr>
+	<tr class="row1">
+		<td class="col0">Account Transaction Type</td><td class="col1">Rounding Amount should appear on accounting system. We&#039;ll use pre-build <code>Rounding Transaction</code> type.</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0">Calculation Method</td><td class="col1">Round Ticket Total</td>
+	</tr>
+	<tr class="row3">
+		<td class="col0">Rate or Amount</td><td class="col1">0.05 because we want to round by 5 cents</td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table&quot;,&quot;secid&quot;:2,&quot;range&quot;:&quot;290-610&quot;} -->
+<p>
+Save it and create a Calculation Selector. Calcuation Selectors are useful to assign Calculation Types to tickets.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/tickets/calculations/autoround240f0.html?id=en%3Aauto_rounding" class="media" title="en:tickets:calculations:autoround2.jpg"><img src="../../lib/exe/fetch.php/en/tickets/calculations/autoround2c62a.jpg_%3b?w=700&amp;tok=87c81a" class="media" alt="" width="700" /></a>
+</p>
+<div class="table sectionedit3"><table class="inline">
+	<tr class="row0">
+		<td class="col0">Name</td><td class="col1">We&#039;ll give a name to identify this calculation selector. Name it as <code>Auto Rounding</code>.</td>
+	</tr>
+	<tr class="row1">
+		<td class="col0">Button Header</td><td class="col1">&lt;empty&gt;. We need to leave it empty since we want to auto calculate rounding. If we enter a Button Header it will display a button and calculates when clicked. Useful for calculations like Discounts.</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0">Calculation Types</td><td class="col1">I have to add <code>Auto Round</code> calculation type to the list.</td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table1&quot;,&quot;secid&quot;:3,&quot;range&quot;:&quot;778-1165&quot;} -->
+<p>
+Now switch to Mappings screen and map this calculation selector to a ticket type. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/tickets/calculations/autoround340f0.html?id=en%3Aauto_rounding" class="media" title="en:tickets:calculations:autoround3.jpg"><img src="../../lib/exe/fetch.php/en/tickets/calculations/autoround3b803.jpg_%3b?w=700&amp;tok=2e43e7" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+* means all. If you want to enable auto rounding for a specific ticket type you can choose it&#039;s name from <code>Ticket Type</code> column.
+</p>
+
+</div>
+</div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/auto_rounding?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:51:25 GMT -->
+</html>

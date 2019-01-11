@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/adding_refund_button_for_cash?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:49:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:adding_refund_button_for_cash</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,adding_refund_button_for_cash"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="adding_refund_button_for_cashdecf.html?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="adding_refund_button_for_cash47cd.html?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="adding_refund_button_for_cashf7dc.txt?do=export_raw"/>
+<link rel="canonical" href="adding_refund_button_for_cash.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/adding_refund_button_for_cash"},"id":"en:adding_refund_button_for_cash","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+
+<h1 class="sectionedit1" id="adding_refund_button_for_cash">Adding Refund Button for Cash</h1>
+<div class="level1">
+
+<p>
+Sometimes we need to return payments back to customer. On this documentation we&#039;ll add <strong>Refund</strong> button to Cash account sceen.
+</p>
+
+<p>
+We&#039;ll start by creating an account for Cash Refunds so we can track its amount. I named it as “Cash Refund” and selected Account Type as “Refund Accounts” that I&#039;ve recently created.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/refund/adding_refund_button_for_cash-001d6ef.html?id=en%3Aadding_refund_button_for_cash" class="media" title="en:refund:adding_refund_button_for_cash-001.jpg"><img src="../../lib/exe/fetch.php/en/refund/adding_refund_button_for_cash-0018fe5.jpg_%3b?w=700&amp;tok=2e254e" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Second step will be telling SambaPOS how Cash Refund account works. When we refund cash it will decrease “Cash” account amount and increase “Cash Refund” account amount. We can configure it by creating a new account transaction type and configure it as shown at the screen shot.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/refund/adding_refund_button_for_cash-002d6ef.html?id=en%3Aadding_refund_button_for_cash" class="media" title="en:refund:adding_refund_button_for_cash-002.jpg"><img src="../../lib/exe/fetch.php/en/refund/adding_refund_button_for_cash-002715a.jpg_%3b?w=700&amp;tok=8b3126" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Finally we&#039;ll need a button on cash screen for that transaction. We can do it by adding an Account Transaction Document Type.
+</p>
+
+<p>
+After setting up visual parameters we&#039;ll set Account Type as “Payment Accounts” and we&#039;ll add “Refund Cash Transaction” to the Transaction Types list. That means when we click “Refund Button” it will create “Refund Cash Transaction”
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/refund/adding_refund_button_for_cash-003d6ef.html?id=en%3Aadding_refund_button_for_cash" class="media" title="en:refund:adding_refund_button_for_cash-003.jpg"><img src="../../lib/exe/fetch.php/en/refund/adding_refund_button_for_cash-0034d4b.jpg_%3b?w=700&amp;tok=897ad4" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We&#039;ll switch to Mappings page to map this document type to admin user role. Click Save to save your changes.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/refund/adding_refund_button_for_cash-004d6ef.html?id=en%3Aadding_refund_button_for_cash" class="media" title="en:refund:adding_refund_button_for_cash-004.jpg"><img src="../../lib/exe/fetch.php/en/refund/adding_refund_button_for_cash-004a4cc.jpg_%3b?w=700&amp;tok=67522f" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+This is how my accounts screen looks like. I&#039;ll click Cash and Click “Display Details”
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/refund/adding_refund_button_for_cash-005d6ef.html?id=en%3Aadding_refund_button_for_cash" class="media" title="en:refund:adding_refund_button_for_cash-005.jpg"><img src="../../lib/exe/fetch.php/en/refund/adding_refund_button_for_cash-005f297.jpg_%3b?w=700&amp;tok=7a0c69" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We have a “Refund” Button. Click it to create a transaction.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/refund/adding_refund_button_for_cash-006d6ef.html?id=en%3Aadding_refund_button_for_cash" class="media" title="en:refund:adding_refund_button_for_cash-006.jpg"><img src="../../lib/exe/fetch.php/en/refund/adding_refund_button_for_cash-0067aa8.jpg_%3b?w=700&amp;tok=3ce953" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+… and refund $5.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/refund/adding_refund_button_for_cash-007d6ef.html?id=en%3Aadding_refund_button_for_cash" class="media" title="en:refund:adding_refund_button_for_cash-007.jpg"><img src="../../lib/exe/fetch.php/en/refund/adding_refund_button_for_cash-0073d3a.jpg_%3b?w=700&amp;tok=6e34d5" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Cash balance decreased to 9.72 as a result.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/refund/adding_refund_button_for_cash-008d6ef.html?id=en%3Aadding_refund_button_for_cash" class="media" title="en:refund:adding_refund_button_for_cash-008.jpg"><img src="../../lib/exe/fetch.php/en/refund/adding_refund_button_for_cash-00893df.jpg_%3b?w=700&amp;tok=24dd3d" class="media" alt="" width="700" /></a>
+</p>
+
+</div>
+</div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/adding_refund_button_for_cash?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:49:42 GMT -->
+</html>

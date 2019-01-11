@@ -1,0 +1,154 @@
+====== Redeeming Coupons ======
+
+When a coupon number is typed or a coupon QR Tag scanned, SambaPOS will find related coupon entity and assign it to the ticket. That will automatically create a gift order for the product associated with coupon. As ticket submitted we’ll mark coupon as Redeemed to prevent multiple uses of coupons. 
+
+We’ll also solve another security issue by updating coupon redeem status as ''In Ticket'' as soon as it scanned. So multiple scans will not generate multiple gift lines. In fact we can do the same thing by directly updating coupon status as redeemed but we want to allow operators to cancel a coupon scan before submitting it. 
+
+===== Finding Coupons =====
+
+We need an action to find and assign coupons to ticket. Since coupons are entities we can use “Change Ticket Entity” action to assign a coupon to the ticket.
+
+{{:en:promotions:coupons16.jpg?700|}}
+
+''Can Create Ticket'' parameter is useful for Fast Food screens. If there is no active ticket displayed when this action is called it creates a new ticket. While using this action we’ll generally find entities by their name. We can use both ''Entity Search Value'' or ''Entity Name'' parameters but they have different effects. Searching by Entity Name will retrieve entity from cache so you won’t have latest changes on entity data. It is useful to load rarely changing entities like Tables. Since we always need updated entity data we’ll use Entity Search Value. 
+
+We’ll use number pad editor to type or scan coupon numbers. When we enter a number there ''Number Pad Value Entered'' Event executes so we can create a rule for that event to read which coupon is scanned.
+
+{{:en:promotions:coupons17.jpg?700|}}
+
+We can read scanned numbers with “NumberpadValue” parameter but at first we should check if it is a valid coupon code. We’ll create two custom constraints to check if scanned number starts with CP prefix and length equals to 11 digits. Notice how we changed Execute If setting to ''Matches All'' to force rule to validate all constraints. Don’t forget adding default mapping before saving the rule.
+
+Now when we scan a valid coupon number it should create a new ticket with Coupon number displayed on header. 
+
+On previous chapter we’ve created a Coupon numbered as ''CP8GS-DZC-38S''. We’ll type it manually for testing if our rule works or not. Normally we’ll scan it from a barcode or QR Tag.
+
+{{:en:promotions:coupons18.jpg?700|}}
+
+This is a Fast Food screen so there is no active ticket. Change Ticket Entity action should create a ticket before assigning coupon to the ticket. 
+Now you can hit Enter. 
+
+{{:en:promotions:coupons19.jpg?700|}}
+
+New ticket created with Coupon Number displayed on header. That means our action and rule works fine.
+
+<WRAP center round tip 60%>
+Don’t worry if Coupon number not appeared on header. Because of an optimization to avoid unnecessary refreshes sometimes that happens. We can execute “Display Ticket” action to force itself to refresh but on next steps we’ll copy coupon number to order line and remove it from ticket header. So it is not needed. If you want to see updated header just add an order and cancel it.
+</WRAP>
+ 
+Close this ticket without adding any item in it. On next step we’ll create another action to add Free Coffee into Ticket when a coupon scanned. 
+
+===== Adding Free Products Into Ticket =====
+
+We can use ''Add Order'' action to add orders into a ticket.
+
+{{:en:promotions:coupons20.jpg?700|}}
+
+Menu Item Name parameter contains a variable called [:Product Name]. We’ll assign this value from Coupon. We’ll also update GStatus state as free. GStatus is an internal order state group for Gift and Void states. Instead of marking it as Gift we’ll mark it as ''Free'' so Gift and Cancel Gift buttons will not work for this order. Decrease Inventory parameter is ''True'' so it will decrease our inventory. Calculate Price parameter is ''False'' so this order will display the price but won’t change ticket total like Gift orders.
+
+You can consider enabling Locked parameter to disable canceling this order. For this tutorial we’ll permit canceling coupon orders before submitting. 
+
+We’ll create a rule for “Ticket Entity Changed” event to execute this action when a Coupon scanned. 
+
+{{:en:promotions:coupons21.jpg?700|}}
+
+When any ticket entity changes “Ticket Entity Changed” event fires. First we need to create constraints to be able to understand selected entity is a Coupon. So ''Entity Type Name'' should be ''Coupons'' and ''New Entity Name'' should be anything different than *. This is a change event so it executes when we remove Entities form ticket. If entity name equals *  that means Coupon Removed from ticket. 
+
+We won’t execute Add Gift Order action if coupon is already redeemed. So on third line of the constraint we are checking Redeem status. 
+
+If selected entity is a Coupon we’ll execute “Add Gift Order” action. We’ll read product name from Coupon’s Menu Item Name with {ENTITY DATA:Coupon:Menu Item Name} tag.
+
+Now let’s test again what will happen when we enter a coupon code.
+
+{{:en:promotions:coupons22.jpg?700|}}
+
+That worked fine. When we scan a coupon number it adds a free coffee into the ticket.
+
+On next step we have to solve another issue. We’re displaying coupon number on ticket header but we’ll loose this information when we scan another coupon. You can forbid multiple coupons on a single ticket but for this example we’ll allow it. To be able to support multiple coupons on a single ticket we need to store coupon numbers on order lines. 
+
+===== Storing Coupon Data on Order Lines =====
+
+We’ll create a ''Update Order State'' action to store Coupon Numbers on order.
+
+{{:en:promotions:coupons23.jpg?700|}}
+
+This action updates ''Coupon Number'' state of the order. We’ll call this action from last ''Ticket Entity Changed'' rule we’ve created. So after adding free coffee order it will also update coupon number of the order line.
+
+So we can edit ''Add Free Product when Coupon Loaded'' rule and add this action after ''Add Gift Order'' action.
+
+{{:en:promotions:coupons24.jpg?700|}}
+
+As shown on the screenshot we'll type ''{ENTITY NAME:Coupon}'' tag to read current Coupon's number from ticket entity and pass it to ''Coupon Number'' parameter of the action.
+
+After updating Coupon Number we can change Coupon’s Redeemed status as ''In Ticket'' so multiple scanning of a coupon number won’t generate multiple gifts. Since we’ll immediately update this data, scanning coupon from other terminals will also not work. This is a big issue for most POS software but we can solve it. We’ll call ''Update Coupon Redeem Status'' action to update Coupon. 
+
+{{:en:promotions:coupons25.jpg?700|}}
+
+To be able to update coupon correctly we’ll set Coupon Number variable with ''{ENTITY NAME:Coupon}'' tag. We’ll also use “In Ticket” as Value. 
+
+We don’t need storing Coupon Number on ticket header anymore because we are storing it on order line. We can call ''Load Coupon to Ticket'' action to remove coupon from ticket header. It will also release coupon so since coupon entity is not assigned to a ticket we can delete redeemed coupons to keep your coupon list fresh and clean. 
+
+{{:en:promotions:coupons26.jpg?700|}}
+
+We’ll enter * as Coupon number so it will remove Coupon from ticket header. Since this action changes Ticket Entity it will execute ''Ticket Entity Changed'' event again but we already prevented it from executing by adding a constraint for new entity name parameter and checking if it is different than *. 
+
+We can go back to POS screen and test what will happen after these changes. 
+Enter the Coupon Number again and hit enter.
+
+{{:en:promotions:coupons27.jpg?700|}}
+
+Perfect! We can see coupon number on order line and there is nothing on ticket header. Also typing same coupon number should not create additional orders because Coupon Redeem Status is ''In Ticket''. When you click on order line you shouldn’t see ''Gift'' and ''Void'' buttons. 
+
+User can submit this order or cancel it by clicking on order line and clicking Cancel. We permit that because we give a chance to customer to change her mind before submitting ticket. Maybe she thought this is a free Breakfast coupon :) 
+
+On next step we’ll handle both cases. Cancel this order now and change Coupon Redeem Status by editing Coupon entity and changing Redeemed Field value to No.
+
+===== Canceling and Submitting Promotion Orders =====
+
+To be able to understand an order line is cancelled before submitted to kitchen we’ll handle ''Order Cancelled'' event.
+
+{{:en:promotions:coupons28.jpg?700|}}
+
+We’ll check if a coupon number attached to order that is being cancelled. We can use ''{ORDER STATE:Coupon Number}'' tag to read assigned Coupon Number to the order. If it is not null we can update Redeem Status of the Coupon to No. So we can use that coupon again later. 
+
+Now we’ll Change Redeem Status of Coupon to Yes when order submitted. We’ll create another rule for ''Order State Updated'' event. 
+
+{{:en:promotions:coupons29.jpg?700|}}
+
+Like we did on previous rule we’ll check if there is a coupon number attached to the order and new state of the order is ''Submitted''. If so we’ll update Coupon as Redeemed by changing Redeemed field value to ''Yes'' and this coupon can’t be used again.
+
+Now test how it works. Scan a coupon number, scan it again, cancel it, scan it again and submit it. Create a new ticket and scan it again. It should work fine for all cases. 
+
+Our Coupon Management Infrastructure is almost ready. You’ll notice SambaPOS generates no response when Coupon is already redeemed or scanned. On last step we’ll generate messages to inform operator. 
+
+===== Creating Operator Feedbacks =====
+
+We’ll show a message to let operator understand why coupon code is not working. Let's create a “Show Message” action. 
+
+{{:en:promotions:coupons30.jpg?700|}}
+
+When we call this action it displays a modal message to user. We’ll set message text from rule so we’ll configure Message parameter as a variable. [:Message] syntax creates a new value named as message. 
+
+Now we’ll create another rule to check Coupon Status and display a message if it is already scanned. We’ll use “Ticket Entity Changed” rule for this. 
+
+{{:en:promotions:coupons31.jpg?700|}}
+
+When Loaded coupon Redeem Status is ''In Ticket'' we’ll display a message. Before displaying the message we’ll also remove coupon from ticket header. 
+
+We need another rule to test if Coupon is already Redeemed. I’ll clone this rule and change related values.
+
+{{:en:promotions:coupons32.jpg?700|}}
+
+On Custom Constraints section we’re checking if selected entity is a Coupon and if yes we’re checking it’s status. If it is ''Yes'' we’ll display a message to warn user. 
+
+Now test it to see how it works. Since our previous coupon is already redeemed change it’s Redeemed value to No or create another one by selling a coupon. 
+
+You can test these cases:
+  - When we double scan a coupon code in a ticket we should see “Coupon already scanned” message.
+  - When we submit a coupon and scan it again it should display “Coupon already redeemed” message.
+
+{{:en:promotions:coupons33.jpg?700|}}
+
+Our Coupon Management System is ready. Now we can sell and give free items with coupons. 
+
+  * Back to [[Promotion Coupons Documentation]]
+  * Next Topic > [[Printing Coupons]]

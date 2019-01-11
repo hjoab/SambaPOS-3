@@ -1,0 +1,26 @@
+====== Auto Rounding ======
+
+You can auto round ticket totals by creating a calculation type and a calculation selector.
+
+First we'll create a Calculation Type. Add new Calculation Type from ''Management > Settings > Calculation Types''.
+
+{{:en:tickets:calculations:autoround1.jpg?700|}}
+
+|Template Name|This is how calcuation appears under ticket. I've named it as ''Auto Round''|
+|Account Transaction Type|Rounding Amount should appear on accounting system. We'll use pre-build ''Rounding Transaction'' type.|
+|Calculation Method|Round Ticket Total|
+|Rate or Amount|0.05 because we want to round by 5 cents|
+
+Save it and create a Calculation Selector. Calcuation Selectors are useful to assign Calculation Types to tickets.
+
+{{:en:tickets:calculations:autoround2.jpg?700|}}
+
+|Name|We'll give a name to identify this calculation selector. Name it as ''Auto Rounding''.|
+|Button Header|<empty>. We need to leave it empty since we want to auto calculate rounding. If we enter a Button Header it will display a button and calculates when clicked. Useful for calculations like Discounts.|
+|Calculation Types|I have to add ''Auto Round'' calculation type to the list.|
+
+Now switch to Mappings screen and map this calculation selector to a ticket type. 
+
+{{:en:tickets:calculations:autoround3.jpg?700|}}
+
+* means all. If you want to enable auto rounding for a specific ticket type you can choose it's name from ''Ticket Type'' column.

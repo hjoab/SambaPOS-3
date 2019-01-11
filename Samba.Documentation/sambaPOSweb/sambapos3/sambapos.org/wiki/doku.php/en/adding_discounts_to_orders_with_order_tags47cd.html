@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/adding_discounts_to_orders_with_order_tags?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:49:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:adding_discounts_to_orders_with_order_tags</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,adding_discounts_to_orders_with_order_tags"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="adding_discounts_to_orders_with_order_tagsdecf.html?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="adding_discounts_to_orders_with_order_tags47cd.html?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="adding_discounts_to_orders_with_order_tagsf7dc.txt?do=export_raw"/>
+<link rel="canonical" href="adding_discounts_to_orders_with_order_tags.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/adding_discounts_to_orders_with_order_tags"},"id":"en:adding_discounts_to_orders_with_order_tags","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+
+<h1 class="sectionedit1" id="adding_discounts_to_orders_with_order_tags">Adding Discounts to Orders with Order Tags</h1>
+<div class="level1">
+
+<p>
+Hello. I&#039;ve previously created a documentation about adding order based discounts. In some cases that does not works fine so I decided to create another tutorial. This time we&#039;ll use order tags to add discounts to orders.
+</p>
+
+<p>
+We&#039;ll start by creating Discount order tag. Navigate to Management &gt; Tickets &gt; Order Tags and create a new Order tag named as <strong>Discount</strong>. I&#039;ve checked “Add Tag Price to Order Price” setting to be able to see discounted price on ticket.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/1/adding_discounts_to_orders_with_order_tags-001d535.html?id=en%3Aadding_discounts_to_orders_with_order_tags" class="media" title="en:1:adding_discounts_to_orders_with_order_tags-001.jpg"><img src="../../lib/exe/fetch.php/en/1/adding_discounts_to_orders_with_order_tags-001ab83.jpg_%3b?w=700&amp;tok=854f04" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+I&#039;ll add a single tag named as %50 Discount. Since I&#039;ll enable this tag by actions I don&#039;t map this order tag group to a button.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/1/adding_discounts_to_orders_with_order_tags-002d535.html?id=en%3Aadding_discounts_to_orders_with_order_tags" class="media" title="en:1:adding_discounts_to_orders_with_order_tags-002.jpg"><img src="../../lib/exe/fetch.php/en/1/adding_discounts_to_orders_with_order_tags-002f7f8.jpg_%3b?w=700&amp;tok=231ce9" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+On the next step we&#039;ll create an Automation Command. Switch to Automation tab, click Automation Commands and add a new Automation Command. Name it as it shown in the screen shot. I&#039;ve selected blue color for this button.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/1/adding_discounts_to_orders_with_order_tags-003d535.html?id=en%3Aadding_discounts_to_orders_with_order_tags" class="media" title="en:1:adding_discounts_to_orders_with_order_tags-003.jpg"><img src="../../lib/exe/fetch.php/en/1/adding_discounts_to_orders_with_order_tags-0038b97.jpg_%3b?w=700&amp;tok=659ba7" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Since we&#039;ll use this automation command we&#039;ll map it to Order Lines we need a mapping. Switch  to Mappings page, add new mapping line and change Visibility to “Order Line”. Click Save to store this command.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/1/adding_discounts_to_orders_with_order_tags-004d535.html?id=en%3Aadding_discounts_to_orders_with_order_tags" class="media" title="en:1:adding_discounts_to_orders_with_order_tags-004.jpg"><img src="../../lib/exe/fetch.php/en/1/adding_discounts_to_orders_with_order_tags-00439c3.jpg_%3b?w=700&amp;tok=386434" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We&#039;ll need an action to calculate discount and tag the order. Navigate to Automation &gt; Actions List and create new Action. Action Type will be <strong>Tag Order</strong> and Order Tag Name will be <strong>%50 Discount</strong>. Be sure to type Order Tag Value as you&#039;ve named sub tag. It is case sensistive. We&#039;ll use an expression to calculate discount price. Since we need to decrease product price we&#039;ll create negative priced tag. <strong>[=0-(Order.Model.GetVisiblePrice()*0.5)]</strong> expression will calculate %50 of the Visible Price and convert it to a negative value by subtracting it from zero. Visible Price means the price of the product plus other order tag amounts.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/1/adding_discounts_to_orders_with_order_tags-005d535.html?id=en%3Aadding_discounts_to_orders_with_order_tags" class="media" title="en:1:adding_discounts_to_orders_with_order_tags-005.jpg"><img src="../../lib/exe/fetch.php/en/1/adding_discounts_to_orders_with_order_tags-005926a.jpg_%3b?w=700&amp;tok=753390" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Finally we&#039;ll need a rule to map discount action to the automation command button. Set Event Name as “Automation Command Executed” and add related discount action as shown on the screen shot.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/1/adding_discounts_to_orders_with_order_tags-006d535.html?id=en%3Aadding_discounts_to_orders_with_order_tags" class="media" title="en:1:adding_discounts_to_orders_with_order_tags-006.jpg"><img src="../../lib/exe/fetch.php/en/1/adding_discounts_to_orders_with_order_tags-00695f4.jpg_%3b?w=700&amp;tok=27f1cc" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We&#039;ll need a default mapping to enable this rule. Switch to Mappings Page and add a mapping line. Click Save to save your changes.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/1/adding_discounts_to_orders_with_order_tags-007d535.html?id=en%3Aadding_discounts_to_orders_with_order_tags" class="media" title="en:1:adding_discounts_to_orders_with_order_tags-007.jpg"><img src="../../lib/exe/fetch.php/en/1/adding_discounts_to_orders_with_order_tags-007d743.jpg_%3b?w=700&amp;tok=f6da32" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+When we click on an order we should see the blue %50 discount button. When clicked it will calculate discount amount and tag order. To cancel discount you can click that button again. If there is already a discount tag it will remove that.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/1/adding_discounts_to_orders_with_order_tags-008d535.html?id=en%3Aadding_discounts_to_orders_with_order_tags" class="media" title="en:1:adding_discounts_to_orders_with_order_tags-008.jpg"><img src="../../lib/exe/fetch.php/en/1/adding_discounts_to_orders_with_order_tags-0083840.jpg_%3b?w=700&amp;tok=6c06ea" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+There are lots of possibilities with SambaPOS. Let us know if it works fine for you or not. You can find a link to sample database below for testing this configuration. Bye.
+</p>
+
+<p>
+Notes:
+</p>
+<!-- EDIT{&quot;target&quot;:&quot;plugin_wrap_start&quot;,&quot;secid&quot;:2,&quot;range&quot;:&quot;0-&quot;} --><div class="wrap_center wrap_round wrap_download plugin_wrap" style="width: 75%;">
+<p>
+Sample Database File <a href="https://sambapos.org/wiki/lib/exe/fetch.php/tr/database/sambapos3_adoot.sdf" class="media mediafile mf_sdf" title="tr:database:sambapos3_adoot.sdf (2.1 MB)">Download it.</a>
+</p>
+</div><!-- EDIT{&quot;target&quot;:&quot;plugin_wrap_end&quot;,&quot;secid&quot;:3,&quot;range&quot;:&quot;0-&quot;} -->
+</div>
+</div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/adding_discounts_to_orders_with_order_tags?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:49:37 GMT -->
+</html>

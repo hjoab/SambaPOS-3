@@ -1,0 +1,145 @@
+====== Giving Free Coffee ======
+
+When a customer selected on a ticket we’ll read their promotion status. If it reached to a certain amount we’ll display promotion commands. Customer can either get her free coffee, want to use it later or request a coffee coupon for it. 
+
+We’ll use coupons we’ve configured on previous chapter. If customer wants her coffee or want to use this promotion later there is no need to print a coupon but optionally we can create and print a free coffee coupon. It is up to you. You can force customer to redeem it or let her use it later. On this tutorial we’ll create commands for all options but you can consider not to use all of them. 
+
+===== Enabling Promotion Commands on Ticket =====
+
+When customer’s promotion count reaches to 6 we’ll display some additional commands on ticket. We’ll have 3 options.
+
+  * Print Coupon
+  * Redeem Now
+  * Redeem Later
+  
+On first step we’ll create automation command buttons for these options.
+
+{{:en:promotions:coupons54.jpg?700|}}
+
+This is how Print Coupon Command is configured. After setting up visual properties switch to ''Mappings'' page to configure when and where this command button will appear.
+
+{{:en:promotions:coupons55.jpg?700|}}
+
+Visible States value is used to map this button to a specific Ticket State. So when Ticket State becomes ''Coffee Promotion'', this button will appear. 
+
+We have different options to place this button. On previous tutorials we used different places but on this tutorial we’ll use a new section called ''Command Selector''. Command Selector region appears where menu items are displayed.
+
+We’ll use same mappings for other two buttons we’ll create so don’t forget to update their mappings as shown here. Now I’ll clone two more buttons from this button.
+
+{{:en:promotions:coupons56.jpg?700|}}
+
+I’ll choose different color for this button. Don’t forget to check mappings. They should be same as the previous button.
+
+Now I’ll add one more button.
+
+{{:en:promotions:coupons57.jpg?700|}}
+
+Redeem Later button is used to cancel promotion state and hide promotion buttons. Until we create a new ticket for this customer we won’t see Promotion Commands. We should be able to see Promotion Command Buttons when customer (or customer card) selected for ticket. 
+
+To be able to update ticket state to display promotion commands we’ll create a new action. We’ll create a ''Update Ticket State'' action. 
+
+{{:en:promotions:coupons58.jpg?700|}}
+
+When executed this action changes Ticket Promotion State to ''Coffee Promotion''. 
+
+To be able to display ''Command Selector'' region we need to execute another action.
+
+Select Automation Command action displays ''Command Selector'' region. This region located where menu items are displayed. Since we’ll update ticket promotion state to ''Coffee Promotion'' we’ll see promotion commands there.
+
+{{:en:promotions:coupons59.jpg?700|}}
+
+Portion and Order Tag Selector screens will also display automation commands that are mapped to current ticket state so for order line based automation commands there is no need to call this action.
+
+Now we can create a rule to trigger these actions. We’ll create the rule for ''Ticket Entity Changed'' event.
+
+{{:en:promotions:coupons60.jpg?700|}}
+
+When ticket entity changes this rule executes. If entity type is ''Customers'' and ''Coffee Promotion Count'' equals or greater than 6 we’ll enable coffee promotion and display command selector region.
+
+Let’s test if it works or not. Create a new customer. Sell 6 or more coffee and see what happens when you create a new ticket for that customer.
+
+On previous tests I’ve sold 7 coffee to Mary White. When I create a new ticket for Mary White this screen welcomes us. 
+
+{{:en:promotions:coupons61.jpg?700|}}
+￼
+Nothing happens when I click on these buttons. On next step we’ll add some functionality.
+
+===== Enabling Redeem Now button =====
+
+Redeem Now button should add a free coffee into the ticket, disable ticket’s promotion state and decrease customer promotion data by 6 (or maybe you can prefer resetting it to zero).
+
+So we need an action to Disable Ticket’s promotion state. Let’s create it first.
+
+{{:en:promotions:coupons62.jpg?700|}}
+
+When we set an empty state value it disables Promotion state and hides command buttons. We’ll force ticket to refresh itself to hide commands section. So we’ll create another action to refresh the ticket.
+
+{{:en:promotions:coupons63.jpg?700|}}
+
+Executing Display Ticket action with Ticket ID set to zero should refresh current ticket. 
+
+If you followed all steps you already have ''Add Gift Product'' action. We can use it to add free coffee in ticket but I’ll create another action to demonstrate different settings. Remember on previous case we redeemed coupon after order submitted. Now we’ll execute promotion immediately and forbid order canceling. You can clone ''Add Gift Product'' Action for easier configuration.
+
+{{:en:promotions:coupons64.jpg?700|}}
+
+This action dedicated to Coffee Product. It changes ''GStatus'' of the line as Promotion and Locked parameter is True. So operator won't be able to cancel that order. 
+
+We can configure Redeem Now button. When we click to an automation command button ''Automation Command Executed'' event raises. We can create a rule for this event to define button logic. 
+
+{{:en:promotions:coupons65.jpg?700|}}
+
+We’ll create a constraint to test command name. We’ll add a gift order for coffee, decrease customers promotion count by 6 and disable promotion state of ticket. Our final step will be calling ''Refresh Ticket'' action. 
+
+Now we can test how it works. Select previous customer and when commands displayed click ''Redeem Now'' button.
+
+{{:en:promotions:coupons66.jpg?700|}}
+
+Clicking ''Redeem Now'' button adds ''Coffee'' into ticket, disables promotion state and displays menu. Coffee order is also bold since it is in Locked state. That means we can’t cancel that order and since we updated GStatus as Promotion we won’t be able to gift or void that line. In simple words we can’t remove this line. Like we did on previous tutorials you can define a middle order state to enable canceling redeem before submitting ticket.  
+
+We need to consider one more thing. If you notice Promotion State of this order line is ''Promotion Ordered'' that means it will increase customers promotion count by one. If it is not a wanted behavior we can disable it by adding one more action to ''Redeem Now'' rule. 
+
+{{:en:promotions:coupons67.jpg?700|}}
+
+We’ll leave Promotion State as empty to disable promotion counting for that order. After this change gifts added through ''Redeem Now'' button should not have ''Promotion Ordered'' state.
+
+Since she redeemed her promotion we won’t see command buttons until her promotion count reaches 6. Now we can implement ''Redeem Later'' button.
+
+===== Enabling Redeem Later Button =====
+
+If our customer do not want coffee now we can click Redeem Later button so commands will disappear until her next purchase. 
+
+{{:en:promotions:coupons68.jpg?700|}}
+
+We’ll just disable Coffee Promotion and Refresh Ticket to hide command buttons. On this ticket these buttons won’t enable again. After testing it we can configure next button. 
+
+===== Enabling Print Coupon Button =====
+
+Printing coupon might be better than just canceling promotion. So we already have coupon creating features. We just need to add Coffee Coupon product, mark it as gift and decrease promotion count of customer. If you remember on previous chapter we cancelled coupon printing and implemented text file generation instead. Now we need to print coupon immediately so we’ll handle this case on “Print Coupon Button” Rule.
+
+First we’ll create an action to add Coffee Coupon into the ticket.
+
+{{:en:promotions:coupons69.jpg?700|}}
+
+Gift status of this item is ''Gift'' and the order is locked too. Now we’ll handle Print Coupon execute event.
+
+{{:en:promotions:coupons70.jpg?700|}}
+
+This rule is a little crowded so I’ll add another screen shot to display action parameters.
+
+{{:en:promotions:coupons71.jpg?700|}}
+
+''Update Customer Coffee Promotion Count'' action uses ''{ENTITY NAME:Customer}'' tag to read actual customer name and passes -6 to decrease promotion count by 6.
+
+Update Coupon Product Order State action sets order state to ''Coupon Printed'' so it never switches to ''Coupon Paid''. Since we’ll handle coupon creation we don’t want Value Looper action to execute.
+
+Finally we update Menu Item Name of Coupon to Coffee.
+
+This is what should happen when we click on ''Print Coupon'' button. 
+
+{{:en:promotions:coupons72.jpg?700|}}
+
+When we create coupon through ''Print Coupon'' button it will print a coupon immediately but when we sell coupons they will be copied in a text file. 
+
+We reached to the end of this tutorial. I’ve tried to demonstrate all possible options. How this coupon system works might not be what you exactly need. You can change it as your business needs. Feel free to contact us through forums or our website. 
+
+  * Back to [[Promotion Coupons Documentation]]

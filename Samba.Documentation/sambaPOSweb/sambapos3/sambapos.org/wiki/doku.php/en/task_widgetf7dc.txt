@@ -1,0 +1,20 @@
+====== Task Widget ======
+Task Widget is a Custom Entity Screen widget that we can use for taking notes on screen. It supports custom fields so you can customize widget for your needs. Sample screen shot shows a widget that customised to note customer reservations.
+
+{{:en:widgets:taskwidget:taskwidget1.jpg?700|}}
+
+This widget can also execute automation commands and send custom field values as command value. On widget settings you can configure three types of automation commands.
+
+  - Task Create Commands: These commands executes when task first created or re-enabled.
+  - Task Complete Commands: These commands executes when task completes.
+  - Task Commands: These commands appears as a hyperlink under each task and executes when clicked.  
+
+{{:en:widgets:taskwidget:taskwidget2.jpg?700|}}
+  
+Enter a single command name for each line. For example if you have an Automation Commnand named as ReserveTable you can execute it by writing command name in the box. If you want to pass Table field value as command parameter you can write it as ''ReserveTable:[Table]''. Finally if you want to display it as a hyperlink you can change display name with ''='' symbol. So the final syntax becomes: 
+
+**DisplayName=CommandName:[CustomFieldName]**
+
+So you can execute ReservTable command as you create tasks to change Reserve state of the tables. On sample screen shot we have a Entity Grid widget that displays reservation state of tables. So if you type a table name while creating the task it appears on different color.
+
+{{:en:widgets:taskwidget:taskwidget3.jpg?700|}}

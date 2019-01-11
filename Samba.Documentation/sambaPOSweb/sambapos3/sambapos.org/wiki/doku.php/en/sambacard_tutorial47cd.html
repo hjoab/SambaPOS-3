@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/sambacard_tutorial?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:48:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:sambacard_tutorial</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,sambacard_tutorial"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="sambacard_tutorialdecf.html?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="sambacard_tutorial47cd.html?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="sambacard_tutorialf7dc.txt?do=export_raw"/>
+<link rel="canonical" href="sambacard_tutorial.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/sambacard_tutorial"},"id":"en:sambacard_tutorial","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+<!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#sambacard_tutorial">SambaCard Tutorial</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#sambacard_account_type">SambaCard Account Type:</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#entity_configuration">Entity Configuration</a></div></li>
+<li class="level3"><div class="li"><a href="#payment_type_configuration">Payment Type Configuration</a></div></li>
+<li class="level3"><div class="li"><a href="#demonstration">Demonstration</a></div></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="sambacard_tutorial">SambaCard Tutorial</h1>
+<div class="level1">
+
+<p>
+Pre-paid cards works like Sodexo or Multinet cards.  The difference is you give these cards to your customers and you sell credits. Once funds added to a card the customer can spend it on your restaurant. Some businesses prefers that because instead of paying comission to card companies they want to make discounts to their customers.
+</p>
+
+<p>
+SambaCard is just a fictional name. You can name it as you like.
+</p>
+
+<p>
+<strong>Configuration</strong>
+</p>
+
+<p>
+Hint: Before starting you can read a brief introduction of V3 Accounting Features. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;SambaCard Tutorial&quot;,&quot;hid&quot;:&quot;sambacard_tutorial&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-541&quot;} -->
+<h2 class="sectionedit2" id="sambacard_account_type">SambaCard Account Type:</h2>
+<div class="level2">
+
+<p>
+We&#039;ll create a new Account Type called “SambaCard Accounts” by navigating to Management &gt; Accounts &gt; Account Types
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0013845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-001.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-0012a0c.jpg_%3b?w=700&amp;tok=9bc907" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+A new SambaCard account is created for every card we give to our customers. 
+</p>
+
+<p>
+We need an account to track SambaCard Sales. We&#039;ll create a new Sales Account to differ them from normal Sales.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0023845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-002.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-00272e8.jpg_%3b?w=700&amp;tok=29cc9b" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We&#039;ll create a new Account Transaction Type to be able to Add Funds to Customer Cards. We can create it by navigating to Accounts &gt; Transaction Types.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0033845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-003.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-0034cdd.jpg_%3b?w=700&amp;tok=4d2488" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We&#039;ll configure here how “SambaCard Sales Account” and related “SambaCard Account” works when we add funds to a card. This configuration means when we Add Fund to a customer card, it credits SambaCard Sales account and debits “the SambaCard Account.
+</p>
+
+<p>
+We&#039;ll need a “Add Funds” button on Card accounts to add funds to cards easily. We&#039;ll do that by configuring a “Transaction Document Type”
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0043845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-004.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-0049108.jpg_%3b?w=700&amp;tok=bd6bac" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+This configuration will create a green button labelled as “Add Funds” at Account Transaction Screens. We&#039;ll use it to add funds to SambaCards so to be able to display that button for SambaCard accounts we selected “Account Type” as “SambaCard Accounts”. Since it will create a SambaCard Sale Transaction we add it to the transaction list by clicking to “Add Account Transaction Type” link.
+</p>
+
+<p>
+Now we&#039;ll configure how that button will display. So we switch to “Mappings” screen.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0053845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-005.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-00556f9.jpg_%3b?w=700&amp;tok=5d497e" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We&#039;ll configure here on which user accounts, departments or terminals that button will appear. * means “ALL” so we&#039;ll leave everything as * to make it work for everyone. That&#039;s all we need to do for Adding Funds to Customer Cards.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;SambaCard Account Type:&quot;,&quot;hid&quot;:&quot;sambacard_account_type&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;542-2357&quot;} -->
+<h3 class="sectionedit3" id="entity_configuration">Entity Configuration</h3>
+<div class="level3">
+
+<p>
+On this step we&#039;ll introduce a new Entity Type so SambaPOS will know we have something called “SambaCard” in our Restaurant and we need to select it on tickets like we select Tables, Customers or other similar entities.
+</p>
+
+<p>
+We do it by creating a new Entity Type. Navigate to Entities &gt; Entity Types for creating a new Entity Type
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0063845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-006.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-0061057.jpg_%3b?w=700&amp;tok=25cd93" class="media" alt="" width="700" /></a>
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>Name:</strong> A descriptive name of the entity.</div>
+</li>
+<li class="level1"><div class="li"> <strong>Entity Name:</strong> The singular name of the Entity. It is “SambaCard”</div>
+</li>
+<li class="level1"><div class="li"> <strong>Warehouse Type:</strong> We&#039;ll leave it empty since this entity is not related with Warehouses.</div>
+</li>
+<li class="level1"><div class="li"> <strong>Account Type:</strong> The Account Type of these Entities. We&#039;ll choose “SambaCard Accounts” here.</div>
+</li>
+<li class="level1"><div class="li"> <strong>Account Name Template:</strong> When we create a new entity we&#039;ll also create an account linked to this Entity. For example for your “Customers” you can open an account or not. If they have an account they can make payments later. What we configure here is how we need to configure linked account names. Since we create them automatically SambaPOS needs to know it. SK-[Customer Name]-[Phone] means for the Customer Emre EREN with Phone  number 111222333, the account name will be SK-Emre Eren-111222333</div>
+</li>
+<li class="level1"><div class="li"> <strong>Custom Fields:</strong> We&#039;ll configure additional data fields we need. Do it as it appears on the screen shot. You can create new fields from “right-click menu”</div>
+</li>
+</ul>
+
+<p>
+That configuration means when we create a new SambaCard it will ask us the “Customer Name”, “Phone” and the “Address”. It will also automatically create a new SambaCard account and link it with new SambaCard.
+</p>
+
+<p>
+Now we need a POS Screen to “search, add, edit” cards. We can do it by creating a new “Entity Screen”
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0073845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-007.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-007a7a7.jpg_%3b?w=700&amp;tok=71e18e" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+The screen name is also “SambaCard” and it will display as a POS button on top of the screen. Ticket Type will be Ticket and the ViewMode should be “Search” . We&#039;ll switch to Entity List screen.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0083845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-008.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-0083afa.jpg_%3b?w=700&amp;tok=bd89a0" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+On this page we&#039;ll configure which Entity Types we&#039;ll use on this screen. Obviously it should be “SambaCard Entity Type”. We also need to configure how that screen displays to users.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0093845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-009.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-0090bd1.jpg_%3b?w=700&amp;tok=d808a8" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+If we have multiple departments we may want to disble “SambaCard Selection Screen” for specific departments. For example we may want to disable it for Delivery department. I&#039;ll use default settings by adding a new mapping and leaving all values as *.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0123845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-012.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-012288d.jpg_%3b?w=700&amp;tok=3f6947" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+To be able to use this entity on Tickets we need to assign this Entity Type to the Ticket Type we&#039;ll use. You can configure the default Ticket Type from Management &gt; Tickets &gt; Ticket Types menu.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Entity Configuration&quot;,&quot;hid&quot;:&quot;entity_configuration&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;2358-5057&quot;} -->
+<h3 class="sectionedit4" id="payment_type_configuration">Payment Type Configuration</h3>
+<div class="level3">
+
+<p>
+Since we&#039;ll use SambaCard as a payment type we need to create a new custom Payment Type for it. But before creating a new payment type we need to define how this payment works. For example Cash Payment moves amount “Receivables Account” to “Cash Account”. Likewise a SambaCard Payment transaction moves amount from “Receivables” to “SambaCard Accounts”. We can configure it by defining a new Account Transaction Type.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0103845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-010.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-010c83e.jpg_%3b?w=700&amp;tok=3a75db" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+It looks like the SambaCard Sale Transaction but it does the reverse transaction. 
+</p>
+
+<p>
+Now we cen create the Custom Payment Type.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0113845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-011.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-011c358.jpg_%3b?w=700&amp;tok=7bd800" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+I named it as SambaCard and assingned “SambaCard Account Transaction” to it.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-012_03845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-012_0.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-012_00aa7.jpg_%3b?w=700&amp;tok=df938b" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Mapping screen works likes the others but this time we also choose where it displays. We can show that payment button on payment screen, under ticket or both.
+</p>
+
+<p>
+That is all we need to do for the configuration. Let&#039;s see how it works.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Payment Type Configuration&quot;,&quot;hid&quot;:&quot;payment_type_configuration&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;5058-6088&quot;} -->
+<h3 class="sectionedit5" id="demonstration">Demonstration</h3>
+<div class="level3">
+
+<p>
+We have an additional “SambaCard” button on POS screen. This works like the Customer Search screen. We&#039;ll use unique card numbers as the card names. We can search for a card number by typing it or by using a keyboard emulated magnetic card reader.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0133845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-013.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-0137789.jpg_%3b?w=700&amp;tok=c7ebbb" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+There is no 55716911 Card so no results shown. We can create this card by clicking “New SambaCard” button.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0143845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-014.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-014184d.jpg_%3b?w=700&amp;tok=01d8e5" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+And we enter the card details. Notice how address field permits multiple lines because it configured as Wide String Field. Clicking Create Account button will create SambaCard, Create linked account and assign it to SambaCard.
+</p>
+
+<p>
+After creating a SambaCard we return to search screen to complete further actions.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0153845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-015.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-01525d5.jpg_%3b?w=700&amp;tok=96d178" class="media" alt="" width="700" /></a>
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>Select SambaCard:</strong> Creates a new ticket or displays if there is an open ticket linked to that card.</div>
+</li>
+<li class="level1"><div class="li"> <strong>Edit SambaCard:</strong> You can change details or create linked account if not created before.</div>
+</li>
+<li class="level1"><div class="li"> <strong>New SambaCard:</strong> Creates a new SambaCard.</div>
+</li>
+<li class="level1"><div class="li"> <strong>No SambaCard:</strong> When enabled it unlinks card from ticket.</div>
+</li>
+<li class="level1"><div class="li"> <strong>Account Details:</strong> Displays Card Transactions.</div>
+</li>
+</ul>
+
+<p>
+Click “Account Details” to display Account Functions
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0163845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-016.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-01650fd.jpg_%3b?w=700&amp;tok=01ee9a" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We should see the “Add Funds” button that we configured to add credits to SambaCard. Click it to add funds.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0173845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-017.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-017faa9.jpg_%3b?w=700&amp;tok=e56864" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We added $200 Credits to the Card Account. Notice how account name genated from Card Data we entered.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0183845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-018.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-0185735.jpg_%3b?w=700&amp;tok=41059f" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+When saved it displays our transaction.
+</p>
+
+<p>
+Now we can create a ticket and assign SambaCard to it.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0203845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-020.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-020af13.jpg_%3b?w=700&amp;tok=b8c2aa" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Click “Select SambaCard” button to display SambaCard Search screen.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0213845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-021.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-0216eaa.jpg_%3b?w=700&amp;tok=946cc0" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Type card number and click “Select SambaCard” (or press enter key)
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0223845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-022.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-0228428.jpg_%3b?w=700&amp;tok=3c2e57" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Card assigned to the ticket. Add some orders and click “Settle”
+</p>
+
+<p>
+SambaPOS switched to Payment Screen. You should see the SambaCard balance next to account name. Also we have the “SambaCard” payment button.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/sc/sambacard_tutorial-0233845.html?id=en%3Asambacard_tutorial" class="media" title="en:sc:sambacard_tutorial-023.jpg"><img src="../../lib/exe/fetch.php/en/sc/sambacard_tutorial-023e9c6.jpg_%3b?w=700&amp;tok=3f44ed" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Click “All” and settle the ticket with “SambaCard” payment. It should close ticket with “SambaCard” payment.
+</p>
+
+<p>
+Check the End of Day report to see if it recorded fine or not.
+</p>
+
+<p>
+You can also check Card Account to display or print past transactions.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Demonstration&quot;,&quot;hid&quot;:&quot;demonstration&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;6089-&quot;} --></div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/sambacard_tutorial?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:48:48 GMT -->
+</html>

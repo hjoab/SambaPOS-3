@@ -1,0 +1,55 @@
+====== Configuring Cash Transactions for V2 users ======
+
+V2 users will notice that we don't have cash, credit card and voucher amount entries while starting a work period. That was a great feature to input beginning cash values while starting the work period but with V3 there are some differences.
+
+The main reason of this difference is V3 have it's own accounting system, custom payment types support, multiple cash support and foreign currencies support. Unlike V2 cash transactions are not hard coded anymore and we have to configure transactions for our needs. On this document I'll show you how we'll do it.
+
+Unlike V2 cash account does not automatically close while closing a work period. Before ending work period we need to create an expense transaction for the amount we receive from cash. To be able to this we have to configure transaction types for cash.
+
+First I'll configure some sample accounts for using with cash transactions.
+
+{{:en:cash:configuring_cash_transactions_for_v2_users-001.jpg?700|}}
+
+You can add more accounts for your business needs. General idea is if you wan't to see a total for your business transactions you'll create an account for it. For example if you need to know how much you've paid for grocery you'll create an account for it.
+
+{{:en:cash:configuring_cash_transactions_for_v2_users-002.jpg?700|}}
+
+While batch creating accounts we'll define account types by starting their names with #
+
+Let's create "Account Transaction Types". On SambaPOS accounting system all account transactions should have a source and a target account. First we'll configure "Income Transactions" type.
+
+{{:en:cash:configuring_cash_transactions_for_v2_users-003.jpg?700|}}
+
+... and Expense Transactions
+
+{{:en:cash:configuring_cash_transactions_for_v2_users-004.jpg?700|}}
+
+Now SambaPOS knows how cash, income and expense accounts are mapped together. As you've noticed we've left Default Target Account empty on expense transaction because We'll choose it while creating the transaction.
+
+Now we'll create buttons for transactions. We'll configure it by creating Document Types. 
+
+{{:en:cash:configuring_cash_transactions_for_v2_users-005.jpg?700|}}
+
+We'll add default mapping here.
+
+{{:en:cash:configuring_cash_transactions_for_v2_users-006.jpg?700|}}
+
+We'll do the same for Expense Button.
+
+{{:en:cash:configuring_cash_transactions_for_v2_users-007.jpg?700|}}
+
+When we finish this configuration we'll Click Accounts > Cash > Account Details.
+
+We should see two buttons for Income and Expense transactions.
+
+{{:en:cash:configuring_cash_transactions_for_v2_users-009.jpg?700|}}
+
+This is how a transaction should appear.
+
+{{:en:cash:configuring_cash_transactions_for_v2_users-008.jpg?700|}}
+
+You can change "Account Screens" configuration for displaying Income and Expense Transactions or create a new Account Screen for displaying Income and Expense account details.
+
+At the end of work period you can close cash by creating an Expense transaction and choose "Cash Closing" account there.
+
+We'll be happy if you try this and share your thoughts to help us on improving these features. Bye.

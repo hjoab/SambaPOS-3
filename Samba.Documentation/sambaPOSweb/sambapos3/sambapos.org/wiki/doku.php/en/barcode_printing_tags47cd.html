@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/barcode_printing_tags?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:51:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:barcode_printing_tags</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,barcode_printing_tags"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="barcode_printing_tagsdecf.html?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="barcode_printing_tags47cd.html?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="barcode_printing_tagsf7dc.txt?do=export_raw"/>
+<link rel="canonical" href="barcode_printing_tags.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/barcode_printing_tags"},"id":"en:barcode_printing_tags","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+<!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#barcode_printing_tags">Barcode Printing Tags</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#d_barcodes">1D Barcodes</a></div></li>
+<li class="level2"><div class="li"><a href="#qr_tags">QR Tags</a></div></li>
+<li class="level2"><div class="li"><a href="#positioning">Positioning</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#method_1">Method 1</a></div></li>
+<li class="level3"><div class="li"><a href="#method_2">Method 2</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#barcode_label_printers">Barcode Label Printers</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#sample_tspl_template">Sample TSPL Template</a></div></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="barcode_printing_tags">Barcode Printing Tags</h1>
+<div class="level1">
+
+<p>
+SambaPOS contains some useful tags for printing barcode through thermal printers. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Barcode Printing Tags&quot;,&quot;hid&quot;:&quot;barcode_printing_tags&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-120&quot;} -->
+<h2 class="sectionedit2" id="d_barcodes">1D Barcodes</h2>
+<div class="level2">
+
+<p>
+To print 1D barcodes we use <code>&lt;BAR&gt;</code> tag. For example <code>&lt;BAR&gt;123456789</code> line in a printer template prints a 1D barcode that contains 123456789 data in it. By default &lt;BAR&gt; tag prints barcode in Code 128 format. Here are the supported formats
+</p>
+<div class="table sectionedit3"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0">Tag</th><th class="col1">Format</th><th class="col2">Check Digit</th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0">&lt;BAR&gt;</td><td class="col1">Code 128</td><td class="col2">No</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0">&lt;BAR39&gt;</td><td class="col1">Code 39</td><td class="col2">No</td>
+	</tr>
+	<tr class="row3">
+		<td class="col0">&lt;BAR13&gt;</td><td class="col1">Ean 13</td><td class="col2">Yes</td>
+	</tr>
+	<tr class="row4">
+		<td class="col0">&lt;BAR08&gt;</td><td class="col1">Ean 8</td><td class="col2">Yes</td>
+	</tr>
+	<tr class="row5">
+		<td class="col0">&lt;BAR93&gt;</td><td class="col1">Code 93</td><td class="col2">Yes</td>
+	</tr>
+	<tr class="row6">
+		<td class="col0">&lt;BAR11&gt;</td><td class="col1">Code 11</td><td class="col2">No</td>
+	</tr>
+	<tr class="row7">
+		<td class="col0">&lt;BAR25&gt;</td><td class="col1">Code 25</td><td class="col2">No</td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table&quot;,&quot;secid&quot;:3,&quot;range&quot;:&quot;391-561&quot;} -->
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;1D Barcodes&quot;,&quot;hid&quot;:&quot;d_barcodes&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;121-562&quot;} -->
+<h2 class="sectionedit4" id="qr_tags">QR Tags</h2>
+<div class="level2">
+
+<p>
+You can print 2D barcodes in widely used QR Tag Format. <code>&lt;QR&gt;</code> tag is used to print QR Tags. For Example <code>&lt;QR&gt;ABCDEFG</code> printer template line prints a QR Tag that have ABCDEFG data in it. 
+</p>
+
+<p>
+There are two settings that can be configured as &lt;QRxy&gt;
+</p>
+<ul>
+<li class="level1"><div class="li"> x stands for Size. That can be a number between 1 and 9</div>
+</li>
+<li class="level1"><div class="li"> y stands for error correction. This is a number between 1 and 4. If you increase error correction there will be more chance to scan damaged barcodes. </div>
+</li>
+</ul>
+
+<p>
+For example &lt;QR64&gt; means Size = 6 and Error Correction = High. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;QR Tags&quot;,&quot;hid&quot;:&quot;qr_tags&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;563-1114&quot;} -->
+<h2 class="sectionedit5" id="positioning">Positioning</h2>
+<div class="level2">
+
+<p>
+We can position barcodes on ticket in by using one of these methods.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Positioning&quot;,&quot;hid&quot;:&quot;positioning&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;1115-1209&quot;} -->
+<h3 class="sectionedit6" id="method_1">Method 1</h3>
+<div class="level3">
+
+<p>
+We have 3 new tags to align bitmaps on ticket templates. These tags toggles bitmap printing alignment to left, center or right. 
+</p>
+<ul>
+<li class="level1"><div class="li"> &lt;el&gt; : Enables Left Alingment.</div>
+</li>
+<li class="level1"><div class="li"> &lt;ec&gt; : Enables Center Alingment.</div>
+</li>
+<li class="level1"><div class="li"> &lt;er&gt; : Enables Right Alingment.</div>
+</li>
+</ul>
+
+<p>
+It works like &lt;EB&gt; &lt;DB&gt; tags that we use to print bold lines. So when an alignment activated bitmaps under this tag printed by using this alignment. Text lines that does not contains any formatting tag also uses this setting. After enabling center alignment you can disable it by using one of other alingment tags.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Method 1&quot;,&quot;hid&quot;:&quot;method_1&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;1210-1784&quot;} -->
+<h3 class="sectionedit7" id="method_2">Method 2</h3>
+<div class="level3">
+
+<p>
+You can insert spaces between barcode tag and barcode data to add spaces before printer bitmap. For example <code>&lt;QR&gt;   123</code> format contains three spaces between <code>&lt;QR&gt;</code> tag and <code>123</code> so that pushes barcode to right by three characters. 
+</p>
+<!-- EDIT{&quot;target&quot;:&quot;plugin_wrap_start&quot;,&quot;secid&quot;:8,&quot;range&quot;:&quot;0-&quot;} --><div class="wrap_center wrap_round wrap_tip plugin_wrap" style="width: 60%;">
+<p>
+You can use these positioning methods for printing logo bitmaps.
+</p>
+</div><!-- EDIT{&quot;target&quot;:&quot;plugin_wrap_end&quot;,&quot;secid&quot;:9,&quot;range&quot;:&quot;0-&quot;} -->
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Method 2&quot;,&quot;hid&quot;:&quot;method_2&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:7,&quot;range&quot;:&quot;1785-2146&quot;} -->
+<h2 class="sectionedit10" id="barcode_label_printers">Barcode Label Printers</h2>
+<div class="level2">
+
+<p>
+You can also use Barcode Label Printers with SambaPOS. Barcode label printers are useful if you prefer to print Free Coffee Coupon Barcodes on sticky labels. So you can apply these on brochures or pre-printed Coupon Cards. These printers are different from ticket printers. They have a sensor next to their printing head to correctly align labels. If you frequently print high amount of labels at a time using barcode label printers is a must.
+</p>
+
+<p>
+Barcode printers supports their own Barcode Printing Language. Widely supported barcode printing languages are ZPL, EPL and TSPL languages. Most printers supports all or some of these languages.
+</p>
+
+<p>
+To be able to directly send these commands to printers we have have a new printer type called <code>Raw Printer</code>. This printer directly sends data to printer without modifying it. 
+</p>
+
+<p>
+I&#039;ve tested this printer with a TSC Firmware installed label printer. This firmware supports TSPL language so our sample format written in TSPL. If your printer supports it you can read more about this format from <a href="http://www.tscprinters.com/cms/upload/download_en/TSPL_TSPL2_Programming.pdf" class="urlextern" title="http://www.tscprinters.com/cms/upload/download_en/TSPL_TSPL2_Programming.pdf" rel="nofollow">TSPL Programming Language Manual</a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Barcode Label Printers&quot;,&quot;hid&quot;:&quot;barcode_label_printers&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:10,&quot;range&quot;:&quot;2147-3331&quot;} -->
+<h3 class="sectionedit11" id="sample_tspl_template">Sample TSPL Template</h3>
+<div class="level3">
+
+<p>
+This template prints a 40&times;80 label with a QR tag on the left and “SambaPOS Coffee Coupon” on the right and human readable code on right bottom side. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/barodetemplate1e881.html?id=en%3Abarcode_printing_tags" class="media" title="en:promotions:barodetemplate1.jpg"><img src="../../lib/exe/fetch.php/en/promotions/barodetemplate10bb8.jpg_%3b?w=700&amp;tok=7e5cae" class="media" alt="" width="700" /></a>
+</p>
+
+</div>
+
+<h4 id="description">Description</h4>
+<div class="level4">
+<div class="table sectionedit12"><table class="inline">
+	<tr class="row0">
+		<td class="col0"><strong>SIZE 40 mm,80 mm</strong></td>
+	</tr>
+	<tr class="row1">
+		<td class="col0">Page Size in milimeters.</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0"><strong>CLS</strong></td>
+	</tr>
+	<tr class="row3">
+		<td class="col0">Clears buffer </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0"><strong>TEXT 250,400,“3”,90,1,1,“SambaPOS” <br/>
+
+TEXT 220,400,“3”,90,1,1,“Coffee Coupon” <br/>
+
+TEXT 150,400,“3”,90,1,1,“{DATE}” <br/>
+
+TEXT 50,480,“3”,90,1,1,“{ENTITY NAME}“</strong></td>
+	</tr>
+	<tr class="row5">
+		<td class="col0">To be able to print on the label horizontally we&#039;ve rotated labels by 90 degrees. So x, y coordinates are alined to rotated canvas. </td>
+	</tr>
+	<tr class="row6">
+		<td class="col0"><strong>QRCODE 30,80,H,10,A,0,”{ENTITY NAME}“</strong></td>
+	</tr>
+	<tr class="row7">
+		<td class="col0">This code prints the QR Tag. Instead of using our &lt;QR&gt; tag we used label printer&#039;s internal command to print the QR Tag. </td>
+	</tr>
+	<tr class="row8">
+		<td class="col0"><strong>PRINT 1,1</strong></td>
+	</tr>
+	<tr class="row9">
+		<td class="col0">This line tells printer to start printing.</td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table1&quot;,&quot;secid&quot;:12,&quot;range&quot;:&quot;3581-4186&quot;} -->
+<p>
+<a href="../../lib/exe/detail.php/tr/yazicilar/yazicilar_05e881.html?id=en%3Abarcode_printing_tags" class="media" title="tr:yazicilar:yazicilar_05.jpg"><img src="../../lib/exe/fetch.php/tr/yazicilar/yazicilar_0519b6.jpg_%3b?w=700&amp;tok=9abeaf" class="media" alt="" width="700" /></a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Sample TSPL Template&quot;,&quot;hid&quot;:&quot;sample_tspl_template&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:11,&quot;range&quot;:&quot;3332-&quot;} --></div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/barcode_printing_tags?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:51:28 GMT -->
+</html>

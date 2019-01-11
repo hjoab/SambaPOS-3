@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/creating_printer_templates?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:49:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:creating_printer_templates</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,creating_printer_templates"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="creating_printer_templatesdecf.html?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="creating_printer_templates47cd.html?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="creating_printer_templatesf7dc.txt?do=export_raw"/>
+<link rel="canonical" href="creating_printer_templates.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/creating_printer_templates"},"id":"en:creating_printer_templates","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+
+<h1 class="sectionedit1" id="creating_printer_templates">Creating Printer Templates</h1>
+<div class="level1">
+
+<p>
+Hello. Our topic is creating printer templates. In this tutorial we&#039;ll create a general ticket template and give some examples of new features.
+</p>
+
+<p>
+When we create a new ticket template a blank screen with some descriptions of usable tags welcomes us.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/cpt/creating_printer_templates-001768f.html?id=en%3Acreating_printer_templates" class="media" title="en:cpt:creating_printer_templates-001.jpg"><img src="../../lib/exe/fetch.php/en/cpt/creating_printer_templates-001d5ec.jpg_%3b?w=700&amp;tok=5d1380" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+V2 users will remember the sections available for different types of Ticket Lines (Orders). For example we used Gift Line section for defining printing template for gifted items. On V2 order states such as Gift, Void was hard coded. With V3 we can create new Order States for different uses such as returned or wasted items. So how we&#039;ll create templates for new types of Order States? To be able to solve this problem we introduced a new feature called “Dynamic Sections”. We&#039;ll type the section name in square brackets like [Orders:Gift] so SambaPOS can understand the lines under this section name relates with orders that have “Gift” state.
+</p>
+
+<p>
+Now we can start creating the template.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/cpt/creating_printer_templates-003768f.html?id=en%3Acreating_printer_templates" class="media" title="en:cpt:creating_printer_templates-003.jpg"><img src="../../lib/exe/fetch.php/en/cpt/creating_printer_templates-00392a2.jpg_%3b?w=700&amp;tok=1fa289" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+This is the basic template. I&#039;ve inserted two comments as a place holder for <a href="http://doc.sambapos.com/doku.php/en/v3/resources" class="urlextern" title="http://doc.sambapos.com/doku.php/en/v3/resources" rel="nofollow">Resources</a> and Orders.
+</p>
+
+<p>
+As you know a Ticket contains some collections of things such as Orders, Resources, Discounts, Services, Roundings, etc. We want to list orders at the point I&#039;ve inserted comment under “Ticket No:” part. To tell SambaPOS where we want to list orders we&#039;ll use <strong>{ORDERS}</strong> tag and <strong>{ENTITIES}</strong> for listing resource items. All possible tags are:
+</p>
+<ul>
+<li class="level1"><div class="li"> {ENTITIES}</div>
+</li>
+<li class="level1"><div class="li"> {ORDERS}</div>
+</li>
+<li class="level1"><div class="li"> {ORDER TAGS}</div>
+</li>
+<li class="level1"><div class="li"> {TAXES}</div>
+</li>
+<li class="level1"><div class="li"> {DISCOUNTS}</div>
+</li>
+<li class="level1"><div class="li"> {SERVICES}</div>
+</li>
+<li class="level1"><div class="li"> {PAYMENTS}</div>
+</li>
+<li class="level1"><div class="li"> {CHANGES}</div>
+</li>
+</ul>
+
+<p>
+<a href="../../lib/exe/detail.php/en/cpt/creating_printer_templates-004768f.html?id=en%3Acreating_printer_templates" class="media" title="en:cpt:creating_printer_templates-004.jpg"><img src="../../lib/exe/fetch.php/en/cpt/creating_printer_templates-004724a.jpg_%3b?w=700&amp;tok=5e9ab4" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+Collection Tags are displayed in Blue color and defines the place where we want to list things.
+</p>
+
+<p>
+But this format will print nothing for orders and resources because SambaPOS still don&#039;t know how to print orders or resources. So we&#039;ll create sections for defining these templates.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/cpt/creating_printer_templates-005768f.html?id=en%3Acreating_printer_templates" class="media" title="en:cpt:creating_printer_templates-005.jpg"><img src="../../lib/exe/fetch.php/en/cpt/creating_printer_templates-0058e18.jpg_%3b?w=700&amp;tok=089f5c" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We created three sections. One for order line format and the other two are for Resources. The format we created at [ORDERS] section will be used for all order lines but [ENTITIES:Table] format will be used for printing table name and [ENTITIES:Customer] will used when the resource type is Customer and it will print Customer Name and Customer Phone. Customer Phone pulled with {ENTITIES DATA:Phone} tag because phone number is a custom data. For example if you add a custom data named <strong>Mobile</strong> for Customer Resource type you&#039;ll print it by using {ENTITIES DATA:Mobile} tag.
+</p>
+
+<p>
+But of course we don&#039;t want to print all order lines on tickets. For example we want to remove voided lines and display Gifted lines with a different format. So we&#039;ll create two more sections.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/cpt/creating_printer_templates-006768f.html?id=en%3Acreating_printer_templates" class="media" title="en:cpt:creating_printer_templates-006.jpg"><img src="../../lib/exe/fetch.php/en/cpt/creating_printer_templates-0065403.jpg_%3b?w=700&amp;tok=c690ff" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We added an empty section for voided lines. If we do not create a section for [ORDERS:Void], default [ORDERS] template will used instead. To be able to skip them we created an empty section. [ORDERS:Gift] section is self descriptive. We&#039;ll print <strong>Gift</strong> instead of price.
+</p>
+
+</div>
+</div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/creating_printer_templates?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:49:55 GMT -->
+</html>

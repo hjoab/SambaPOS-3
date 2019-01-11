@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/tracking_coffee_purchases_of_loyal_customers?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:52:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:tracking_coffee_purchases_of_loyal_customers</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,tracking_coffee_purchases_of_loyal_customers"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="tracking_coffee_purchases_of_loyal_customersdecf.html?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="tracking_coffee_purchases_of_loyal_customers47cd.html?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="tracking_coffee_purchases_of_loyal_customersf7dc.txt?do=export_raw"/>
+<link rel="canonical" href="tracking_coffee_purchases_of_loyal_customers.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/tracking_coffee_purchases_of_loyal_customers"},"id":"en:tracking_coffee_purchases_of_loyal_customers","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+<!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#tracking_coffee_purchases_of_loyal_customers">Tracking Coffee Purchases of Loyal Customers</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#preparing_customer_entity">Preparing Customer Entity</a></div></li>
+<li class="level2"><div class="li"><a href="#preparing_tickets_for_coffee_promotion">Preparing Tickets for Coffee Promotion</a></div></li>
+<li class="level2"><div class="li"><a href="#updating_customer_data">Updating Customer Data</a></div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="tracking_coffee_purchases_of_loyal_customers">Tracking Coffee Purchases of Loyal Customers</h1>
+<div class="level1">
+
+<p>
+If you read previous chapters you’ll get the idea. We’ll add a custom field to store promotion status of customer and when it reaches to a specific amount we’ll gift free coupons. 
+</p>
+
+<p>
+If you didn’t do before I strongly suggest reading “SambaCard Tutorial”. This tutorial is about giving loyalty cards to customers. On this tutorial we’ll store promotion status on customer entity but if you want to enable this promotion for only Card Holders you can use SambaCard entity instead. Also you can have multiple promotions for different type of card holders. For example regular card receives free coffee for 6 purchases but gold card can receive it for 2 purchases.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Tracking Coffee Purchases of Loyal Customers&quot;,&quot;hid&quot;:&quot;tracking_coffee_purchases_of_loyal_customers&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-736&quot;} -->
+<h2 class="sectionedit2" id="preparing_customer_entity">Preparing Customer Entity</h2>
+<div class="level2">
+
+<p>
+We’ll start by adding needed custom fields for customer.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons47d444.html?id=en%3Atracking_coffee_purchases_of_loyal_customers" class="media" title="en:promotions:coupons47.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons472d37.jpg_%3b?w=700&amp;tok=ca61ab" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+I’ve added a Number field named as Coffee Promotion. I’ve also enabled <code>Hidden</code> setting to hide this field on Customer listings.
+</p>
+
+<p>
+On previous New Customer promotion document we’ve used Entity State feature to store if customer is a new customer or not. For this sample we can also use Entity State to store <code>Coffee Promotion</code> data because Entity States can also store numbers. If you want to make it editable through customer card use custom fields. If no use Entity States.
+</p>
+
+<p>
+On next step we’ll add an action to update this field. We’ll use <code>Update Entity Data</code> action to change Coffee Promotion value. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons48d444.html?id=en%3Atracking_coffee_purchases_of_loyal_customers" class="media" title="en:promotions:coupons48.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons485e6d.jpg_%3b?w=700&amp;tok=363569" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+When executed this action updates <code>Coffee Promotion</code> field value of the customer. While executing this action we’ll set customer name and promotion quantity so we defined them as variables. 
+</p>
+
+<p>
+If you’ll create SambaCard entity you’ll choose that entity type instead of Customers. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Preparing Customer Entity&quot;,&quot;hid&quot;:&quot;preparing_customer_entity&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;737-1823&quot;} -->
+<h2 class="sectionedit3" id="preparing_tickets_for_coffee_promotion">Preparing Tickets for Coffee Promotion</h2>
+<div class="level2">
+
+<p>
+We need to understand a promotion product added into the ticket. On this sample this product is coffee so we’ll mark coffee order lines as promotion. Let’s create an action to mark coffee orders as promotion.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons49d444.html?id=en%3Atracking_coffee_purchases_of_loyal_customers" class="media" title="en:promotions:coupons49.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons495ad6.jpg_%3b?w=700&amp;tok=f01a31" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We’ll use <code>Update Order State</code> action to change <code>Promotion State</code> of the order. When we add a new Coffee Order it’s order state should become <code>Promotion Ordered</code>. When ticket paid we’ll update it to <code>Promotion Paid</code> and we’ll update Customer Data. Now we’ll create a rule to mark Coffee orders as promotion.
+</p>
+
+<p>
+We’ll create a rule for <code>Order Added to Ticket</code> event. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons50d444.html?id=en%3Atracking_coffee_purchases_of_loyal_customers" class="media" title="en:promotions:coupons50.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons504e7e.jpg_%3b?w=700&amp;tok=00b6e8" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+I’ve created a constraint to understand if added product is Coffee or Not. If you want to enable promotion for multiple types of coffee you can add additional product names here by clicking <code>Add Custom Constraint</code> link. 
+</p>
+
+<p>
+If added product is Coffee we’ll execute <code>Update Order Promotion State</code> action to change order state to <code>Promotion Ordered</code>. 
+</p>
+
+<p>
+When Ticket paid we’ll update order state to <code>Promotion Paid</code> so we’ll add another rule for that. 
+</p>
+
+<p>
+We’ll handle <code>Before Ticket Closing</code> event and if remaining amount of ticket is 0 we’ll update orders marked as <code>Promotion Ordered</code> to <code>Promotion Paid</code>.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons51d444.html?id=en%3Atracking_coffee_purchases_of_loyal_customers" class="media" title="en:promotions:coupons51.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons51a4eb.jpg_%3b?w=700&amp;tok=8a71c9" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+When we set <code>Current State</code> value it will change only orders that already have <code>Promotion Ordered</code> state. If we leave it empty it will change all order’s states to <code>Promotion Paid</code>. This it not what we want for now but this feature might be handy in some cases. 
+</p>
+
+<p>
+Now you can test if rules updates Coffee order states fine.
+</p>
+
+<p>
+Until now we didn’t checked if a customer selected on ticket or not. We do not check it while adding orders because in some cases customers tells they have loyalty card just before payment. If needed you can add an additional action to reset order state to a different value other than <code>Promotion Paid</code> if no customer selected.
+</p>
+
+<p>
+Our ticket is ready to handle Coffee Promotions. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Preparing Tickets for Coffee Promotion&quot;,&quot;hid&quot;:&quot;preparing_tickets_for_coffee_promotion&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;1824-3940&quot;} -->
+<h2 class="sectionedit4" id="updating_customer_data">Updating Customer Data</h2>
+<div class="level2">
+
+<p>
+We’ll handle <code>Order State Updated</code> event to update customer promotion count. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons52d444.html?id=en%3Atracking_coffee_purchases_of_loyal_customers" class="media" title="en:promotions:coupons52.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons52d2ca.jpg_%3b?w=700&amp;tok=646a9f" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+We’ll check if a customer is assigned or not here. On <code>Update Customer Coffee Promotion Count</code> action we’ll set Quantity parameter with <code>{QUANTITY}</code> tag. + sign behind tag means we’ll increase the value. So if 4 coffee ordered parameter becomes +4 and it increases Promotion Count on customer card by 4.
+</p>
+
+<p>
+We can test how it works. As we sell coffee to a customer her Coffee Promotion Count should increase. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons53ad444.html?id=en%3Atracking_coffee_purchases_of_loyal_customers" class="media" title="en:promotions:coupons53a.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons53ad9d5.jpg_%3b?w=700&amp;tok=307eeb" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/promotions/coupons53bd444.html?id=en%3Atracking_coffee_purchases_of_loyal_customers" class="media" title="en:promotions:coupons53b.jpg"><img src="../../lib/exe/fetch.php/en/promotions/coupons53b62c9.jpg_%3b?w=700&amp;tok=4d9e26" class="media" alt="" width="700" /></a>
+</p>
+<ul>
+<li class="level1"><div class="li"> Back to <a href="promotion_coupons_documentation.html" class="wikilink1" title="en:promotion_coupons_documentation">Promotion Coupons Documentation</a></div>
+</li>
+<li class="level1"><div class="li"> Next Topic &gt; <a href="giving_free_coffee.html" class="wikilink1" title="en:giving_free_coffee">Giving Free Coffee</a></div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Updating Customer Data&quot;,&quot;hid&quot;:&quot;updating_customer_data&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;3941-&quot;} --></div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/tracking_coffee_purchases_of_loyal_customers?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:52:37 GMT -->
+</html>

@@ -1,0 +1,8 @@
+====== Tips & Tricks for new users. ======
+
+
+  * Use \r to wrap Button Caption on Menu Buttons and Automation Command Buttons. For example Print\rBill
+  * Press Shift + Ctrl and scroll mouse on SambaPOS V3 logo to zoom in - out screen
+  * When you get "Invalid column name" error reinstall SambaPOS to migrate your database to latest version.
+  * On first install do not try to rename default menu items and categories. Create your own menu and delete unused ones instead.
+  * You can make simple calculations on printer templates. For example [=2+5] generates 7 and [=F(TN('{TICKET TOTAL}')*0.1)] prints %10 of ticket total.

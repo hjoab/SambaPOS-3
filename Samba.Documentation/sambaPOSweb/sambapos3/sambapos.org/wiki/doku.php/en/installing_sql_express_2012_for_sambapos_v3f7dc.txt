@@ -1,0 +1,123 @@
+====== Installing SQL Express 2012 for SambaPOS V3 ======
+
+===== 1.Download SQL Express 2012 =====
+
+http://www.microsoft.com/en-au/download/details.aspx?id=29062
+
+{{:en:sql:installing_sql_express_2012_-_001.jpg?600|}}
+
+Click the Red **Download** button.
+
+{{:en:sql:installing_sql_express_2012_-_002.jpg?600|}}
+
+Select the version you need and click Next.
+
+**SQLEXPRWT_x86_ENU.exe** - 32 Bit version with SQL Management Studio\\r
+**SQLEXPRWT_x64_ENU.exe** - 64 Bit version with SQL Management Studio
+
+{{:en:sql:installing_sql_express_2012_-_003.jpg?300|}}
+
+Click Save File.
+
+===== 2.Installing SQL Express 2012 =====
+
+Run the file you downloaded above
+
+{{:en:sql:installing_sql_express_2012_-_004.jpg?400|}}
+
+{{:en:sql:installing_sql_express_2012_-_006.jpg?400|}}
+
+Select **New SQL Server Stand-alone** Installation
+
+{{:en:sql:installing_sql_express_2012_-_008.jpg?700|}}
+
+Click **I Accept** and click **Next**
+
+{{:en:sql:installing_sql_express_2012_-_009.jpg?700|}}
+
+SQL Express will request to install updates, click **Next**
+
+{{:en:sql:installing_sql_express_2012_-_010.jpg?700|}}
+
+Click **Next** at Feature Selection
+
+{{:en:sql:installing_sql_express_2012_-_011.jpg?700|}}
+
+Create a new **Named Instance** called **SAMBAPOS3**, and click **Next**
+
+{{:en:sql:installing_sql_express_2012_-_012.jpg?700|}}
+
+Make sure both services are set to **Automatic** Startup Type. Click **Next**.
+
+{{:en:sql:installing_sql_express_2012_-_013.jpg?700|}}
+
+Select **Mixed Mode**, and enter a password for the database (remember this password for later), I suggest **sambapos**. Click **Next**.
+
+{{:en:sql:installing_sql_express_2012_-_014.jpg?700|}}
+
+Click **Next**.
+
+{{:en:sql:installing_sql_express_2012_-_015.jpg?700|}}
+
+SQL Express will now install – this may take several minutes.
+
+{{:en:sql:installing_sql_express_2012_-_016.jpg?700|}}
+
+Once installation is complete, click Close.
+
+Close the SQL Server Installation Window.
+
+===== 3. Enabling Network Services =====
+
+Run **SQL Server Configuration Manager** located under **Microsoft SQL Server 2012** in your start menu.
+
+{{:en:sql:installing_sql_express_2012_-_018.jpg?700|}}
+
+Expand **SQL Server Network Configuration**, and select **Protocols for SAMBAPOS3** Enable both **Named Pipes & TCP/IP** Protocols.
+
+{{:en:sql:installing_sql_express_2012_-_019.jpg?400|}}
+
+A warning message will appear when you enable the protocols, click OK.
+
+{{:en:sql:installing_sql_express_2012_-_020.jpg?700|}}
+
+Go to SQL Server Services, select **SQL Server (SAMBAPOS3)** and click the **Restart** icon.
+
+===== 4. Using SQL Express 2012. =====
+
+Use the following line in SambaPOS Local Settings to use SQL Express 2012
+
+**Data source=localhost\SAMBAPOS3; User Id=sa; Password=sambapos**
+
+For all other computers on your network change localhost to your computers name that is running SQL Express 2012. For example
+
+**Data source=John-PC\SAMBAPOS3; User Id=sa; Password=sambapos**
+
+{{:en:sql:installing_sql_express_2012_-_021.jpg?700|}}
+
+Network connection issues are usually caused by Firewall programs running. Due to SQL Express using Dynamic Ports, it makes it hard to configure access through firewalls. The easiest solution is to turn off all firewalls.
+
+If you feel the need to have the firewall running, then look at this article
+http://technet.microsoft.com/en-us/library/cc646023.aspx
+
+Turning off your Windows Firewall does to affect the security of your computers, as long as you have a decent Internet Router with Firewall to stop external attacks, and you use secure passwords for your Wifi Access Points to stop internal attacks.
+
+====== Running SambaPOS v2 & v3 Databases ======
+
+
+If installing SQL Express 2012 for SambaPOS v2, then I suggest using SAMBAPOS for the Named Instance. This keeps both V2 & V3 databases running completely independent of each other.
+
+**Installation of SQL Express 2008**
+
+Installation of SQL Express 2008 is exactly the same as 2012, with the exception of Product Updates.
+
+The installation files are available here
+http://www.microsoft.com/en-au/download/details.aspx?id=22973
+
+Upgrading from SQL Express 2008
+
+{{:en:sql:installing_sql_express_2012_-_022.jpg?700|}}
+
+When you run the SQL Express 2012 setup file that you downloaded, select Upgrade and follow the Wizard.
+
+**Created By : John Sheather**

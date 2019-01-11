@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/modify_variable_action?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:51:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <title>en:modify_variable_action</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="theme-color" content="#008800"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="en,modify_variable_action"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://sambapos.org/wiki/lib/exe/opensearch.php" title="SambaPOS V3"/>
+<link rel="start" href="https://sambapos.org/wiki/"/>
+<link rel="contents" href="modify_variable_actiondecf.html?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://sambapos.org/wiki/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://sambapos.org/wiki/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://sambapos.org/wiki/feed.php?mode=list&amp;ns=en"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="modify_variable_action47cd.html?do=export_xhtml"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="modify_variable_actionf7dc.txt?do=export_raw"/>
+<link rel="canonical" href="modify_variable_action.html"/>
+<link rel="stylesheet" type="text/css" href="https://sambapos.org/wiki/lib/exe/css.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941"/>
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='en';var JSINFO = {"plugin_aceeditor":{"default":1,"highlight":1,"wraplimit":80,"colortheme":"textmate","latex":1,"markdown":1,"mdpage":false,"xmltags":[]},"ga":{"trackingId":"UA-2397752-18","anonymizeIp":true,"action":"export_xhtml","trackOutboundLinks":false,"options":[],"pageview":"\/wiki\/en\/modify_variable_action"},"id":"en:modify_variable_action","namespace":"en","ACT":"export_xhtml","useHeadingNavigation":1,"useHeadingContent":1};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"></script>
+<script type="text/javascript" charset="utf-8" src="https://sambapos.org/wiki/lib/exe/js.php?t=dokuwiki&amp;tseed=c8874b19d6985f85f27e1d0baa627941&amp;lang=en"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+<!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#modify_variable_action">Modify Variable Action</a></div>
+<ul class="toc">
+<li class="clear">
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#use_cases">Use Cases</a></div></li>
+<li class="level3"><div class="li"><a href="#example">Example</a></div></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="modify_variable_action">Modify Variable Action</h1>
+<div class="level1">
+
+<p>
+Modify Variable Action is a useful action that can alter rule variable values. Actions that works after this action uses altered values.
+</p>
+<div class="table sectionedit2"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0">Parameter Name</th><th class="col1">Description</th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<th class="col0">Variable Name</th><td class="col1">The name of the variable we want to change</td>
+	</tr>
+	<tr class="row2">
+		<th class="col0">Find</th><td class="col1">Value we want to change</td>
+	</tr>
+	<tr class="row3">
+		<th class="col0">Replace</th><td class="col1">Value we want to use instead</td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table&quot;,&quot;secid&quot;:2,&quot;range&quot;:&quot;177-334&quot;} -->
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Modify Variable Action&quot;,&quot;hid&quot;:&quot;modify_variable_action&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-335&quot;} -->
+<h3 class="sectionedit3" id="use_cases">Use Cases</h3>
+<div class="level3">
+<div class="table sectionedit4"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0">Variable Value</th><th class="col1">Find</th><th class="col2">Replace</th><th class="col3">Result</th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0">SambaPOS</td><td class="col1">&lt;empty&gt;</td><td class="col2">Best</td><td class="col3">Best</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0">SambaPOS</td><td class="col1">Samba</td><td class="col2">Best</td><td class="col3">BestPOS</td>
+	</tr>
+	<tr class="row3">
+		<td class="col0">SambaPOS</td><td class="col1">S(.*)S</td><td class="col2">Best</td><td class="col3">Best</td>
+	</tr>
+	<tr class="row4">
+		<td class="col0">SambaPOS</td><td class="col1">&lt;empty</td><td class="col2">(S.*)POS</td><td class="col3">Samba</td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table1&quot;,&quot;secid&quot;:4,&quot;range&quot;:&quot;357-513&quot;} -->
+<p>
+On last two cases we used Regular Expressions.
+</p>
+<ul>
+<li class="level1"><div class="li"> When Regex used as Find value it replaces variable with replace value if Find value successfully matches. </div>
+</li>
+<li class="level1"><div class="li"> When Regex used as Replace value it replaces variable with first regex group (the part in paranthesis) if regex matches.</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Use Cases&quot;,&quot;hid&quot;:&quot;use_cases&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;336-799&quot;} -->
+<h3 class="sectionedit5" id="example">Example</h3>
+<div class="level3">
+
+<p>
+Suppose you are using <code>NumberPad Value Entered</code> rule to scan customer cards through magnetic card reader. Some card scanners sends mag card data between <code>;</code> and <code>?</code> characters. As you know we can read entered number with <code>NumberpadValue</code> parameter so before using <code>NumberpadValue</code> parameter you might want to trim these characters. 
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/actions/modifyvariable/modifyvariableaction1c093.html?id=en%3Amodify_variable_action" class="media" title="en:actions:modifyvariable:modifyvariableaction1.jpg"><img src="../../lib/exe/fetch.php/en/actions/modifyvariable/modifyvariableaction1c311.jpg_%3b?w=700&amp;tok=7a0f81" class="media" alt="" width="700" /></a>
+</p>
+
+<p>
+<code>[;|%](.*)\?</code> regular expression trims starting <code>;</code> or <code>%</code> char and ending <code>?</code> character. If we call this action before using NumberpadValue in <code>Numberpad Value Entered</code> rule we&#039;ll read trimmed value.
+</p>
+
+<p>
+<a href="../../lib/exe/detail.php/en/actions/modifyvariable/modifyvariableaction2c093.html?id=en%3Amodify_variable_action" class="media" title="en:actions:modifyvariable:modifyvariableaction2.jpg"><img src="../../lib/exe/fetch.php/en/actions/modifyvariable/modifyvariableaction23ef6.jpg_%3b?w=700&amp;tok=543ae6" class="media" alt="" width="700" /></a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Example&quot;,&quot;hid&quot;:&quot;example&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;800-&quot;} --></div>
+</body>
+
+<!-- Mirrored from sambapos.org/wiki/doku.php/en/modify_variable_action?do=export_xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Jan 2019 04:51:37 GMT -->
+</html>

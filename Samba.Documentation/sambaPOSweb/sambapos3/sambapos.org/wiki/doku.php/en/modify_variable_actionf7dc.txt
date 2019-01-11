@@ -1,0 +1,30 @@
+====== Modify Variable Action ======
+
+Modify Variable Action is a useful action that can alter rule variable values. Actions that works after this action uses altered values.
+
+^Parameter Name^Description^
+^Variable Name|The name of the variable we want to change|
+^Find|Value we want to change|
+^Replace|Value we want to use instead|
+
+==== Use Cases ====
+
+^Variable Value^Find^Replace^Result^
+|SambaPOS|<empty>|Best|Best|
+|SambaPOS|Samba|Best|BestPOS|
+|SambaPOS|S(.*)S|Best|Best|
+|SambaPOS|<empty|(S.*)POS|Samba|
+
+On last two cases we used Regular Expressions. 
+  * When Regex used as Find value it replaces variable with replace value if Find value successfully matches. 
+  * When Regex used as Replace value it replaces variable with first regex group (the part in paranthesis) if regex matches.
+
+==== Example ====
+
+Suppose you are using ''NumberPad Value Entered'' rule to scan customer cards through magnetic card reader. Some card scanners sends mag card data between '';'' and ''?'' characters. As you know we can read entered number with ''NumberpadValue'' parameter so before using ''NumberpadValue'' parameter you might want to trim these characters. 
+
+{{:en:actions:modifyvariable:modifyvariableaction1.jpg?700|}}
+
+''[;|%](.*)\?'' regular expression trims starting '';'' or ''%'' char and ending ''?'' character. If we call this action before using NumberpadValue in ''Numberpad Value Entered'' rule we'll read trimmed value.
+
+{{:en:actions:modifyvariable:modifyvariableaction2.jpg?700|}}
